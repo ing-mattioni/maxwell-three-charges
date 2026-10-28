@@ -151,3 +151,54 @@ Then:
 
 All four hypotheses of the hedgehog lemma then hold for every triangle. This gives
 **at most 4 equilibria** for three positive Coulomb charges.
+
+## 7. The computer-assisted part
+
+`certify.py` covers the whole closed domain
+  θ₃ ∈ [2π/3, π],  τ ∈ [−1, 1],  λ ∈ simplex,  with θ₁,₂ = (2π − θ₃)/2 ± τ(3θ₃ − 2π)/2.
+This is exactly the set of local data with θ₃ = max θᵢ. Every other configuration is
+equivalent to one of these by cyclic relabelling and, if needed, a reflection; all four
+conditions are invariant under both.
+
+The domain is covered by boxes, processed by branch and bound. For each box we compute
+rigorous enclosures of ζ², the Jacobian, Ǐ, the turning rate and the cusp indicator
+conj(t)²ζ. These are mean-value forms f(c) + ∇f(B)·(B − c), with ∇f(B) from interval
+forward-mode AD, intersected with the naive enclosure. Arithmetic is IEEE double with
+one-ulp outward rounding per operation; sin and cos are padded by 10⁻¹³ and their interior
+extrema handled explicitly.
+
+A box is closed only when one of the following holds, each a positively established
+strict inequality (so NaN can never certify):
+- |ζ|² > κ² on the whole box;
+- |ζ|² < κ² and (J) holds;
+- (J), (I), (T) and (W) all hold, where (T) may be replaced by
+  "no cusp is possible in the box": Im(conj(t)²ζ) ≠ 0 or Re(conj(t)²ζ) > 0.
+
+**Result for s = 1.** 9.97·10⁶ boxes, 0 unresolved, 402 s on 16 cores (`cert_s1.0.json`).
+An independent rerun from a different initial subdivision also left 0 unresolved boxes
+(`cert_s1.0_n10.json`).
+
+Validation:
+- the closed forms were checked against an independent linear-solve implementation, to
+  10⁻¹⁴, and against finite differences along numerically traced ∂M of concrete triangles;
+- the interval enclosures contain the float values at ~3·10⁵ random points
+  (`tests/test_enclosures.py`).
+
+## 8. Mixed signs (partial)
+
+Let q = (+,+,−) (the other mixed case follows by global sign flip). Then:
+- Equilibria lie in R_A = {λ₁,λ₂ > 0 > λ₃} (beyond edge p₁p₂) or in
+  R_B = {λ₁,λ₂ < 0 < λ₃} (the vertical angle at p₃).
+- **Maxima are impossible.** In R_B, p₃ lies inside the triangle (x, p₁, p₂). For e ⊥ u₃,
+  eᵀTe = λ₁(u₁·e)² + λ₂(u₂·e)² ≤ 0, so λ_min(T) ≤ 0 < 1/(s+2).
+- Poincaré–Hopf gives #equilibria = 2 + 2·#minima if Σq ≠ 0, and 1 + 2·#minima if Σq = 0.
+  So Maxwell's bound ⇔ at most one minimum in M_A = R_A ∩ {|Z| < κ}.
+- In the local chart the same closed forms hold, with rᵢ = c·σᵢ/λᵢ, c = −1, and
+  Ǐ = ½σ₁σ₂ + c·{…}.
+- Numerically (`mixed_caustic.py`): M_A is a single star-shaped disk, and the caustic
+  winding is ≤ 1 for every triangle tried.
+- The degenerate limit is near-collinear (+,−,+). There each ring of equilibria of the
+  collinear configuration leaves exactly 2 in-plane equilibria under perturbation; for
+  random samples, axis points + 2·rings never exceeded 4 (`collinear_mixed.py`).
+- A certificate for the mixed case needs a compactified chart (λ is unbounded here) and
+  is **not done yet**.

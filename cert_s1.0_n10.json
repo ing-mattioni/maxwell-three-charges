@@ -1,0 +1,21 @@
+{
+ "s": 1.0,
+ "n0": 10,
+ "initial_boxes": 5500,
+ "stats": {
+  "boxes": 9966558,
+  "disc_struct": 0,
+  "disc_outside": 1030219,
+  "ver_int": 839283,
+  "ver_bdry": 3116527,
+  "ver_bdry_nocusp": 2434734
+ },
+ "worst_certified": {
+  "jac": -0.0001568851593213849,
+  "Ih": 1.5255776188161094e-07,
+  "turn": 0.4999993787826239,
+  "W": 0.38797317938121817
+ },
+ "unresolved": 0,
+ "seconds": 414.8095865249634
+}
