@@ -203,3 +203,29 @@ Let q = (+,+,−) (the other mixed case follows by global sign flip). Then:
   random samples, axis points + 2·rings never exceeded 4 (`collinear_mixed.py`).
 - A certificate for the mixed case needs a compactified chart (λ is unbounded here) and
   is **not done yet**.
+
+### 8.1 Mixed signs: numerical evidence that the same proof architecture applies
+
+Measured with `generic_invariants.py` (chart-free formulas, validated against the closed forms
+on positive configurations to 10⁻¹⁵) along ∂M_A for 38 random triangles, including very flat
+ones and both kinds of near-collinear limits (`mixed_margins.py`):
+- jac < 0 everywhere: Z is orientation-reversing on M_A;
+- the inflection function never changes sign: no inflections;
+- the turning rate is ≤ −0.0 everywhere, far below the ½ threshold;
+- exactly 3 cusps on every caustic.
+
+So the hedgehog lemma would apply verbatim, which would give ≤ 1 minimum and hence ≤ 4
+equilibria for mixed signs as well.
+
+What a certificate still needs:
+1. **Non-compactness of the chart.** λ is unbounded on R_A. Three degenerate regimes must be
+   blown up, with rescaled normal forms:
+   - flat (+,−,+), with the negative charge between the positive ones;
+   - flat (+,+,−), with the negative charge at an end;
+   - the far-field regime Σq ≈ 0, where the minimum can sit at L = 1 − 2λ₃ ~ 10³.
+
+   The inflection margin degenerates linearly in the flatness, as in the positive case.
+2. **Total turning π.** The shortcut (W) fails here: |d arg u_j/dω| reaches ½ in flat limits
+   and exceeds it in the far-field regime. Θ = π must instead come from continuity over the
+   connected space of mixed configurations, since Θ is an integer that cannot jump without an
+   inflection, together with an evaluation at one base configuration.

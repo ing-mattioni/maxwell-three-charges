@@ -75,6 +75,24 @@ Along the way:
   Numerically the bound 4 holds there too. A certificate needs a compactified chart, which
   is not done yet (see §8 of the notes).
 
+## Independent sanity checks
+
+- **Brute force** (`bruteforce.py`, no theory used): multistart Newton on ∇V for 64,000
+  random positive configurations, covering very flat triangles and charge ratios over
+  6 decades.
+  - Counts found: 2 (63,975×) and 4 (20×); never 6.
+  - 5 extreme cases gave odd counts, which Poincaré–Hopf forbids. The exact winding method
+    shows that all five have exactly 2 equilibria: Newton had missed or duplicated points.
+- **Mixed signs (not certified).** The same structure is observed: maxima are provably
+  impossible, M_A is a disk, the caustic has no inflections and exactly 3 cusps, and the
+  winding is ≤ 1. See notes §8.
+
+![minimum regions and caustics](figs/caustic.png)
+
+*Left: the minimum region M (|Z| < s/(s+2)) for s = 0.3, 1, 3, 10. Right: its caustic in
+charge space (log q₁/q₃, log q₂/q₃), a deltoid-like front. The number of minima for charges
+q is the winding number of the caustic around q.*
+
 ## Numerical findings
 
 - **Riesz exponents.** For r^{−s}, the hedgehog structure holds for all triangles when
