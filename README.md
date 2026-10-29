@@ -60,10 +60,11 @@ Along the way:
 
 ## Caveats
 
-- **Floating-point rigor.** The interval arithmetic runs in IEEE double with one-ulp
-  outward rounding per operation. sin and cos are padded by 10⁻¹³, which relies on the
-  platform libm being accurate to that level; it is accurate to ~10⁻¹⁶. Porting the
-  certificate to MPFR or Arb would remove this assumption.
+- **Floating-point rigor.** The interval arithmetic uses IEEE double with one-ulp outward
+  rounding per operation. sin and cos are enclosed rigorously by Taylor series with explicit
+  remainder bounds, so the certificate relies only on correctly rounded +, −, ×, ÷ and √.
+  It does not depend on the accuracy of the platform libm. A port to MPFR or Arb would
+  still be a welcome independent check.
 - **Closed forms.** They were derived by hand and validated in three ways:
   - against an independent implementation (agreement to 10⁻¹⁴);
   - against finite differences along traced boundaries of concrete triangles;

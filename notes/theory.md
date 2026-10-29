@@ -164,8 +164,9 @@ The domain is covered by boxes, processed by branch and bound. For each box we c
 rigorous enclosures of ζ², the Jacobian, Ǐ, the turning rate and the cusp indicator
 conj(t)²ζ. These are mean-value forms f(c) + ∇f(B)·(B − c), with ∇f(B) from interval
 forward-mode AD, intersected with the naive enclosure. Arithmetic is IEEE double with
-one-ulp outward rounding per operation; sin and cos are padded by 10⁻¹³ and their interior
-extrema handled explicitly.
+one-ulp outward rounding per operation. Endpoint values of sin and cos are enclosed by Taylor
+series, after range reduction by an interval enclosure of π/2, with an explicit Lagrange
+remainder; interior extrema are handled explicitly. No libm accuracy is assumed.
 
 A box is closed only when one of the following holds, each a positively established
 strict inequality (so NaN can never certify):

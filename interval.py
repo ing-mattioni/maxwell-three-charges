@@ -12,7 +12,7 @@ _up = lambda x: np.nextafter(x, np.inf)
 
 PI_LO = 3.141592653589793      # float(pi) < pi
 PI_HI = np.nextafter(PI_LO, 4)  # > pi
-TRIG_PAD = 1e-13
+TRIG_PAD = 0.0  # endpoint values are now rigorous (sincos_point); no libm assumption
 
 
 class I:
@@ -108,9 +108,10 @@ def cos_i(x):
     if type(x).__name__ == 'DI':
         return x.cos()
     a, b = x.lo, x.hi
-    ca, cb = np.cos(a), np.cos(b)
-    lo = np.minimum(ca, cb)
-    hi = np.maximum(ca, cb)
+    _, cA = sincos_point(a)
+    _, cB = sincos_point(b)
+    lo = np.minimum(cA.lo, cB.lo)
+    hi = np.maximum(cA.hi, cB.hi)
     # minimum -1 at pi; maximum 1 at 0 and 2pi
     eps = 1e-9  # generous: including an extremum that is not there only widens the enclosure
     has_pi = (a <= PI_HI + eps) & (b >= PI_LO - eps)
@@ -126,9 +127,10 @@ def sin_i(x):
     if type(x).__name__ == 'DI':
         return x.sin()
     a, b = x.lo, x.hi
-    sa, sb = np.sin(a), np.sin(b)
-    lo = np.minimum(sa, sb)
-    hi = np.maximum(sa, sb)
+    sA, _ = sincos_point(a)
+    sB, _ = sincos_point(b)
+    lo = np.minimum(sA.lo, sB.lo)
+    hi = np.maximum(sA.hi, sB.hi)
     eps = 1e-9
     has_p2 = (a <= PI_HI / 2 + eps) & (b >= PI_LO / 2 - eps)
     has_3p2 = (a <= 1.5 * PI_HI + eps) & (b >= 1.5 * PI_LO - eps)
@@ -201,3 +203,48 @@ class C:
         o = C.c(o)
         d = o.abs2().recip()
         return C(self.re, self.im) * o.conj() * d
+
+
+# ---------------------------------------------------------------------------
+# Rigorous point enclosures of sin / cos using only IEEE +,-,* with outward rounding
+# (no reliance on the accuracy of the platform libm).
+_HALF_PI = None
+
+
+def _poly_sin_cos(y):
+    """y: interval with |y| <= 0.8. Returns (sin y, cos y) enclosures via Taylor series
+    to degree 21/20 plus a rigorous Lagrange remainder bound."""
+    y2 = y.sq()
+    # sin y = y * sum_{k=0}^{10} (-1)^k y^{2k}/(2k+1)!,  remainder <= |y|^23/23!
+    # cos y =     sum_{k=0}^{10} (-1)^k y^{2k}/(2k)!,    remainder <= |y|^22/22!
+    import math
+    ss = I(np.zeros_like(y.lo)); cc = I(np.zeros_like(y.lo))
+    for k in range(10, -1, -1):
+        cs = (-1) ** k / math.factorial(2 * k + 1)
+        cc_ = (-1) ** k / math.factorial(2 * k)
+        # coefficients are not exactly representable: enclose them
+        csI = I(np.nextafter(cs, -np.inf), np.nextafter(cs, np.inf))
+        ccI = I(np.nextafter(cc_, -np.inf), np.nextafter(cc_, np.inf))
+        ss = ss * y2 + csI
+        cc = cc * y2 + ccI
+    ss = ss * y
+    m = np.maximum(np.abs(y.lo), np.abs(y.hi))
+    rs = _up(_up(m ** 23) / 2.5e22)    # 23! = 2.585e22 > 2.5e22
+    rc = _up(_up(m ** 22) / 1.1e21)    # 22! = 1.124e21 > 1.1e21
+    return ss + I(-rs, rs), cc + I(-rc, rc)
+
+
+def sincos_point(x):
+    """rigorous enclosures of sin(x), cos(x) for float arrays x in [-1, 2*pi+1]"""
+    x = np.asarray(x, dtype=float)
+    hp = I(PI_LO / 2, PI_HI / 2)
+    k = np.round(x / (PI_LO / 2)).astype(int)
+    y = I(x, x) - hp * k.astype(float)
+    sy, cy = _poly_sin_cos(y)
+    km = np.mod(k, 4)
+    # sin(x) = sin(y + k pi/2), cos(x) = cos(y + k pi/2)
+    s_lo = np.select([km == 0, km == 1, km == 2, km == 3], [sy.lo, cy.lo, -sy.hi, -cy.hi])
+    s_hi = np.select([km == 0, km == 1, km == 2, km == 3], [sy.hi, cy.hi, -sy.lo, -cy.lo])
+    c_lo = np.select([km == 0, km == 1, km == 2, km == 3], [cy.lo, -sy.hi, -cy.hi, sy.lo])
+    c_hi = np.select([km == 0, km == 1, km == 2, km == 3], [cy.hi, -sy.lo, -cy.lo, sy.hi])
+    return I(s_lo, s_hi), I(c_lo, c_hi)
