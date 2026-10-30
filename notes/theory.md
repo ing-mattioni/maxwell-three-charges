@@ -146,8 +146,15 @@ Then:
   by −3π over one turn, since ∂M is a Jordan curve traversed clockwise. So there are
   exactly 3 cusps, all ordinary.
 - (I) ⇒ there are no inflections.
-- (W) ⇒ u₁·k has exactly one zero, so n(e₁) = 1, and since wind(C, e₁) = 0 the total
-  turning is Θ = π.
+- Total turning Θ = π. Θ is an odd multiple of π and depends continuously on the triangle
+  (by (J), ∂M and the dual vector m move smoothly with it), so it is the same for every
+  triangle. (W) is certified for the vertex labelled 1 in the max-angle frame, and that label
+  can change along ∂M of a fat triangle. So (W) is used at one base triangle
+  Δ₀ = (0, 1, ½ + i/8), where `base_triangle.py` proves rigorously that θ₃ is the strictly
+  largest angle on all of M̄ (`cert_base_triangle.json`: 2,410 boxes, 0 unresolved). There
+  u₁·k has exactly one zero along ∂M(Δ₀), so n(e₁) = 1, and since wind(C, e₁) = 0, Θ = π.
+  (The bound |d arg u_j/dω| < ½ cannot be certified for all three vertices at once: for p₃
+  it tends to ½ in the flat limit, see `scan_W_allvertices.py`.)
 
 All four hypotheses of the hedgehog lemma then hold for every triangle. This gives
 **at most 4 equilibria** for three positive Coulomb charges.

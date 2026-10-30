@@ -13,9 +13,13 @@ bound for three charges". This repository closes the gap for the Coulomb potenti
 with a rigorous interval-arithmetic certificate. The certificate checks four explicit
 strict inequalities on a compact 4-parameter domain:
 - `cert_s1.0.json`: 9.97·10⁶ boxes, **0 unresolved**;
-- `cert_s1.0_n10.json`: an independent rerun from a different subdivision, also **0 unresolved**.
+- `cert_s1.0_n10.json`: an independent rerun from a different subdivision, also **0 unresolved**;
+- `cert_base_triangle.json`: the two-dimensional check on one base triangle, **0 unresolved**.
 
 It has **not** been peer-reviewed. Please read the caveats below.
+
+**Paper.** A full write-up is in [`paper/paper.pdf`](paper/paper.pdf) (source `paper/paper.html`,
+built with `paper/build.ps1`; figures from `paper/figures.py`).
 
 ## Background
 
@@ -48,7 +52,8 @@ It has **not** been peer-reviewed. Please read the caveats below.
    - (J) Z is orientation-reversing on the closure of M;
    - (I) no inflections of C;
    - (T) the cusps are simple;
-   - (W) the total turning of C is π.
+   - (W) the total turning of C is π. Since the turning is constant over all triangles,
+     (W) is used at one base triangle, where `base_triangle.py` fixes the vertex labels.
 
    They are certified by branch and bound with outward-rounded interval arithmetic and
    mean-value forms (interval forward-mode AD).
@@ -109,6 +114,9 @@ q is the winding number of the caustic around q.*
 | `interval.py`, `ad.py` | outward-rounded interval arithmetic; interval forward-mode AD |
 | `verify.py` | interval evaluation of ζ, the Jacobian, Ǐ, the turning rate, the cusp test and (W) |
 | `certify.py` | parallel branch and bound; writes `cert_*.json` |
+| `base_triangle.py` | rigorous 2D check that fixes the vertex labels on one base triangle (pins the total turning) |
+| `scan_W_allvertices.py` | numerical scan showing why (W) is used only at the base triangle |
+| `paper/` | the paper (`paper.pdf`), its HTML source, figure script and build script |
 | `closedform.py`, `localchart.py` | float implementations of the closed forms (two independent derivations) |
 | `core.py`, `fast.py` | direct numerics: critical points, Z, tracing ∂M |
 | `tests/test_enclosures.py` | containment tests of the enclosures |
@@ -123,4 +131,5 @@ pip install numpy scipy matplotlib
 python tests/test_enclosures.py
 python certify.py 1.0 16 60        # Coulomb, 16 workers  -> cert_s1.0.json   (~7 min)
 python certify.py 1.0 16 80 10     # independent subdivision -> cert_s1.0_n10.json
+python base_triangle.py            # base triangle            -> cert_base_triangle.json
 ```

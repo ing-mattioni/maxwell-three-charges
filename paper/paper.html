@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Three positive point charges have at most four equilibria</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+  @page {
+    size: A4;
+    margin: 24mm 25mm 24mm 25mm;
+    @bottom-center { content: counter(page); font-family: KaTeX_Main, serif; font-size: 9.5pt; }
+  }
+  @page :first { @bottom-center { content: none; } }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: KaTeX_Main, 'Times New Roman', serif;
+    font-size: 10.6pt; line-height: 1.42; color: #111; background: #fff;
+    text-align: justify; hyphens: auto; -webkit-hyphens: auto;
+    margin: 0;
+  }
+  .katex { font-size: 1.04em; }
+  p { margin: 0 0 0.55em 0; }
+  p + p { text-indent: 0; }
+  h1.title { font-size: 17pt; font-weight: bold; text-align: center; line-height: 1.25; margin: 0 0 4pt 0; }
+  .subtitle { text-align: center; font-size: 11.5pt; font-style: italic; margin-bottom: 12pt; }
+  .author { text-align: center; font-size: 11pt; margin-bottom: 2pt; font-variant: small-caps; letter-spacing: 0.02em; }
+  .affil { text-align: center; font-size: 9.5pt; margin-bottom: 2pt; }
+  .date { text-align: center; font-size: 9.5pt; margin-bottom: 14pt; }
+  .abstract { margin: 0 8mm 10pt 8mm; font-size: 9.6pt; line-height: 1.38; }
+  .abstract .hd { font-variant: small-caps; font-weight: bold; text-align: center; display: block; margin-bottom: 3pt; letter-spacing: 0.03em; }
+  .meta { margin: 0 8mm 14pt 8mm; font-size: 9pt; }
+  .status { margin: 0 8mm 16pt 8mm; font-size: 9pt; border: 0.6pt solid #888; padding: 5pt 7pt; text-align: left; }
+  h2 { font-size: 12pt; font-weight: bold; margin: 16pt 0 7pt 0; break-after: avoid; }
+  h3 { font-size: 10.6pt; font-weight: bold; font-style: italic; margin: 11pt 0 5pt 0; break-after: avoid; }
+  .thm { margin: 7pt 0 7pt 0; }
+  .thm .lbl { font-weight: bold; }
+  .thm .nm { font-weight: normal; }
+  .thm.it .body { font-style: italic; }
+  .thm.it .body .katex { font-style: normal; }
+  .proof { margin: 4pt 0 8pt 0; }
+  .proof > .lbl { font-style: italic; }
+  .qed { float: right; padding-left: 8pt; }
+  .eq { position: relative; margin: 6pt 0; padding: 0 3.2em; }
+  .eq .katex-display { margin: 0; }
+  .eqn { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+  ol.items, ul.items { margin: 3pt 0 7pt 0; padding-left: 1.6em; }
+  ol.items li, ul.items li { margin-bottom: 2pt; }
+  ol.alpha { list-style-type: none; counter-reset: al; padding-left: 1.9em; }
+  ol.alpha > li { counter-increment: al; position: relative; }
+  ol.alpha > li::before { content: "(" counter(al, lower-alpha) ")"; position: absolute; left: -1.9em; }
+  ol.roman { list-style-type: none; counter-reset: rm; padding-left: 2.1em; }
+  ol.roman > li { counter-increment: rm; position: relative; }
+  ol.roman > li::before { content: "(" counter(rm, lower-roman) ")"; position: absolute; left: -2.1em; }
+  figure { margin: 10pt 0 10pt 0; break-inside: avoid; text-align: center; }
+  figure img { width: 100%; }
+  figcaption { font-size: 9.2pt; line-height: 1.35; text-align: justify; margin-top: 4pt; }
+  figcaption b { font-weight: bold; }
+  table.data { border-collapse: collapse; margin: 6pt auto 4pt auto; font-size: 9.3pt; }
+  table.data th, table.data td { padding: 2pt 9pt; text-align: right; }
+  table.data th { border-bottom: 0.6pt solid #000; font-weight: normal; }
+  table.data thead tr:first-child th { border-top: 0.9pt solid #000; }
+  table.data tbody tr:last-child td { border-bottom: 0.9pt solid #000; }
+  table.data td:first-child, table.data th:first-child { text-align: left; }
+  .tcap { font-size: 9.2pt; text-align: justify; margin: 3pt 0 10pt 0; }
+  .tbl { break-inside: avoid; margin: 10pt 0; }
+  ol.refs { font-size: 9.2pt; padding-left: 2.3em; line-height: 1.35; }
+  ol.refs li { margin-bottom: 3pt; }
+  ol.refs { list-style: none; counter-reset: rf; }
+  ol.refs > li { counter-increment: rf; position: relative; }
+  ol.refs > li::before { content: "[" counter(rf) "]"; position: absolute; left: -2.3em; }
+  code, .mono { font-family: Consolas, 'Courier New', monospace; font-size: 8.9pt; }
+  pre { font-family: Consolas, 'Courier New', monospace; font-size: 8.6pt; background: #f6f6f6; padding: 5pt 7pt; text-align: left; white-space: pre-wrap; break-inside: avoid; }
+  .rem { margin: 7pt 0; }
+  .rem .lbl { font-style: italic; font-weight: bold; }
+  a { color: inherit; text-decoration: none; }
+  .small { font-size: 9.2pt; }
+  .noindent { text-indent: 0; }
+  .center { text-align: center; }
+</style>
+</head>
+<body>
+
+<h1 class="title">Three positive point charges have at most four equilibria</h1>
+<div class="subtitle">A computer-assisted proof of Maxwell&rsquo;s bound for three charges</div>
+<div class="author">ing-mattioni</div>
+<div class="affil">github.com/ing-mattioni</div>
+<div class="date">30 October 2026 &middot; preprint</div>
+
+<div class="abstract"><span class="hd">Abstract</span>
+Maxwell conjectured in 1873 that the electrostatic field of $n$ point charges in $\R^3$ has at most $(n-1)^2$ isolated equilibrium points. The conjecture is now known to fail for $n=5$. For three positive charges the best bound in the literature is $6$, obtained in 2026 by Gabrielov, Novikov, Novikov and Shapiro, who improved the earlier bound $12$ of Gabrielov, Novikov and Shapiro. We prove that three positive Coulomb charges in $\R^3$ have at most four equilibria, which is Maxwell&rsquo;s bound for $n=3$ and is sharp.
+<br>&emsp;All equilibria lie in the open triangle spanned by the charges, where each is a local minimum or a saddle of the potential restricted to the plane, and there are $2+2m$ of them when $m$ is the number of minima. Using Lami&rsquo;s theorem, we write the charges that make a given point critical in closed form. A point can be a minimum only if it lies in the region $M=\{|\sum_i\lambda_i u_i^2|\lt \tfrac13\}$, where $\lambda_i$ are its barycentric coordinates and $u_i$ the unit vectors from the charges (as complex numbers). The number of minima equals the winding number around $q$ of a caustic curve $C$ in the space of charge ratios. A Sturm-type lemma for plane fronts with three ordinary cusps, no inflections and total tangent turning $\pi$ shows that this winding number is at most one in absolute value.
+<br>&emsp;The hypotheses of the lemma reduce to four strict inequalities between explicit functions of four variables on a compact domain, plus one two-dimensional check for a single triangle. We verify them by branch and bound with outward-rounded interval arithmetic that does not rely on the platform&rsquo;s mathematical library. About $10^7$ boxes were processed and none was left unresolved, in each of two independent subdivisions. The computer-assisted part has not yet been independently checked; all code is public.
+</div>
+<div class="meta"><b>Keywords:</b> Maxwell&rsquo;s conjecture; point charges; equilibria of electrostatic fields; caustics; fronts; Sturm theory; interval arithmetic; computer-assisted proof.<br>
+<b>MSC 2020:</b> 78A30, 58K05, 53A04, 65G30.</div>
+<div class="status"><b>Status.</b> This is a preprint and has not been peer reviewed. Sections&nbsp;2&ndash;5 are mathematical arguments meant to be checked by hand. Theorem&nbsp;<a class="r" data-to="thm-cert"></a> is established by the computations of Section&nbsp;<a class="r" data-to="sec-cert"></a>, whose correctness rests on the implementation described there. See Section&nbsp;<a class="r" data-to="sec-disc"></a> for what an independent check should cover, and the AI-assistance statement at the end.</div>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-intro">Introduction</h2>
+
+<p>In his <i>Treatise on Electricity and Magnetism</i>, Maxwell <cite data-k="maxwell"></cite> argued that the field of $n$ point charges has at most $(n-1)^2$ points of equilibrium, provided they are isolated. His heuristic counted the intersections of the two curves on which two components of the field vanish. The statement became known as Maxwell&rsquo;s conjecture. It turned out to be remarkably hard even for $n=3$.</p>
+
+<p>Gabrielov, Novikov and Shapiro <cite data-k="gns"></cite> brought the problem to modern attention. Using the theory of fewnomials <cite data-k="khovanskii"></cite>, they proved general finiteness bounds. For three positive charges they showed that there are at most $12$ nondegenerate equilibria. Zolotov <cite data-k="zolotov"></cite> obtained further upper bounds via the Thom&ndash;Milnor theorem. Tsai <cite data-k="tsai"></cite> proved the bound $4$ for three charges of equal magnitude, by a computer-assisted symbolic computation. Edelsbrunner, Fillmore and Oliveira <cite data-k="efo"></cite> disproved a related conjecture of <cite data-k="gns"></cite> that compares equilibria with Voronoi cells. In July 2026 two preprints appeared. Arathoon, Ball and Kvalheim <cite data-k="abk"></cite> exhibited five charges whose field has at least $24 \gt 16=(5-1)^2$ nondegenerate equilibria, so Maxwell&rsquo;s conjecture is false in general. Gabrielov, Novikov, Novikov and Shapiro <cite data-k="gnns"></cite> lowered the three-charge bound from $12$ to $6$. The question whether three positive charges can have $6$ equilibria was therefore open.</p>
+
+<p>We answer it for the Coulomb potential.</p>
+
+<div class="thm it" data-type="Theorem" id="thm-main"><span class="body">Let $q_1,q_2,q_3\gt 0$ be charges at three distinct points $p_1,p_2,p_3\in\R^3$, and let $V(y)=\sum_{i}q_i|y-p_i|^{-1}$. Then the electrostatic field $E=-\nabla V$ vanishes at no more than four points. More precisely:</span>
+<ol class="alpha items body">
+<li>If the $p_i$ are collinear, $E$ has exactly two zeros.</li>
+<li>Otherwise every zero of $E$ lies in the open triangle $\Delta^\circ$ spanned by the charges. There is a closed curve $C=C(p_1,p_2,p_3)$ in the open simplex of normalized charge vectors such that, for $q\notin C$, the number of zeros is $2$ or $4$, according to whether $q$ lies outside or inside $C$. Both cases occur for every triangle.</li>
+</ol>
+<span class="body">The proof is computer-assisted: it uses the interval-arithmetic verification of Theorem&nbsp;<a class="r" data-to="thm-cert"></a>.</span>
+</div>
+
+<p>Since four equilibria occur (for instance for equal charges at the vertices of an equilateral triangle, a case already discussed by Maxwell), the bound is sharp. In the language of <cite data-k="gnns"></cite>, Theorem&nbsp;<a class="r" data-to="thm-main"></a> closes the gap between $6$ and Maxwell&rsquo;s $(3-1)^2=4$ for positive Coulomb charges. In contrast with <cite data-k="gns,gnns"></cite>, whose methods treat Riesz potentials of general exponent, we prove it only for the Coulomb exponent; see Section&nbsp;<a class="r" data-to="sec-num"></a> for evidence about other exponents and about charges of mixed signs.</p>
+
+<h3 class="subsec">Strategy</h3>
+<p>The argument has a geometric part (Sections&nbsp;<a class="r" data-to="sec-red"></a>&ndash;<a class="r" data-to="sec-proof"></a>) and a computational part (Sections&nbsp;<a class="r" data-to="sec-chart"></a>&ndash;<a class="r" data-to="sec-cert"></a>).</p>
+<ol class="items">
+<li><i>Reduction.</i> All equilibria lie in the open triangle $\Delta^\circ$. There they are critical points of the planar potential, never maxima, and their number is $2+2m$, where $m$ is the number of local minima. So it suffices to show $m\le 1$.</li>
+<li><i>Inverse problem.</i> By Lami&rsquo;s theorem, a point $x\in\Delta^\circ$ is critical exactly for the charges $q\propto F(x)=(\lambda_i r_i^{3})_i$. Here $\lambda_i$ are the barycentric coordinates of $x$ and $r_i=|x-p_i|$. The point is a minimum if and only if $|Z(x)|\lt\frac13$, where $Z=\sum_i\lambda_iu_i^2$ in complex notation. This defines a purely geometric <i>minimum region</i> $M\subset\Delta^\circ$.</li>
+<li><i>Caustic.</i> The map $F$ is the Gauss map of a surface, and $M$ is its elliptic part. Hence the number of minima for the charges $q$ equals $|\wind(C,q)|$, where $C=F(\partial M)$ is a caustic in the projective plane of charge ratios.</li>
+<li><i>A Sturm-type lemma.</i> A plane front with no inflections, total tangent turning $\pi$ and exactly three ordinary cusps is a simple closed curve. Through every point pass at most three of its tangent lines, and its winding numbers lie in $\{0,\pm1\}$ (Theorem&nbsp;<a class="r" data-to="thm-hedgehog"></a>).</li>
+<li><i>Verification.</i> The hypotheses of the lemma follow from four strict inequalities (J), (I), (T), (W) on a compact domain of four variables, plus a check on one triangle. The four inequalities are written in a local chart in which every quantity has a closed form (Section&nbsp;<a class="r" data-to="sec-chart"></a>), and they are verified by interval arithmetic (Section&nbsp;<a class="r" data-to="sec-cert"></a>).</li>
+</ol>
+
+
+<h3 class="subsec">On the computer-assisted part</h3>
+<p>The four inequalities involve rational functions of $\sin$ and $\cos$ of the angles of the configuration and of its barycentric coordinates. Every term has an explicit formula, derived in Section&nbsp;<a class="r" data-to="sec-chart"></a>. We verify them on a compact four-dimensional domain using IEEE double precision. Every operation is rounded outward, and $\sin,\cos$ are enclosed by Taylor polynomials with explicit remainders, so no assumption is made on the accuracy of the platform&rsquo;s mathematical library. Enclosures are sharpened by mean-value forms computed with interval automatic differentiation. Two runs from different initial subdivisions each processed about $10^7$ boxes and left none unresolved, in about seven minutes on a 16-core desktop computer. The code is available <cite data-k="repo"></cite>. Proofs that combine analysis with a rigorous computation over a compact parameter domain have a long history (see e.g. <cite data-k="hales,tucker02"></cite>); for interval methods see <cite data-k="moore,tucker"></cite>.</p>
+
+<figure>
+<img src="fig1.svg" alt="Figure 1">
+<figcaption><b>Figure 1.</b> (a) Three charges (red, sized by magnitude) with $q$ chosen inside the caustic. The equipotential lines are shown in grey. The minimum region $M=\{|Z|\lt\frac13\}$ is shaded, and it contains the unique local minimum ($\bullet$). There are three saddles ($\diamond$), for four equilibria in total. (b) The caustic $C=F(\partial M)$ in a projective chart of charge space, a curvilinear triangle with three cusps. Exactly three tangent lines of $C$ pass through the point $q$ inside it, and one through the point $q'$ outside. By Lemma&nbsp;<a class="r" data-to="lem-wind"></a> these counts give winding numbers $1$ and $0$, i.e. one minimum (four equilibria) for $q$ and none (two equilibria) for $q'$.</figcaption>
+</figure>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-red">Reduction to minima in the plane</h2>
+
+<p>Throughout, $s\gt 0$ is a Riesz exponent and $V(y)=\sum_i q_i|y-p_i|^{-s}$. The Coulomb case is $s=1$, which corresponds to $s=2\alpha$ in the notation of <cite data-k="gns"></cite>. Nothing in Sections&nbsp;<a class="r" data-to="sec-red"></a>&ndash;<a class="r" data-to="sec-hedgehog"></a> depends on the value of $s$. Indices are taken modulo $3$.</p>
+
+<p>Let the charges be non-collinear, let $\Pi$ be their plane, and let $\Delta\subset\Pi$ be the closed triangle with vertices $p_1,p_2,p_3$. We identify $\Pi$ with $\C$ and write, for $x\in\Pi$,</p>
+<div class="eq">$$r_i=|x-p_i|,\qquad u_i=\frac{x-p_i}{r_i},\qquad \varphi_i(x)=r_i^{-s},\qquad \lambda_i(x)=\text{barycentric coordinates},$$</div>
+<p>so that $\sum_i\lambda_i=1$ and $\sum_i\lambda_i(x-p_i)=0$. We denote by $\theta_i\in(0,\pi)$ the angle at $x$ subtended by the side $p_{i+1}p_{i+2}$, and by $\sigma_i=\sin\theta_i$; for $x\in\Delta^\circ$, $\theta_1+\theta_2+\theta_3=2\pi$. For complex numbers $a,b$ we write $a\cdot b=\Re(a\bar b)$ for the Euclidean inner product.</p>
+
+<div class="thm it" data-type="Lemma" id="lem-location"><span class="body">Let $q_1,q_2,q_3$ be nonzero, of arbitrary signs, and let the $p_i$ be non-collinear.</span>
+<ol class="alpha items body">
+<li>Every equilibrium lies in $\Pi$.</li>
+<li>If all $q_i\gt 0$, every equilibrium lies in $\Delta^\circ$.</li>
+<li>If all $q_i\gt 0$ and the $p_i$ are collinear, there are exactly two equilibria.</li>
+</ol></div>
+<div class="proof"><span class="lbl">Proof.</span> (a) We have $\nabla V(y)=-s\sum_i w_i(y-p_i)$ with $w_i=q_i|y-p_i|^{-s-2}\ne 0$. Write $y=x+z\nu$, with $x\in\Pi$ and $\nu$ a unit normal to $\Pi$. If $\nabla V(y)=0$ and $z\neq0$, the normal component gives $\sum_iw_i=0$, and then the tangential component gives $\sum_iw_ip_i=0$. Since the $p_i$ are affinely independent, $w=0$, a contradiction.
+(b) If $x\in\Pi\setminus\Delta$, there is a unit vector $e$ with $e\cdot(x-p_i)\gt 0$ for all $i$. Then $e\cdot\nabla V(x)=-s\sum_iw_i\,e\cdot(x-p_i)\lt 0$. If $x$ lies in the relative interior of the side $p_{i+1}p_{i+2}$, take $e$ normal to that side, pointing away from $p_i$; then $e\cdot(x-p_{i\pm1})=0$, $e\cdot(x-p_i)\gt 0$, and the same conclusion holds.
+(c) Off the line $L$ of the charges, the component of $\nabla V$ orthogonal to $L$ is a positive multiple of the offset from $L$, so it does not vanish. By rotational symmetry about $L$, a point of $L$ is an equilibrium if and only if it is a critical point of $V|_L$. On $L$, as in (b), such points lie strictly between consecutive charges. On each of the two open segments, $V|_L$ is a sum of strictly convex functions and tends to $+\infty$ at both ends, so it has exactly one critical point. <span class="qed">&#8718;</span></div>
+
+<p>From now on, the charges are positive and non-collinear, and we study the critical points of the restriction $V_q:=V|_\Pi$ in $\Delta^\circ$. The following parametrization is the classical statics of three concurrent forces.</p>
+
+<div class="thm it" data-type="Lemma" data-name="Lami" id="lem-lami"><span class="body">Let $x\in\Delta^\circ$ and $q\in\R^3_{\gt 0}$. Then $x$ is a critical point of $V_q$ if and only if $q$ is a positive multiple of
+<div class="eq" id="eq-F">$$F(x):=\big(\lambda_i(x)\,r_i(x)^{s+2}\big)_{i=1,2,3}.$$</div>
+Moreover $\lambda_ir_i=c\,\sigma_i$ with $c=r_1r_2r_3/(2|\Delta|)$, so $F(x)\propto(\sigma_ir_i^{s+1})_i$.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> We have $\nabla V_q=-s\sum_iw_i(x-p_i)$ with $w_i=q_ir_i^{-s-2}$. The weights $w\in\R^3_{\gt0}$ with $\sum_iw_i(x-p_i)=0$ are exactly the positive multiples of $\lambda(x)$. For the second statement, note that $\lambda_i=\operatorname{area}(x,p_{i+1},p_{i+2})/|\Delta|=\tfrac12r_{i+1}r_{i+2}\sigma_i/|\Delta|$. <span class="qed">&#8718;</span></div>
+
+<div class="thm it" data-type="Lemma" id="lem-hess"><span class="body">At a critical point $x\in\Delta^\circ$ of $V_q$,
+<div class="eq" id="eq-hess">$$\Hess V_q(x)=s\,W\,\big[(s+2)T(x)-I\big],\qquad W=\sum_iq_ir_i^{-s-2}\gt0,\qquad T(x)=\sum_i\lambda_i\,u_iu_i^{\mathsf T}.$$</div>
+The eigenvalues of $T$ are $\frac12(1\pm|Z|)$, where
+<div class="eq" id="eq-Z">$$Z(x):=\sum_{i=1}^3\lambda_i(x)\,u_i(x)^2\in\C .$$</div>
+If $Z=|Z|e^{i\omega}$, the eigenvector of the smaller eigenvalue is $k=ie^{i\omega/2}$. Consequently, with $\kappa:=s/(s+2)$ ($\kappa=\frac13$ for Coulomb), the critical point is a nondegenerate local minimum if $|Z(x)|\lt\kappa$, a nondegenerate saddle if $|Z(x)|\gt\kappa$, and degenerate if $|Z(x)|=\kappa$. In the degenerate case, $\ker\Hess V_q(x)=\R k$ and the other eigenvalue is positive. It is never a local maximum.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> $\nabla^2 r_i^{-s}=-s\,r_i^{-s-2}\big(I-(s+2)u_iu_i^{\mathsf T}\big)$, and $q_ir_i^{-s-2}=W\lambda_i$ by Lemma&nbsp;<a class="r" data-to="lem-lami"></a>. Writing $u=e^{i\psi}$, we have $uu^{\mathsf T}=\frac12I+\frac12R(2\psi)$ with $R(\phi)=\left(\begin{smallmatrix}\cos\phi&\sin\phi\\ \sin\phi&-\cos\phi\end{smallmatrix}\right)$. Summing with weights $\lambda_i$ gives $T=\frac12I+\frac12|Z|R(\omega)$. The eigenvalues of $\Hess V_q/(sW)$ are therefore $\frac{s+2}2(1\pm|Z|)-1$. The larger one is always positive, and the smaller one is positive, zero or negative according as $|Z|\lt$, $=$ or $\gt\kappa$. <span class="qed">&#8718;</span></div>
+
+<p>We call $M:=\{x\in\Delta^\circ:|Z(x)|\lt\kappa\}$ the <i>minimum region</i>. It depends only on the triangle, and by the two lemmas above,</p>
+<div class="eq" id="eq-count-min">$$\#\{\text{local minima of }V_q\}=\#\big(\hat F^{-1}(\hat q)\cap M\big),\qquad \hat F(x):=\frac{F(x)}{\sum_iF_i(x)},\quad \hat q:=\frac{q}{\sum_iq_i}.$$</div>
+
+<div class="thm it" data-type="Lemma" id="lem-morse"><span class="body">If all critical points of $V_q$ are nondegenerate, then $\#\text{saddles}=\#\text{minima}+2$. Hence the number of equilibria is $2+2m$, where $m$ is the number of local minima of $V_q$.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> Apply the Poincar&eacute;&ndash;Hopf theorem <cite data-k="milnor"></cite> to the gradient field $\nabla V_q$ on the sphere $\Pi\cup\{\infty\}$. Near each charge, $\nabla V_q$ is asymptotically radial, so it has index $+1$ there. Near $\infty$, $V_q\sim(\sum_iq_i)|x|^{-s}$ and the field is again radial, of index $+1$. Critical points in $\Pi$ lie in $\Delta^\circ$ and are minima (index $+1$) or saddles (index $-1$). Since $\chi(S^2)=2=3+1+\#\text{minima}-\#\text{saddles}$, the claim follows. <span class="qed">&#8718;</span></div>
+
+<p>Thus Theorem&nbsp;<a class="r" data-to="thm-main"></a>(b) is equivalent to the statement that $V_q$ never has more than one local minimum, together with a separate treatment of degenerate configurations (Section&nbsp;<a class="r" data-to="sec-proof"></a>).</p>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-caustic">The minimum region and the caustic</h2>
+
+<h3 class="subsec">The map $Z$</h3>
+<p>Since $|u_i^2|=1$, we have $|Z|\le1$, with equality only if the $u_i^2$ with $\lambda_i\gt0$ coincide; this never happens in $\Delta^\circ$. As complex functions of $z=x$, the Wirtinger derivatives of $Z$ are written $Z_z,Z_{\bar z}$, and its Jacobian determinant as a map $\R^2\to\R^2$ is</p>
+<div class="eq" id="eq-J">$$J(x):=|Z_z|^2-|Z_{\bar z}|^2 .$$</div>
+
+<div class="thm it" data-type="Lemma" id="lem-degZ"><span class="body">The map $Z:\Delta^\circ\to\mathbb D=\{|\zeta|\lt1\}$ is proper and has degree $-1$ (with the standard orientations).</span></div>
+<div class="proof"><span class="lbl">Proof.</span> Blow up each vertex $p_i$ of $\Delta$ into the arc of directions $\psi\in[\arg(p_{i+1}-p_i),\arg(p_{i+2}-p_i)]$ (of length equal to the interior angle $\alpha_i$). This gives a closed disk $\widetilde\Delta$ with interior $\Delta^\circ$. We claim that $Z$ extends continuously to $\widetilde\Delta$ with boundary values of modulus one. On the relative interior of a side of direction $e^{i\beta}$, the two vectors $u_j$ with $\lambda_j\gt0$ are $\pm e^{i\beta}$, so $Z=e^{2i\beta}$. Approaching $p_i$ in the direction $\psi$, we have $\lambda_i\to1$ and $u_i\to e^{i\psi}$, so $Z\to e^{2i\psi}$. These values match at the endpoints of each arc, and the convergence is uniform. Hence $|Z(x)|\to1$ as $x\to\partial\Delta$, so $Z$ is proper and its degree is the winding number of $Z|_{\partial\widetilde\Delta}$ around $0$. Traverse $\partial\widetilde\Delta$ counterclockwise. $Z$ is constant along the sides. At the vertex $p_i$ the direction $\psi$ runs through the interior angle clockwise, so $\arg Z$ decreases by $2\alpha_i$. The total change of $\arg Z$ is $-2(\alpha_1+\alpha_2+\alpha_3)=-2\pi$. <span class="qed">&#8718;</span></div>
+
+<p>The first condition to be verified by computer is</p>
+<p class="center"><b>(J)</b>&emsp;$J(x)\lt0$ for every $x\in\Delta^\circ$ with $|Z(x)|\le\kappa$.</p>
+
+<div class="thm it" data-type="Proposition" id="prop-disk"><span class="body">Assume (J). Then $Z$ maps $\overline M$ diffeomorphically and orientation-reversingly onto the closed disk $\{|\zeta|\le\kappa\}$. In particular, $\overline M\subset\Delta^\circ$ is a closed disk, and $\partial M$ is a smooth Jordan curve, parametrized by
+<div class="eq" id="eq-x0">$$x_0(\omega):=Z^{-1}\big(\kappa e^{i\omega}\big)\in\partial M,\qquad\omega\in\R/2\pi\mathbb Z .$$</div>
+As $\omega$ increases, $\partial M$ is traversed clockwise, and $t(\omega):=dx_0/d\omega\neq0$.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> By (J), every preimage of a point $\zeta$ with $|\zeta|\le\kappa$ has local degree $-1$. By Lemma&nbsp;<a class="r" data-to="lem-degZ"></a> the number of such preimages is $|\deg Z|=1$. So $Z$ restricts to a bijective local diffeomorphism $Z^{-1}(\{|\zeta|\le\kappa\})\to\{|\zeta|\le\kappa\}$, which is a diffeomorphism. Since $Z$ is a local diffeomorphism there, $Z^{-1}(\{|\zeta|\le\kappa\})=\overline M$. Orientation reversal turns the counterclockwise circle into a clockwise curve. <span class="qed">&#8718;</span></div>
+
+<p>Differentiating $Z(x_0(\omega))=\kappa e^{i\omega}$ gives $Z_zt+Z_{\bar z}\bar t=iZ$. Solving this real-linear equation,</p>
+<div class="eq" id="eq-t">$$t=\frac{\overline{Z_z}\,(iZ)-Z_{\bar z}\,\overline{(iZ)}}{J}.$$</div>
+
+<h3 class="subsec">The charge map and the caustic</h3>
+<p>Let $A=\{q\in\R^3:\sum_iq_i=1\}$ and let $\Sigma=A\cap\R^3_{\gt0}$ be the open simplex of normalized charges. By Lemma&nbsp;<a class="r" data-to="lem-lami"></a>, $\hat F:\Delta^\circ\to\Sigma$ sends each point to the unique normalized charge vector for which it is critical. Geometrically, put $\Phi=(\varphi_1,\varphi_2,\varphi_3):\Delta^\circ\to\R^3$. Then $V_q=\langle q,\Phi\rangle$ is a height function on the surface $\Phi(\Delta^\circ)$, and $\hat F$ is its Gauss map (see <cite data-k="agv"></cite> for Gauss maps, caustics and fronts). By Lemma&nbsp;<a class="r" data-to="lem-hess"></a>, $M$ is the elliptic part of the surface and $\partial M$ its parabolic curve. We call</p>
+<div class="eq" id="eq-C">$$C:=\hat F(\partial M)=\{c(\omega):=\hat F(x_0(\omega)):\omega\in\R/2\pi\mathbb Z\}\subset\Sigma$$</div>
+<p>the <i>caustic</i>. It is the set of normalized charges for which $V_q$ has a degenerate critical point.</p>
+
+<div class="thm it" data-type="Lemma" id="lem-localdiff"><span class="body">$\hat F$ is a local diffeomorphism at every $x\in\Delta^\circ\setminus\partial M$. The sign of $\det D\hat F$ is constant on $M$, and $D\hat F(x_0)$ has rank one with kernel $\R k$ at every $x_0\in\partial M$.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> Let $G(x,q)=\sum_iq_i\nabla\varphi_i(x)$, and let $B_x:\R^3\to\R^2$, $B_x(\dot q)=\sum_i\dot q_i\nabla\varphi_i(x)$. Since any two of the vectors $\nabla\varphi_i(x)\parallel u_i$ are independent, $B_x$ has rank $2$, and its kernel is spanned by $F(x)\notin T A=\{\sum\dot q_i=0\}$. Hence $B_x|_{TA}$ is an isomorphism, and its determinant has constant sign on the connected set $\Delta^\circ$. Differentiating $G(x,\hat F(x))=0$ gives $H_x+B_x\circ D\hat F(x)=0$ with $H_x=\Hess V_{\hat F(x)}(x)$. So $\det D\hat F=\det H_x/\det(B_x|_{TA})$, and $\ker D\hat F=\ker H_x$. Lemma&nbsp;<a class="r" data-to="lem-hess"></a> finishes the proof. <span class="qed">&#8718;</span></div>
+
+<div class="thm it" data-type="Proposition" id="prop-wind"><span class="body">Assume (J). For every $\hat q\in\Sigma\setminus C$,
+<div class="eq" id="eq-wind">$$\#\{\text{local minima of }V_q\}=\big|\wind(C,\hat q)\big| .$$</div></span></div>
+<div class="proof"><span class="lbl">Proof.</span> By Proposition&nbsp;<a class="r" data-to="prop-disk"></a>, $\overline M$ is a closed disk. By Lemma&nbsp;<a class="r" data-to="lem-localdiff"></a>, every preimage of $\hat q$ in $M$ contributes the same sign $\epsilon$ to the degree of $\hat F|_{\overline M}$. Hence $\epsilon\cdot\#(\hat F^{-1}(\hat q)\cap M)=\deg(\hat F,M,\hat q)=\wind(\hat F|_{\partial M},\hat q)$, and we conclude by <a class="r" data-to="eq-count-min"></a>. <span class="qed">&#8718;</span></div>
+
+<h3 class="subsec">Tangent lines, cusps and inflections of the caustic</h3>
+<p>Let $k(\omega)=ie^{i\omega/2}$ be the kernel direction at $x_0(\omega)$ (Lemma&nbsp;<a class="r" data-to="lem-hess"></a>). Define the <i>dual vector</i> $m(\omega)\in\R^3$ by</p>
+<div class="eq" id="eq-m">$$m_i(\omega):=\partial_k\varphi_i\big(x_0(\omega)\big)=-s\,r_i^{-s-1}\,(u_i\cdot k).$$</div>
+
+<div class="thm it" data-type="Lemma" id="lem-dual"><span class="body">For every $\omega$, $m(\omega)\neq0$, and the line
+<div class="eq" id="eq-L">$$L(\omega):=\{q\in A:\langle q,m(\omega)\rangle=0\}$$</div>
+contains $c(\omega)$ and $c'(\omega)$ is parallel to it. Thus $C$ is a front with tangent lines $L(\omega)$. Moreover $m(\omega+2\pi)=-m(\omega)$. Finally, $c'(\omega)=0$ if and only if $t(\omega)\parallel k(\omega)$; these are the <i>cusps</i> of $C$.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> All three $u_i\cdot k$ cannot vanish, since the $u_i$ are pairwise non-parallel; so $m\ne0$. Let $q(\omega)=F(x_0(\omega))$. Then $\langle q,m\rangle=\partial_kV_{q}(x_0)=0$ because $x_0$ is critical. Differentiating $G(x_0(\omega),q(\omega))=0$ gives $\sum_iq_i'\nabla\varphi_i+H\,t=0$. Taking the inner product with $k\in\ker H$ yields $\langle q',m\rangle=0$. In the affine chart $A$ this says that $c\in L$ and $c'\parallel L$. The identity $m(\omega+2\pi)=-m(\omega)$ holds because $k(\omega+2\pi)=-k(\omega)$. Finally, $c'=D\hat F(x_0)\,t$, which vanishes if and only if $t\in\ker D\hat F=\R k$ (Lemma&nbsp;<a class="r" data-to="lem-localdiff"></a>). <span class="qed">&#8718;</span></div>
+
+<p>Because of the sign flip of $m$, the dual curve $\omega\mapsto[m(\omega)]$ is a one-sided closed curve in the projective plane. In particular, the normal direction of $L(\omega)$ turns by an odd multiple of $\pi$ along one circuit of $C$. A <i>tangent line of $C$ through</i> $\hat q$ is a line $L(\omega)$ containing $\hat q$, i.e. a zero of $\omega\mapsto\langle q,m(\omega)\rangle$.</p>
+
+<p>We now fix Euclidean coordinates on $A$. Write $m=\mathring m+\mu\one$ with $\mathring m\perp\one$, where $\one=(1,1,1)$. The direction of $L(\omega)$ is then determined by $\mathring m(\omega)$. We have $\mathring m\ne0$, because $\mathring m=0$ would make $L(\omega)$ the line at infinity $\{\sum q_i=0\}$, which misses $\Sigma\ni c(\omega)$. Let $\vartheta(\omega)$ be a continuous determination of the angle of $\mathring m(\omega)$. We define the <i>total turning</i> of $C$ as</p>
+<div class="eq" id="eq-Theta">$$\Theta:=\vartheta(\omega+2\pi)-\vartheta(\omega)\in\pi(2\mathbb Z+1).$$</div>
+<p>An <i>inflection</i> of $C$ is a parameter where the tangent line is stationary, $m'\parallel m$.</p>
+
+<div class="thm it" data-type="Lemma" id="lem-inflection"><span class="body">$m\times m'=\gamma(\omega)\,q(\omega)$ for a continuous scalar $\gamma$, and $\vartheta'(\omega)\ne0$ if and only if $\gamma(\omega)\ne0$, i.e. if and only if $\omega$ is not an inflection.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> From $\langle q,m\rangle=0$ and $\langle q',m\rangle=0$ we get $\langle q,m'\rangle=0$. So $m$ and $m'$ are both orthogonal to $q$, and $m\times m'\parallel q$. In an orthonormal basis $e_1,e_2,\one/\sqrt3$ of $\R^3$ with $e_1,e_2\perp\one$, write $\mathring m=\alpha e_1+\beta e_2$. Then $\det(m,m',\one/\sqrt3)=\alpha\beta'-\beta\alpha'=|\mathring m|^2\vartheta'$. Hence $|\mathring m|^2\vartheta'=\gamma\langle q,\one\rangle/\sqrt3$, and $\langle q,\one\rangle\gt0$. <span class="qed">&#8718;</span></div>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-hedgehog">A Sturm-type lemma for fronts</h2>
+
+<p>This section is pure plane geometry. Identify $\R^2$ with $\C$, let $n(\theta)=e^{i\theta}$, $n'(\theta)=ie^{i\theta}$, and fix $\Theta\in\pi(2\mathbb Z+1)$ with $\Theta\gt0$. Let $h\in C^\infty(\R)$ satisfy $h(\theta+\Theta)=-h(\theta)$. The associated curve and its <i>radius-of-curvature function</i> are</p>
+<div class="eq" id="eq-hedgehog">$$x(\theta)=h(\theta)\,n(\theta)+h'(\theta)\,n'(\theta),\qquad \rho=h+h''.$$</div>
+<p>Then $x(\theta+\Theta)=x(\theta)$ and $x'=\rho\,n'$. The line $\{y:y\cdot n(\theta)=h(\theta)\}$ contains $x(\theta)$ and is its tangent line. Cusps of $x$ correspond to zeros of $\rho$. Such curves are the (multi)hedgehogs of Langevin, Levitt and Rosenberg <cite data-k="llr"></cite>, and $h$ is their support function. For $q\in\C$ put</p>
+<div class="eq" id="eq-g">$$\begin{gathered}g_q(\theta)=q\cdot n(\theta)-h(\theta),\qquad g_q+g_q''=-\rho,\qquad g_q(\theta+\Theta)=-g_q(\theta),\\ x(\theta)-q=-\big(g_q+ig_q'\big)\,n(\theta).\end{gathered}$$</div>
+<p>The zeros of $g_q$ are the parameters of the tangent lines through $q$, and $x(\theta)=q$ if and only if $g_q(\theta)=g_q'(\theta)=0$.</p>
+
+<div class="thm it" data-type="Lemma" data-name="counting tangent lines" id="lem-wind"><span class="body">Let $q\notin x(\R)$. Then the zeros of $g_q$ are simple, their number $N_q$ in $[0,\Theta)$ is odd, and
+<div class="eq" id="eq-windformula">$$\wind\big(x|_{[0,\Theta]},q\big)=\frac12\Big(\frac{\Theta}{\pi}-N_q\Big).$$</div></span></div>
+<div class="proof"><span class="lbl">Proof.</span> Put $\Gamma=g_q+ig_q'$, which never vanishes. By <a class="r" data-to="eq-g"></a>, $\arg(x-q)=\theta+\pi+\arg\Gamma$, so the change of $\arg(x-q)$ over $[0,\Theta]$ is $\Theta+\Delta\arg\Gamma$. Since $\Gamma(\theta+\Theta)=-\Gamma(\theta)$, the function $g_q$ changes sign an odd number of times per period. Its zeros are simple, because a double zero would put $q$ on the curve. Let $a\lt b$ be consecutive zeros. On $(a,b)$, $\Gamma$ stays in one open half-plane $\{\Re\Gamma\gtrless0\}$. If $\Re\Gamma\gt0$ there, then $g_q'(a)\gt0\gt g_q'(b)$, so $\Gamma$ runs from the positive to the negative imaginary axis through the right half-plane. If $\Re\Gamma\lt0$, it runs from the negative to the positive imaginary axis through the left half-plane. In both cases $\Delta\arg\Gamma=-\pi$ on $[a,b]$. The pieces $[0,a_1]$ and $[a_{N},\Theta]$ together contribute $-\pi$ as well, by antiperiodicity. Hence $\Delta\arg\Gamma=-N_q\pi$, and the winding number is $(\Theta-N_q\pi)/2\pi$. <span class="qed">&#8718;</span></div>
+
+<div class="thm it" data-type="Lemma" data-name="Sturm bound" id="lem-sturm"><span class="body">Let $\Theta=\pi$, and assume that $\rho$ has exactly three zeros in $[0,\pi)$, all simple. Then for every $q\in\C$:</span>
+<ol class="alpha items body">
+<li>$g_q$ has at most three zeros in $[0,\pi)$;</li>
+<li>$g_q$ does not have two distinct double zeros ($g_q=g_q'=0$) in $[0,\pi)$.</li>
+</ol></div>
+<div class="proof"><span class="lbl">Proof.</span> Let $c$ be a zero of $\rho$, and let $a\lt b$ be the other two zeros in $(c,c+\pi)$. Write $g=g_q$. On $(c,c+\pi)$ put $f=g/\sin(\theta-c)$ and
+<div class="eq">$$\Psi=g'\sin(\theta-c)-g\cos(\theta-c),\qquad f'=\frac{\Psi}{\sin^2(\theta-c)},\qquad \Psi'=(g+g'')\sin(\theta-c)=-\rho\,\sin(\theta-c).$$</div>
+So $\Psi$ is strictly monotone on $[c,a]$, $[a,b]$ and $[b,c+\pi]$, with alternating senses. Also $\Psi(c)=-g(c)$, and $\Psi(c+\pi)=g(c+\pi)=-g(c)$. Suppose the senses are increasing, decreasing, increasing (the other case is symmetric), and let $w_0=-g(c)$. Then $\Psi\gt w_0$ on $(c,a]$ and $\Psi\lt w_0$ on $[b,c+\pi)$. If $w_0\gt0$, $\Psi$ has no zero in $(c,a]$ and at most one on each of the other two pieces. If $w_0\lt0$, it has at most one on each of the first two pieces and none on the third. If $w_0=0$, it has exactly one, on $(a,b)$. Hence
+<p class="center">$\Psi$ has at most two zeros in $(c,c+\pi)$, and at most one if $g(c)=0$.</p>
+(a) Between consecutive zeros of $f$ there is a zero of $f'$, i.e. of $\Psi$. If $g(c)\ne0$, then $g$ has at most $2+1=3$ zeros in $(c,c+\pi)$ and none at $c$. If $g(c)=0$, it has at most $1+1=2$ zeros in $(c,c+\pi)$, plus $c$.
+(b) Suppose $\theta_1\ne\theta_2$ are double zeros in $[c,c+\pi)$. If neither equals $c$, then $f$ has double zeros at $\theta_1\lt\theta_2$. So $f'$ vanishes at $\theta_1$, at $\theta_2$ and in between, giving three zeros of $\Psi$, which contradicts the bound $2$. If $\theta_1=c$, then $g(c)=g'(c)=0$, so $f(\theta)\to0$ as $\theta\to c^+$ and as $\theta\to(c+\pi)^-$. With $f(\theta_2)=f'(\theta_2)=0$, Rolle&rsquo;s theorem on $[c,\theta_2]$ and $[\theta_2,c+\pi]$ gives three zeros of $\Psi$, which contradicts the bound $1$. <span class="qed">&#8718;</span></div>
+
+<div class="thm it" data-type="Theorem" data-name="three cusps, three tangents" id="thm-hedgehog"><span class="body">Let $\Theta=\pi$, and assume that $\rho$ has exactly three zeros per period, all simple. Then:</span>
+<ol class="roman items body">
+<li>at most three tangent lines of $x$ pass through any point of the plane;</li>
+<li>$x:\R/\pi\mathbb Z\to\C$ is injective, i.e. the curve is a simple closed curve with three ordinary cusps;</li>
+<li>$\wind(x,q)\in\{0,-1\}$ for every $q\notin x(\R)$. It equals $-1$ if three tangent lines pass through $q$, and $0$ if only one does.</li>
+</ol></div>
+<div class="proof"><span class="lbl">Proof.</span> (i) is Lemma&nbsp;<a class="r" data-to="lem-sturm"></a>(a). (iii) follows from Lemma&nbsp;<a class="r" data-to="lem-wind"></a>, since $N_q$ is odd and at most $3$. For (ii), a double point $P=x(\theta_1)=x(\theta_2)$ with $\theta_1\not\equiv\theta_2\pmod\pi$ would give two double zeros of $g_P$, which Lemma&nbsp;<a class="r" data-to="lem-sturm"></a>(b) excludes. <span class="qed">&#8718;</span></div>
+
+<p>The orientation convention here (increasing $\theta$) may differ from that of $\omega$ on the caustic. Since only $|\wind|$ enters, this does not matter.</p>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-proof">The verified conditions and the proof of the main theorem</h2>
+
+<p>Let $\Delta$ be a positively oriented triangle; the negatively oriented case follows by reflection. Besides (J), we use the following conditions at points of $\partial M$. Here $t$ is given by <a class="r" data-to="eq-t"></a>, and $\nu=d\arg t/d\omega$ is the turning rate of the tangent of $\partial M$.</p>
+<ul class="items">
+<li><b>(I)</b> $\det\big(\one,m(\omega),m'(\omega)\big)\ne0$ for all $\omega$. By Lemma&nbsp;<a class="r" data-to="lem-inflection"></a> and the identity $\det(\one,m,m')=\langle\one,m\times m'\rangle=\gamma\langle\one,q\rangle$, this says that $C$ has no inflections.</li>
+<li><b>(T)</b> $\nu(\omega)\lt\tfrac12$ at every $\omega$ with $t(\omega)\parallel k(\omega)$.</li>
+<li><b>(W)</b> For the vertex labelled $p_1$ in the frame of Section&nbsp;<a class="r" data-to="sec-chart"></a> (in which $\theta_3$ is the largest of the three angles at $x_0$), $\big|d\arg u_1(x_0(\omega))/d\omega\big|\lt\frac12$.</li>
+</ul>
+
+<div class="thm it" data-type="Theorem" data-name="computer-assisted" id="thm-cert"><span class="body">Let $s=1$. For every positively oriented triangle $\Delta$:</span>
+<ol class="items body">
+<li>(J) holds on $\overline M$, and (I) and (T) hold on $\partial M$;</li>
+<li>(W) holds at every point $x_0\in\partial M$, for the vertex that the chart of Section&nbsp;<a class="r" data-to="sec-chart"></a> labels $p_1$ at $x_0$;</li>
+<li>for the base triangle $\Delta_0$ with vertices $0,\,1,\,\frac12+\frac i8$, the angle subtended by the side $[0,1]$ is the strictly largest of the three angles at every point of $\overline M(\Delta_0)$. Consequently the labelling in 2 is the same at all points of $\partial M(\Delta_0)$, and $|d\arg u_1/d\omega|\lt\frac12$ holds along all of $\partial M(\Delta_0)$ for the fixed vertex $p_1=0$.</li>
+</ol></div>
+<p>Items 1&ndash;2 are verified in Section&nbsp;<a class="r" data-to="sec-cert"></a> on a compact four-dimensional domain that covers all pairs $(\Delta,x_0)$, and item 3 by a separate two-dimensional computation. We now derive Theorem&nbsp;<a class="r" data-to="thm-main"></a> from Theorem&nbsp;<a class="r" data-to="thm-cert"></a>. Assume (J) throughout, so that Proposition&nbsp;<a class="r" data-to="prop-disk"></a> applies.</p>
+
+<div class="thm it" data-type="Proposition" id="prop-cusps"><span class="body">Under (J), (I) and (T), the caustic $C$ has exactly three cusps per circuit. In the parametrization by the tangent direction $\vartheta$, its radius-of-curvature function has exactly three simple zeros per period.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> Let $\beta(\omega)=\arg t-\arg k$ (continuous determination). By Proposition&nbsp;<a class="r" data-to="prop-disk"></a>, $\partial M$ is a smooth Jordan curve traversed clockwise, so $\arg t$ decreases by $2\pi$ over one circuit (Hopf&rsquo;s Umlaufsatz). Since $\arg k=\frac\pi2+\frac\omega2$ increases by $\pi$, $\beta$ decreases by $3\pi$. By Lemma&nbsp;<a class="r" data-to="lem-dual"></a>, cusps are the parameters where $\beta\in\pi\mathbb Z$. At these, (T) gives $\beta'=\nu-\frac12\lt0$. A continuous function that can cross each level $j\pi$ only downward, and that decreases by $3\pi$ in total, meets the set $\pi\mathbb Z$ exactly three times per period.<br>
+&emsp;For simplicity, write $t=|t|(\cos\beta\,k+\sin\beta\,ik)$. Since $D\hat F(x_0)k=0$, we get $c'(\omega)=|t|\sin\beta\;D\hat F(x_0)(ik)$, where $D\hat F(x_0)(ik)\ne0$ is parallel to $L(\omega)$ by Lemmas&nbsp;<a class="r" data-to="lem-localdiff"></a> and&nbsp;<a class="r" data-to="lem-dual"></a>. By (I) and Lemma&nbsp;<a class="r" data-to="lem-inflection"></a>, $\vartheta$ is a strictly monotone function of $\omega$. Reparametrize $C$ by $\vartheta$, so that $C$ takes the form <a class="r" data-to="eq-hedgehog"></a> with $dc/d\omega=\rho(\vartheta)\,\vartheta'(\omega)\,n'(\vartheta)$. Then $\rho(\vartheta(\omega))\,\vartheta'(\omega)=\pm|t|\sin\beta\,|D\hat F(x_0)(ik)|$. The right-hand side has simple zeros exactly where $\beta\in\pi\mathbb Z$, because $\beta'\ne0$ there, and $\vartheta'\ne0$. <span class="qed">&#8718;</span></div>
+
+<p>Here we used that, once $\vartheta'\ne0$, $C$ admits the representation <a class="r" data-to="eq-hedgehog"></a>. Explicitly, let $h(\vartheta)$ be the signed distance of $L$ from the origin of the Euclidean chart. Then $c\cdot n=h$, and differentiating together with $c'\parallel L$ gives $c\cdot n'=h'$. The antiperiodicity $h(\vartheta+\Theta)=-h(\vartheta)$ expresses the fact that the line returns with opposite normal.</p>
+
+<div class="thm it" data-type="Proposition" id="prop-turning"><span class="body">Under (J) and (I), $|\Theta|$ is the same for all positively oriented triangles. Under item 3 of Theorem&nbsp;<a class="r" data-to="thm-cert"></a>, $|\Theta(\Delta_0)|=\pi$. Hence $|\Theta|=\pi$ for every triangle.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> Positively oriented triangles modulo similarities form a connected space, for instance $p_1=0$, $p_2=1$, $\Im p_3\gt0$. By (J) and the implicit function theorem, $x_0(\omega)$ depends smoothly on $(\omega,\Delta)$, and hence so do $m$ and $\mathring m\ne0$. So $\Theta(\Delta)\in\pi(2\mathbb Z+1)$ depends continuously on $\Delta$ and is constant.<br>
+&emsp;For $\Delta_0$, consider the vertex $e_1=(1,0,0)$ of the closed simplex. Since $\Sigma$ is convex and does not contain $e_1$, we have $\wind(C,e_1)=0$. The tangent lines through $e_1$ are the zeros of $\langle e_1,m\rangle=m_1\propto u_1\cdot k=\cos(\arg u_1-\arg k)$. Along $\partial M(\Delta_0)$, $\arg u_1$ has net change $0$, because $p_1$ lies outside the Jordan curve $\partial M$. Since $\arg k$ increases by $\pi$, the difference $\arg u_1-\arg k$ decreases by exactly $\pi$, strictly monotonically by item 3. So it meets $\frac\pi2+\pi\mathbb Z$ exactly once, and $N_{e_1}=1$. Lemma&nbsp;<a class="r" data-to="lem-wind"></a> (with $C$ oriented so that $\vartheta$ increases) gives $0=\frac12(|\Theta|/\pi-1)$. <span class="qed">&#8718;</span></div>
+
+<div class="proof"><span class="lbl">Proof of Theorem&nbsp;<a class="r" data-to="thm-main"></a>.</span> Part (a) and the location statement are Lemma&nbsp;<a class="r" data-to="lem-location"></a>. Let $\Delta$ be non-degenerate; by reflection we may assume it positively oriented. By Theorem&nbsp;<a class="r" data-to="thm-cert"></a> and Propositions&nbsp;<a class="r" data-to="prop-cusps"></a> and&nbsp;<a class="r" data-to="prop-turning"></a>, the caustic $C$, parametrized by its tangent direction, satisfies the hypotheses of Theorem&nbsp;<a class="r" data-to="thm-hedgehog"></a>. Hence $C$ is a simple closed curve and $|\wind(C,\hat q)|\le1$ for $\hat q\notin C$.<br>
+&emsp;<i>Generic charges.</i> If $\hat q\notin C$, all critical points of $V_q$ are nondegenerate. By Proposition&nbsp;<a class="r" data-to="prop-wind"></a> there is at most one minimum, and by Lemma&nbsp;<a class="r" data-to="lem-morse"></a> there are $2$ or $4$ equilibria. The value is $4$ exactly when $\hat q$ lies inside $C$. Both cases occur: $C$ is a compact subset of $\Sigma$, so points of $\Sigma$ near its corners lie outside $C$. And $M\ne\emptyset$, because $\deg Z\ne0$ gives a point with $Z=0$, so $\hat F(M)$ is a nonempty open subset of the interior of $C$.<br>
+&emsp;<i>At most one critical point in $\overline M$.</i> If $\hat q\notin C$, this is the previous paragraph. Let $\hat q\in C$, and suppose that $\hat F(x)=\hat q$ for some $x\in M$. Then $\hat F$ maps a neighbourhood of $x$ in $M$ onto a neighbourhood of $\hat q$. This neighbourhood contains points outside the Jordan curve $C$, i.e. with winding number $0$, which contradicts Proposition&nbsp;<a class="r" data-to="prop-wind"></a>. So $\hat F^{-1}(\hat q)\cap\overline M\subset\partial M$, and it is a single point because $\omega\mapsto c(\omega)$ is injective.<br>
+&emsp;<i>All charges.</i> Suppose $V_q$ had five distinct critical points. At most one lies in $\overline M$, so at least four lie in $\Delta^\circ\setminus\overline M$, where they are nondegenerate saddles. By the implicit function theorem, they persist as four distinct nondegenerate saddles of $V_{q'}$ for all $q'$ near $q$. Since $C$ is a curve, we may choose $\hat q'\notin C$, and then $V_{q'}$ has at most $3$ saddles by Lemma&nbsp;<a class="r" data-to="lem-morse"></a>. This contradiction shows that there are at most four equilibria for every $q$. In particular there are finitely many, and all are isolated. <span class="qed">&#8718;</span></div>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-chart">A local chart in which everything is explicit</h2>
+
+<h3 class="subsec">The chart</h3>
+<p>A positively oriented triangle together with an interior point, up to orientation-preserving similarity, is determined by the angles at the point and by its barycentric coordinates. Precisely, let $\theta_1,\theta_2,\theta_3\in(0,\pi)$ with $\sum_i\theta_i=2\pi$, and let $\lambda$ lie in the open simplex. Put $x_0=0$ and</p>
+<div class="eq" id="eq-chart">$$v_1=1,\quad v_2=e^{i\theta_3},\quad v_3=e^{-i\theta_2},\qquad r_i=\frac{\sigma_i}{\lambda_i},\qquad p_i=r_i\,v_i .$$</div>
+<p>Here $v_i=-u_i$ is the direction from $x_0$ to $p_i$, and the angle between $v_{i+1}$ and $v_{i+2}$ is $\theta_i$. By Lami&rsquo;s theorem, the weights $w$ with $\sum_iw_ir_iv_i=0$ satisfy $w_ir_i\propto\sigma_i$. Hence $\lambda(x_0)=\lambda$, and the Lami constant of Lemma&nbsp;<a class="r" data-to="lem-lami"></a> is normalized to $c=1$. Conversely, every pair $(\Delta,x_0)$ arises in this way. A cyclic relabelling lets us assume that $\theta_3=\max_i\theta_i$. We use the rectangular coordinates</p>
+<div class="eq" id="eq-rect">$$\theta_3\in\big[\tfrac{2\pi}3,\pi\big],\qquad \tau\in[-1,1],\qquad \theta_{1,2}=\frac{2\pi-\theta_3}{2}\pm\tau\,\frac{3\theta_3-2\pi}{2},$$</div>
+<p>which parametrize $\{\theta_3=\max\}$ exactly. The certification domain is the compact set</p>
+<div class="eq" id="eq-domain">$$\mathcal D=\big[\tfrac{2\pi}3,\pi\big]\times[-1,1]\times\{(\lambda_1,\lambda_2):\lambda_1,\lambda_2\ge0,\ \lambda_1+\lambda_2\le1\},\qquad \lambda_3=1-\lambda_1-\lambda_2 .$$</div>
+<p>It contains degenerate limits, namely flat configurations ($\theta_3=\pi$) and $\lambda_i=0$, which correspond to no actual triangle. Verifying strict inequalities on this larger compact set is stronger than needed. With the formulas below suitably rescaled, all quantities remain finite there.</p>
+<p>All the conditions are invariant under cyclic relabelling and rotation, except (W), which refers to a labelled vertex. (J) and $\nu$ are defined from $Z$, which is symmetric. The determinant in (I) is invariant under cyclic permutations of coordinates. This is why (W) enters Theorem&nbsp;<a class="r" data-to="thm-cert"></a> only through the fixed-label statement for $\Delta_0$. We note that the bound in (W) does <i>not</i> hold uniformly for all three vertices: for the vertex $p_3$, which is not on the side subtending the largest angle, $|d\arg u_3/d\omega|$ tends to $\frac12$ in the flat limit.</p>
+
+<h3 class="subsec">Derivatives</h3>
+<p>Let $\rho_i=1/r_i=\lambda_i/\sigma_i$ and $w_i=p_i-x$. A direct computation from the barycentric formula, using $2|\Delta|=r_1r_2r_3$ in the chart, gives the constant Wirtinger derivatives of the barycentric coordinates:</p>
+<div class="eq" id="eq-mu">$$\mu_i:=\frac{\partial\lambda_i}{\partial z}=\frac i2\,\rho_i\big(\rho_{i+2}\,\bar v_{i+1}-\rho_{i+1}\,\bar v_{i+2}\big),\qquad \frac{\partial\lambda_i}{\partial\bar z}=\bar\mu_i .$$</div>
+<p>Since $u_i^2=v_i^2=w_i/\bar w_i$, with $\partial_z(w/\bar w)=-1/\bar w$ and $\partial_{\bar z}(w/\bar w)=w/\bar w^2$, and since $1/\bar w_i=\rho_iv_i$ and $w_i/\bar w_i^2=\rho_iv_i^3$ at $x_0$, we get</p>
+<div class="eq" id="eq-Zd1">$$Z=\sum_i\lambda_iv_i^2,\qquad Z_z=\sum_i\big(\mu_iv_i^2-\lambda_i\rho_iv_i\big),\qquad Z_{\bar z}=\sum_i\big(\bar\mu_iv_i^2+\lambda_i\rho_iv_i^3\big),$$</div>
+<div class="eq" id="eq-Zd2">$$Z_{zz}=-2\sum_i\mu_i\rho_iv_i,\quad Z_{z\bar z}=\sum_i\big(\mu_i\rho_iv_i^3-\bar\mu_i\rho_iv_i-\lambda_i\rho_i^2v_i^2\big),\quad Z_{\bar z\bar z}=2\sum_i\big(\bar\mu_i\rho_iv_i^3+\lambda_i\rho_i^2v_i^4\big).$$</div>
+<p>Differentiating $Z_zt+Z_{\bar z}\bar t=iZ$ once more along $\partial M$ gives $Z_zt'+Z_{\bar z}\bar t'=R$, with $R=-Z-\big(Z_{zz}t^2+2Z_{z\bar z}|t|^2+Z_{\bar z\bar z}\bar t^2\big)$. Hence</p>
+<div class="eq" id="eq-nu">$$t'=\frac{\overline{Z_z}\,R-Z_{\bar z}\,\bar R}{J},\qquad \nu=\frac{d\arg t}{d\omega}=\Im\frac{t'}{t}.$$</div>
+<p>The cusp condition $t\parallel k$ is equivalent to $\bar t^{\,2}Z\in(-\infty,0)$, because $k^2=-Z/|Z|$. For (W), $d\arg u_1/d\omega=\Im(t\,\bar u_1)/r_1=-\rho_1\Im t$, since $u_1=-v_1=-1$.</p>
+
+<h3 class="subsec">The inflection function</h3>
+<p>Fix $\omega_0$ and rescale charge space by $D=\operatorname{diag}(q(\omega_0))$, with $q=F(x_0)$. In the chart, $\lambda_ir_i=\sigma_i$. Differentiating <a class="r" data-to="eq-m"></a>, using $du_i/d\omega=(t-(u_i\cdot t)u_i)/r_i$ and $dr_i/d\omega=u_i\cdot t$, gives $Dm=-s\,a$ and $Dm'=-s\,b$ at $\omega_0$, where</p>
+<div class="eq" id="eq-ab">$$a_i=\sigma_i\,(u_i\cdot k),\qquad b_i=\sigma_i\,(u_i\cdot k')-\lambda_i\big[(s+2)(u_i\cdot t)(u_i\cdot k)-t\cdot k\big],\qquad k'=\tfrac i2k .$$</div>
+<p>Since $(Du)\times(Dv)=\det D\cdot D^{-1}(u\times v)$, condition (I) at $\omega_0$ is equivalent to $a\times b\neq0$. Two identities simplify this. First, $\sum_ia_i=0$ by Lami, since $\sum_i\sigma_iu_i=\sum_i\lambda_i(x_0-p_i)=0$. Second, $\sum_ib_i=0$: the first terms sum to zero for the same reason, and $\sum_i\lambda_i(u_i\cdot t)(u_i\cdot k)=t^{\mathsf T}Tk=\frac1{s+2}\,t\cdot k$, because $k$ is the eigenvector of $T$ with eigenvalue $\frac12(1-\kappa)=\frac1{s+2}$. For vectors with zero sum, $\det(\one,a,b)=3(a_3b_1-a_1b_3)$, and $a\times b\parallel\one$. So (I) is equivalent to $a_3b_1-a_1b_3\ne0$. Expanding, and using $(u_3\cdot k)(u_1\cdot ik)-(u_1\cdot k)(u_3\cdot ik)=\Im(u_1\bar u_3)=\sin\theta_2$, we obtain</p>
+<div class="eq" id="eq-I">$$\begin{aligned}\check I:=\frac{a_3b_1-a_1b_3}{\sigma_3}=\;&\tfrac12\sigma_1\sigma_2+(s+2)\,Q(v_1,v_3)\big[\lambda_1\sigma_3(v_1\cdot\check t)-\sigma_1\lambda_3(v_3\cdot\check t)\big]\\&-\lambda_1\sigma_3\,Q(v_3,\check t)+\sigma_1\lambda_3\,Q(v_1,\check t),\end{aligned}$$</div>
+<p>where $\check t=t/\sigma_3$ and</p>
+<div class="eq" id="eq-Q">$$Q(a,b)=(a\cdot k)(b\cdot k)=\tfrac12\Re(a\bar b)+\tfrac12\Re\big(ab\,\bar k^2\big),\qquad \bar k^2=-\bar Z/|Z| .$$</div>
+<p>Thus $\det(\one,m,m')\ne0$ if and only if $\check I\neq0$, and $\det(\one,a,b)=3\sigma_3\check I$. We verify the stronger sign condition $\check I\gt0$. The identity $\det(\one,a,b)=3\sigma_3\check I$ was also checked numerically, against a chart-free implementation, to relative accuracy $10^{-15}$.</p>
+
+<h3 class="subsec">Rescaling for the flat face</h3>
+<p>As $\theta_3\to\pi$, $\rho_3=\lambda_3/\sigma_3$ blows up. We therefore multiply all inverse lengths by $\sigma_3$: $\hat\rho_i=\sigma_3\rho_i$, so that $\hat\rho_3=\lambda_3$, and we write $\sigma_3\rho_3\rho_j=\lambda_3\rho_j$. Then $\sigma_3\mu_i$, $\sigma_3Z_z$, $\sigma_3Z_{\bar z}$ and $\sigma_3^2Z_{zz},\dots$ are polynomials in $\sin\theta_i$, $\cos\theta_i$, $\lambda_i$, $\rho_1$ and $\rho_2$, in which $\rho_3$ no longer appears. The vector $\check t=t/\sigma_3$, the rate $\nu$ and $\check I$ are all computed from these rescaled quantities. The quantities $\rho_1,\rho_2$ can still blow up as $\sigma_1$ or $\sigma_2\to0$. This happens only when $\theta_3\to\pi$ and $\tau\to\pm1$, where $|Z|\to1$, so such points are discarded by the test $|Z|\gt\kappa$ before these quantities are needed.</p>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-cert">Interval verification</h2>
+
+<h3 class="subsec">Arithmetic</h3>
+<p>We use intervals of IEEE&nbsp;754 binary64 numbers <cite data-k="ieee"></cite> and complex rectangles. After each operation $+,-,\times,\div,\sqrt{\ }$ under round-to-nearest, the result is moved outward by one unit in the last place. Since the correctly rounded result is within half an ulp of the exact one, this encloses the exact result; overflow and underflow are also handled correctly. The constant $\pi$ is enclosed by two consecutive doubles.<br>
+&emsp;To enclose $\sin$ and $\cos$ at a double $x$, we reduce by an interval multiple of $\pi/2$ to $|y|\le0.8$. We then evaluate the Taylor polynomials of degree $21$ and $20$ in interval arithmetic, with interval-enclosed coefficients, and add the Lagrange remainders $|y|^{23}/23!$ and $|y|^{22}/22!$, bounded above by $|y|^{23}/(2.5\cdot10^{22})$ and $|y|^{22}/(1.1\cdot10^{21})$. Interval extensions on $[x_-,x_+]$ take the hull of the endpoint enclosures. Any extremum $\pm1$ whose abscissa may lie in the interval is added; the abscissa is tested with a margin of $10^{-9}$, which can only widen the result. No accuracy of the platform&rsquo;s <code>libm</code> is assumed. The point enclosures were compared with 40-digit <code>mpmath</code> values at random points, with no violation.<br>
+&emsp;For a box $B$ with midpoint $c$, we use the mean-value form</p>
+<div class="eq" id="eq-mvf">$$f(B)\subseteq f(c)+\sum_{j=1}^4\partial_jf(B)\,(B_j-c_j),$$</div>
+<p>intersected with the naive interval evaluation $f(B)$. Here $\partial_jf(B)$ is obtained by forward-mode automatic differentiation in interval arithmetic, and $B_j-c_j$ is itself enclosed rigorously.</p>
+
+<h3 class="subsec">Branch and bound</h3>
+<p>The domain $\mathcal D$ is covered by an initial grid. Its $\lambda$-part consists of the squares meeting the closed triangle $\{\lambda_1+\lambda_2\le1\}$, and the lower end of the $\theta_3$ range is moved one ulp below the double nearest to $2\pi/3$. For each box $B$ we compute enclosures of $|Z|^2$, $J$, $\check I$, $\nu$, $\bar t^2Z$ and $\rho_1\Im t$, all in the rescaled form. A box is <i>closed</i> if one of the following holds; each is a strict inequality between enclosure endpoints, so a NaN can never close a box:</p>
+<ol class="roman items">
+<li>$|Z|^2\gt\kappa^2(1+10^{-12})$ on $B$: no point of $\overline M$;</li>
+<li>$|Z|^2\lt\kappa^2(1-10^{-12})$ and $J\lt0$ on $B$: interior points, where (J) holds;</li>
+<li>$J\lt0$, $\check I\gt0$, $|\rho_1\Im t|\lt\frac12$ on $B$, and either $\nu\lt\frac12$ on $B$ or no cusp is possible in $B$, i.e. $\Im(\bar t^2Z)$ has constant strict sign or $\Re(\bar t^2Z)\gt0$ on $B$.</li>
+</ol>
+<p>Boxes not closed are bisected. The bisection direction is chosen heuristically, as the coordinate contributing most to the width of the first failing enclosure; this choice affects only efficiency. Boxes narrower than $10^{-9}$ in every coordinate, or still open after the iteration limit, would have been reported as unresolved. A cheap naive enclosure of $|Z|^2$ prefilters test (i).</p>
+
+<h3 class="subsec">Results</h3>
+<div class="tbl">
+<table class="data">
+<thead><tr><th></th><th>run A</th><th>run B</th></tr></thead>
+<tbody>
+<tr><td>initial grid ($\theta_3\times\tau\times\lambda$)</td><td>$12\times12\times78$</td><td>$10\times10\times55$</td></tr>
+<tr><td>initial boxes</td><td>11&thinsp;232</td><td>5&thinsp;500</td></tr>
+<tr><td>boxes processed</td><td>9&thinsp;965&thinsp;940</td><td>9&thinsp;966&thinsp;558</td></tr>
+<tr><td>&emsp;closed by (i) &nbsp;(outside $\overline M$)</td><td>1&thinsp;023&thinsp;542</td><td>1&thinsp;030&thinsp;219</td></tr>
+<tr><td>&emsp;closed by (ii) (interior)</td><td>837&thinsp;586</td><td>839&thinsp;283</td></tr>
+<tr><td>&emsp;closed by (iii) (boundary)</td><td>3&thinsp;127&thinsp;458</td><td>3&thinsp;116&thinsp;527</td></tr>
+<tr><td>&emsp;&emsp;of which with no cusp possible</td><td>2&thinsp;430&thinsp;074</td><td>2&thinsp;434&thinsp;734</td></tr>
+<tr><td><b>unresolved boxes</b></td><td><b>0</b></td><td><b>0</b></td></tr>
+<tr><td>largest upper bound of $\sigma_3^2J$ on closed boxes</td><td>$-2.09\cdot10^{-4}$</td><td>$-1.57\cdot10^{-4}$</td></tr>
+<tr><td>smallest lower bound of $\check I$</td><td>$3.2\cdot10^{-7}$</td><td>$1.5\cdot10^{-7}$</td></tr>
+<tr><td>largest upper bound of $\nu$ where a cusp is possible</td><td>$0.4999987$</td><td>$0.4999994$</td></tr>
+<tr><td>largest bound of $|d\arg u_1/d\omega|$</td><td>$0.377$</td><td>$0.388$</td></tr>
+<tr><td>wall-clock time (16 processes)</td><td>425 s</td><td>415 s</td></tr>
+</tbody></table>
+<div class="tcap"><b>Table 1.</b> Certification of Theorem&nbsp;<a class="r" data-to="thm-cert"></a>, items 1&ndash;2, for $s=1$. The two runs start from different subdivisions of $\mathcal D$. In each run the counts are consistent with a binary tree: processed $=2\times(\text{closed})-\text{initial}$. The bounds in the lower rows are those of the enclosures at the moment each box was closed (see the text); they are not the true margins.</div>
+</div>
+
+<p>A box is closed as soon as its enclosure clears the threshold, so the extreme bounds in Table&nbsp;1 come from boxes that were barely closed. They do not measure how close the true quantities come to the thresholds. Sampling several hundred thousand points of $\partial M$ directly in the chart, including near the flat face $\theta_3=\pi$ and the faces $\lambda_i=0$, gives $\check I\ge0.097$, $\sigma_3^2J\le-0.098$, $\nu\approx-1$ at numerically located cusp points, and $|d\arg u_1/d\omega|\le0.29$. All of these are well inside the thresholds. Because the rescaled closed forms stay finite on the closed domain, the inequalities hold there with positive margin, and the branch and bound terminates.</p>
+
+<p><i>The base triangle.</i> Item 3 of Theorem&nbsp;<a class="r" data-to="thm-cert"></a> is checked in barycentric coordinates $(\lambda_1,\lambda_2)$ on $\Delta_0$. Boxes with some $\lambda_i\gt\frac23$ are discarded analytically, since there $|Z|\ge2\lambda_i-1\gt\frac13$. Every other box must satisfy either $|Z|^2\gt\kappa^2$, or $\theta_3\gt\theta_1$ and $\theta_3\gt\theta_2$. The latter are evaluated as $(w_1\cdot w_2)\,r_3\lt(w_2\cdot w_3)\,r_1$ and $(w_1\cdot w_2)\,r_3\lt(w_1\cdot w_3)\,r_2$, with $w_i=p_i-x$. Starting from $2\,080$ boxes, the bisection processed $2\,410$ boxes with none unresolved. Numerically, the smallest value of $\theta_3-\max(\theta_1,\theta_2)$ on $\partial M(\Delta_0)$ is $0.85$.</p>
+
+<h3 class="subsec">Validation of the implementation</h3>
+<p>Besides the internal consistency of the two runs, the closed forms were checked in four ways.</p>
+<ol class="roman items">
+<li>Against an independent implementation that obtains the derivatives of $\lambda$ by solving linear systems, to $10^{-14}$.</li>
+<li>Against chart-free formulas computed directly from the coordinates of a triangle, to $10^{-15}$.</li>
+<li>Against finite differences along numerically traced curves $\partial M$ of concrete triangles.</li>
+<li>Enclosure tests: at about $3\cdot10^5$ random points of random boxes, for three exponents, the interval enclosures of $|Z|^2$, $J$, $\check I$ and $\nu$ contain the floating-point values of the independent implementation.</li>
+</ol>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-num">Further evidence and extensions</h2>
+
+<h3 class="subsec">A theory-free check</h3>
+<p>Independently of the reduction, we counted planar equilibria by multistart damped Newton iteration on $\nabla V_q$. The starts were a $70\times70$ barycentric grid plus multiscale clusters near each vertex. We took $64\,000$ random configurations. The triangles $(0,1,a+ib)$ had $0\le a\le\frac12$, $b$ log-uniform in $[10^{-2.5},1]$, and $p_1p_2$ the longest side. The charges were log-uniform over six decades. Newton found $2$ equilibria in $63\,975$ cases and $4$ in $20$ cases, and never $6$. Five extreme cases gave odd counts ($1$ or $5$), which Lemma&nbsp;<a class="r" data-to="lem-morse"></a> forbids. Re-examining them with the winding-number criterion of Proposition&nbsp;<a class="r" data-to="prop-wind"></a> showed that all five have exactly two equilibria; Newton had missed or duplicated points. The rarity of the value $4$ reflects the small charge-space area enclosed by $C$ under log-uniform sampling (Figure&nbsp;2).</p>
+
+<figure>
+<img src="fig2.svg" alt="Figure 2">
+<figcaption><b>Figure 2.</b> Top: the minimum region $M$ (shaded) for four triangle shapes. Bottom: the corresponding caustics $C$, each in the projective chart centred at the image $(+)$ of the point where $Z=0$. All are simple curves with three cusps and no inflections, as predicted. The four-equilibria region is the interior of $C$. As the triangle flattens, $C$ becomes a thin needle.</figcaption>
+</figure>
+
+<h3 class="subsec">Other exponents</h3>
+<p>The arguments of Sections&nbsp;<a class="r" data-to="sec-red"></a>&ndash;<a class="r" data-to="sec-proof"></a> hold for every $s\gt0$, with $\kappa=s/(s+2)$, once the conditions of Theorem&nbsp;<a class="r" data-to="thm-cert"></a> are verified for that $s$. Numerically, the structure required by Theorem&nbsp;<a class="r" data-to="thm-hedgehog"></a> persists for all triangle shapes we sampled when $s\lesssim1.5$, so the same certification should succeed there. Above a shape-dependent threshold, about $2.13$ for the equilateral triangle and about $1.53$ for nearly degenerate shapes, the caustic acquires pairs of inflections, and the argument above no longer applies as stated. We have nevertheless never observed a winding number $2$, i.e. a configuration with $6$ equilibria, for any $s$ we tried.</p>
+
+<h3 class="subsec">Charges of mixed signs</h3>
+<p>Let $q=(+,+,-)$; the other mixed pattern reduces to this by a global sign change. Lemma&nbsp;<a class="r" data-to="lem-location"></a>(a) still confines equilibria to $\Pi$. By the argument of Lemma&nbsp;<a class="r" data-to="lem-lami"></a>, an equilibrium has barycentric coordinates of the sign pattern of $\pm q$. It therefore lies in $R_A=\{\lambda_1,\lambda_2\gt0\gt\lambda_3\}$ or in $R_B=\{\lambda_1,\lambda_2\lt0\lt\lambda_3\}$, and the Hessian is $\pm sW[(s+2)T-I]$, with $T$ as before.</p>
+<div class="thm it" data-type="Proposition" id="prop-mixed"><span class="body">For charges of mixed signs, $V|_\Pi$ has no local maxima, and all its local minima lie in $M_A=R_A\cap\{|Z|\lt\kappa\}$.</span></div>
+<div class="proof"><span class="lbl">Proof.</span> In $R_A$ the Hessian is a positive multiple of $(s+2)T-I$. Since $\operatorname{tr}T=1$ and $2/(s+2)\lt1$, the larger eigenvalue is positive, so there is no maximum. In $R_B$ it is a positive multiple of $I-(s+2)T$. There $p_3$ lies inside the triangle $(x,p_1,p_2)$, and for $e\perp u_3$ we get $e^{\mathsf T}Te=\lambda_1(u_1\cdot e)^2+\lambda_2(u_2\cdot e)^2\le0$. So $I-(s+2)T$ has a positive eigenvalue, and the trace condition excludes negative definiteness. Hence $R_B$ contains only saddles, and minima in $R_A$ are characterized by $|Z|\lt\kappa$ exactly as before. <span class="qed">&#8718;</span></div>
+<p>If $\sum_iq_i\ne0$, Poincar&eacute;&ndash;Hopf again gives $2+2m$ equilibria, so Maxwell&rsquo;s bound for mixed signs is again equivalent to $m\le1$. We measured the analogues of (J), (I), (T) along $\partial M_A$ for $38$ random triangles, including very flat and nearly collinear ones, using chart-free formulas. In all cases $J\lt0$, there were no inflections, the turning rate of $\partial M_A$ was nonpositive, and the caustic had exactly three cusps. So Theorem&nbsp;<a class="r" data-to="thm-hedgehog"></a> would again give $m\le1$. A certificate requires a compactification of the chart, which is non-compact here because $\lambda$ is unbounded on $R_A$. It must handle three degenerate regimes: flat $(+,-,+)$, flat $(+,+,-)$, and the far-field regime $\sum_iq_i\approx0$. It must also handle the fact that the shortcut (W) fails in the far field. We have not done this.</p>
+
+<!-- ===================================================================== -->
+<h2 class="sec" id="sec-disc">Discussion</h2>
+
+<p><i>What has been proved.</i> Modulo the correctness of the computation behind Theorem&nbsp;<a class="r" data-to="thm-cert"></a>, three positive Coulomb charges have at most four equilibria, generically $2$ or $4$, with the dichotomy decided by the position of the normalized charge vector relative to the caustic $C$. The argument is geometric. The equilibrium count is the winding number of a caustic, and that winding number is bounded by a Sturm-type comparison for fronts. The computer is used only to verify four open conditions on a compact set of shapes and one condition on a single triangle.</p>
+
+<p><i>What an independent check should cover.</i></p>
+<ol class="items">
+<li>The arguments of Sections&nbsp;<a class="r" data-to="sec-red"></a>&ndash;<a class="r" data-to="sec-proof"></a>, especially Proposition&nbsp;<a class="r" data-to="prop-disk"></a>, Lemmas&nbsp;<a class="r" data-to="lem-wind"></a>&ndash;<a class="r" data-to="lem-sturm"></a>, and the passage from (T) and (I) to the hypotheses of Theorem&nbsp;<a class="r" data-to="thm-hedgehog"></a> in Proposition&nbsp;<a class="r" data-to="prop-cusps"></a>.</li>
+<li>The closed forms of Section&nbsp;<a class="r" data-to="sec-chart"></a> and their rescaled versions. These are short and can be re-derived symbolically.</li>
+<li>The interval library and the automatic differentiation. These are small (about 400 lines) but home-made. A re-implementation with a standard rigorous library such as Arb or MPFI, or in a proof assistant, would be valuable.</li>
+<li>The coverage of the domain: the initial grid, the symmetry reduction, and the rounding at $\theta_3=2\pi/3$ and $\theta_3=\pi$.</li>
+</ol>
+
+<p><i>Outlook.</i> The method should apply verbatim to Riesz exponents $s\lesssim1.5$, where the required structure is observed numerically, and it should extend to charges of mixed signs after a compactification of the chart. For four or more charges the analogous picture involves the Gauss map of a hypersurface. The caustic is then a front of codimension one in a projective space of dimension $n-1$, and the Sturm-type step has no obvious analogue. The counterexample of <cite data-k="abk"></cite> shows that some such step must fail for $n=5$.</p>
+
+<h2 class="nonum">AI-assistance statement</h2>
+<p>This work was carried out with extensive assistance from Claude (Anthropic, model Claude Opus 5.5), an AI system. The AI system proposed the approach, derived the reduction, the Sturm-type lemma and the closed forms, wrote the verification code, ran the computations and drafted this manuscript, working interactively with the author. The results have not yet been checked by an independent human expert. We therefore present them as a preprint inviting scrutiny, and the code is released in full for that purpose.</p>
+
+<h2 class="nonum">Code availability</h2>
+<p>All code and certificate logs are in the repository <cite data-k="repo"></cite> (Python&nbsp;3.11, NumPy&nbsp;2.4). The main certificate is reproduced by</p>
+<pre>python tests/test_enclosures.py
+python certify.py 1.0 16 60         # run A  -> cert_s1.0.json
+python certify.py 1.0 16 80 10      # run B  -> cert_s1.0_n10.json
+python base_triangle.py             # base triangle -> cert_base_triangle.json</pre>
+
+<h2 class="nonum">References</h2>
+<ol class="refs" id="refs">
+<li id="ref-abk">Ph. Arathoon, G. Ball, M.&nbsp;D. Kvalheim, <i>The Maxwell conjecture is false</i>, arXiv:2607.27197 (2026).</li>
+<li id="ref-agv">V.&nbsp;I. Arnold, S.&nbsp;M. Gusein-Zade, A.&nbsp;N. Varchenko, <i>Singularities of Differentiable Maps</i>, Vol.&nbsp;I, Birkh&auml;user, Boston, 1985.</li>
+<li id="ref-efo">H. Edelsbrunner, C. Fillmore, G. Oliveira, <i>Counting equilibria of the electrostatic potential</i>, Proc. Lond. Math. Soc. (3) <b>132</b> (2026), no.&nbsp;6, e70163.</li>
+<li id="ref-gns">A. Gabrielov, D. Novikov, B. Shapiro, <i>Mystery of point charges</i>, Proc. Lond. Math. Soc. (3) <b>95</b> (2007), no.&nbsp;2, 443&ndash;472.</li>
+<li id="ref-gnns">A. Gabrielov, Dm. Novikov, T. Novikov, B. Shapiro, <i>From 12 to 6: sharpening the three-charge bound in Maxwell&rsquo;s problem</i>, arXiv:2607.28785 (2026).</li>
+<li id="ref-hales">T.&nbsp;C. Hales, <i>A proof of the Kepler conjecture</i>, Ann. of Math. (2) <b>162</b> (2005), 1065&ndash;1185.</li>
+<li id="ref-ieee"><i>IEEE Standard for Floating-Point Arithmetic</i>, IEEE Std 754-2019.</li>
+<li id="ref-khovanskii">A.&nbsp;G. Khovanskii, <i>Fewnomials</i>, Transl. Math. Monographs <b>88</b>, Amer. Math. Soc., Providence, 1991.</li>
+<li id="ref-llr">R. Langevin, G. Levitt, H. Rosenberg, <i>H&eacute;rissons et multih&eacute;rissons (enveloppes param&eacute;tr&eacute;es par leur application de Gauss)</i>, in: Singularities, Banach Center Publ. <b>20</b>, Warsaw, 1988, 245&ndash;253.</li>
+<li id="ref-maxwell">J.&nbsp;C. Maxwell, <i>A Treatise on Electricity and Magnetism</i>, Vol.&nbsp;1, Clarendon Press, Oxford, 1873.</li>
+<li id="ref-milnor">J.&nbsp;W. Milnor, <i>Topology from the Differentiable Viewpoint</i>, University Press of Virginia, Charlottesville, 1965.</li>
+<li id="ref-moore">R.&nbsp;E. Moore, R.&nbsp;B. Kearfott, M.&nbsp;J. Cloud, <i>Introduction to Interval Analysis</i>, SIAM, Philadelphia, 2009.</li>
+<li id="ref-repo">ing-mattioni, <i>maxwell-three-charges</i>: code, certificates and notes, https://github.com/ing-mattioni/maxwell-three-charges (2026).</li>
+<li id="ref-tsai">Y.-L. Tsai, <i>Maxwell&rsquo;s conjecture on three point charges with equal magnitudes</i>, Phys. D <b>309</b> (2015), 86&ndash;98.</li>
+<li id="ref-tucker">W. Tucker, <i>Validated Numerics: A Short Introduction to Rigorous Computations</i>, Princeton University Press, 2011.</li>
+<li id="ref-tucker02">W. Tucker, <i>A rigorous ODE solver and Smale&rsquo;s 14th problem</i>, Found. Comput. Math. <b>2</b> (2002), 53&ndash;117.</li>
+<li id="ref-zolotov">V. Zolotov, <i>Upper bounds for the number of isolated critical points via the Thom&ndash;Milnor theorem</i>, Anal. Math. Phys. <b>13</b> (2023), Paper No.&nbsp;81.</li>
+</ol>
+
+<script>
+(function () {
+  // ---- numbering: sections, theorem-like environments, equations
+  var sec = 0, sub = 0, thm = 0, eqn = 0;
+  var labels = {};
+  var walker = document.querySelectorAll('h2, h3.subsec, .thm, .eq');
+  walker.forEach(function (el) {
+    if (el.tagName === 'H2') {
+      if (el.classList.contains('nonum')) return;
+      sec++; sub = 0; thm = 0; eqn = 0;
+      el.insertAdjacentHTML('afterbegin', sec + '&ensp;');
+      if (el.id) labels[el.id] = String(sec);
+    } else if (el.tagName === 'H3') {
+      sub++;
+      el.insertAdjacentHTML('afterbegin', sec + '.' + sub + '&ensp;');
+      if (el.id) labels[el.id] = sec + '.' + sub;
+    } else if (el.classList.contains('thm')) {
+      thm++;
+      var num = sec + '.' + thm;
+      var lbl = document.createElement('span');
+      lbl.className = 'lbl';
+      lbl.textContent = el.getAttribute('data-type') + ' ' + num + (el.getAttribute('data-name') ? ' (' + el.getAttribute('data-name') + ').' : '.') + ' ';
+      el.insertBefore(lbl, el.firstChild);
+      if (el.id) labels[el.id] = num;
+    } else if (el.classList.contains('eq') && el.id) {
+      eqn++;
+      var n = '(' + sec + '.' + eqn + ')';
+      el.insertAdjacentHTML('beforeend', '<span class="eqn">' + n + '</span>');
+      labels[el.id] = n;
+    }
+  });
+  document.querySelectorAll('a.r').forEach(function (a) {
+    var id = a.getAttribute('data-to');
+    a.textContent = labels[id] || '??';
+  });
+  // ---- citations: number by order in the reference list
+  var refs = Array.prototype.map.call(document.querySelectorAll('#refs > li'), function (li) { return li.id.replace(/^ref-/, ''); });
+  document.querySelectorAll('cite').forEach(function (c) {
+    var ks = c.getAttribute('data-k').split(',');
+    var ns = ks.map(function (k) { var i = refs.indexOf(k.trim()); return i < 0 ? '??' : (i + 1); });
+    ns.sort(function (x, y) { return x - y; });
+    c.textContent = '[' + ns.join(', ') + ']';
+    c.style.fontStyle = 'normal';
+  });
+  // ---- math
+  renderMathInElement(document.body, {
+    delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}],
+    macros: {
+      '\\R': '\\mathbb{R}', '\\C': '\\mathbb{C}', '\\wind': '\\operatorname{wind}',
+      '\\Re': '\\operatorname{Re}', '\\Im': '\\operatorname{Im}', '\\Hess': '\\operatorname{Hess}',
+      '\\one': '\\mathbf{1}'
+    },
+    throwOnError: false
+  });
+  var bad = document.querySelectorAll('.katex-error').length;
+  var unresolved = Array.prototype.filter.call(document.querySelectorAll('a.r, cite'), function (e) { return e.textContent.indexOf('??') >= 0; }).length;
+  document.title = 'Three positive point charges have at most four equilibria';
+  document.body.setAttribute('data-katex-errors', bad);
+  document.body.setAttribute('data-unresolved', unresolved);
+})();
+</script>
+</body>
+</html>
