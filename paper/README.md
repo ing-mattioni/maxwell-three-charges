@@ -7,10 +7,19 @@ KaTeX 0.16.11 assets (`vendor/katex/`), so rendering does not need a network con
 & .\paper\build.ps1
 ```
 
-If Node.js and `playwright-core` are available, `build.ps1` runs `build.cjs`, which rejects
+If Node.js can load `playwright-core`, `build.ps1` runs `build.cjs`, which rejects
 missing fonts or images, JavaScript or KaTeX errors, unresolved references, external
 resource requests and overflowing display equations, and writes `paper.layout.json` next to
 the PDF. Otherwise it prints the page with headless Microsoft Edge, without those checks.
+In both cases the existing `paper.pdf` is replaced only by a complete PDF; on a failure or
+timeout the script stops and leaves it unchanged.
+
+Node does not have to be on `PATH`:
+
+```powershell
+$env:PLAYWRIGHT_MODULE = 'C:\path\to\node_modules\playwright-core'
+& .\paper\build.ps1 -NodeExecutable 'C:\path\to\node.exe'
+```
 
 ```powershell
 npm install --no-save playwright-core@1.57.0

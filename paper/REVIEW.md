@@ -119,4 +119,6 @@ Istruzioni di build in [README.md](README.md).
 salvato come `paper-reviewed.pdf`, perche `paper.pdf` era bloccato da un'applicazione.
 Integrando la revisione nel repository, le due versioni sono state riunite in `paper.pdf`.
 Sono state inoltre precisate la citazione di Martinez-Maure e la dichiarazione sull'uso
-dell'IA. L'esecuzione n0=12 e stata ripetuta in una sessione separata con conteggi identici.
+dell'IA. L'esecuzione n0=12 e stata ripetuta in una sessione separata con conteggi identici;
+log e JSON sono in `../certificates/rerun-2026-10-31/`. Il modello usato per questa revisione
+in OpenAI Codex era GPT-6-Astra, secondo quanto riferito dall'autore.

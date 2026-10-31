@@ -94,7 +94,7 @@
 
 <div class="abstract"><span class="hd">Abstract</span>
 Maxwell conjectured in 1873 that the electrostatic field of $n$ point charges in $\R^3$ has at most $(n-1)^2$ isolated equilibrium points. The conjecture is now known to fail for $n=5$. For three positive charges the best bound in the literature is $6$, obtained in 2026 by Gabrielov, Novikov, Novikov and Shapiro, who improved the earlier bound $12$ of Gabrielov, Novikov and Shapiro. We prove that three positive Coulomb charges in $\R^3$ have at most four equilibria, which is Maxwell&rsquo;s bound for $n=3$ and is sharp.
-<br>&emsp;All equilibria lie in the open triangle spanned by the charges, and none is a maximum of the potential restricted to the plane. When they are nondegenerate, each is a local minimum or a saddle, and there are $2+2m$ of them, where $m$ is the number of minima. Using Lami&rsquo;s theorem, we write the charges that make a given point critical in closed form. A nondegenerate minimum must lie in the region $M=\{|\sum_i\lambda_i u_i^2|\lt \tfrac13\}$, where $\lambda_i$ are its barycentric coordinates and $u_i$ the unit vectors from the charges (as complex numbers). The number of minima equals the winding number around $q$ of a caustic curve $C$ in the space of charge ratios. A Sturm-type lemma for plane fronts with three ordinary cusps, no inflections and total tangent turning $\pi$ shows that this winding number is at most one in absolute value.
+<br>&emsp;When the charges are not collinear, all equilibria lie in the open triangle they span, and none is a maximum of the potential restricted to the plane. When they are nondegenerate, each is a local minimum or a saddle, and there are $2+2m$ of them, where $m$ is the number of minima. Using Lami&rsquo;s theorem, we write the charges that make a given point critical in closed form. A nondegenerate minimum must lie in the region $M=\{|\sum_i\lambda_i u_i^2|\lt \tfrac13\}$, where $\lambda_i$ are its barycentric coordinates and $u_i$ the unit vectors from the charges (as complex numbers). The number of minima equals the winding number around $q$ of a caustic curve $C$ in the space of charge ratios. A Sturm-type lemma for plane fronts with three ordinary cusps, no inflections and total tangent turning $\pi$ shows that this winding number is at most one in absolute value.
 <br>&emsp;The hypotheses of the lemma reduce to four strict inequalities between explicit functions of four variables on a compact domain, plus one two-dimensional check for a single triangle. We verify them by branch and bound with outward-rounded interval arithmetic that does not rely on the platform&rsquo;s mathematical library. About $10^7$ boxes were processed and none was left unresolved, in each of two different initial subdivisions. The computer-assisted part has not yet been independently checked; the accompanying source is provided for scrutiny.
 </div>
 <div class="meta"><b>Keywords:</b> Maxwell&rsquo;s conjecture; point charges; equilibria of electrostatic fields; caustics; fronts; Sturm theory; interval arithmetic; computer-assisted proof.<br>
@@ -252,7 +252,7 @@ contains $c(\omega)$ and $c'(\omega)$ is parallel to it. Thus $C$ is a front wit
 </ol></div>
 <div class="proof"><span class="lbl">Proof.</span> Let $c$ be a zero of $\rho$, and let $a\lt b$ be the other two zeros in $(c,c+\pi)$. Write $g=g_q$. On $(c,c+\pi)$ put $f=g/\sin(\theta-c)$ and
 <div class="eq">$$\begin{gathered}\Psi=g'\sin(\theta-c)-g\cos(\theta-c),\qquad f'=\frac{\Psi}{\sin^2(\theta-c)},\\ \Psi'=(g+g'')\sin(\theta-c)=-\rho\,\sin(\theta-c).\end{gathered}$$</div>
-So $\Psi$ is strictly monotone on $[c,a]$, $[a,b]$ and $[b,c+\pi]$, with alternating senses. Also $\Psi(c)=-g(c)$, and $\Psi(c+\pi)=g(c+\pi)=-g(c)$. Suppose the senses are increasing, decreasing, increasing (the other case is symmetric), and let $w_0=-g(c)$. Then $\Psi\gt w_0$ on $(c,a]$ and $\Psi\lt w_0$ on $[b,c+\pi)$. If $w_0\gt0$, $\Psi$ has no zero in $(c,a]$ and at most one on each of the other two pieces. If $w_0\lt0$, it has at most one on each of the first two pieces and none on the third. If $w_0=0$, it has exactly one, on $(a,b)$. Hence
+So $\Psi$ is strictly monotone on $[c,a]$, $[a,b]$ and $[b,c+\pi]$, with alternating senses. Also $\Psi(c)=-g(c)$, and $\Psi(c+\pi)=g(c+\pi)=-g(c)$. Suppose the senses are increasing, decreasing, increasing (the other case is symmetric), and let $w_0=-g(c)$. Then $\Psi\gt w_0$ on $(c,a]$ and $\Psi\lt w_0$ on $[b,c+\pi)$. If $w_0\gt0$, $\Psi$ has no zero in $(c,a]$ and at most one on each of the other two pieces. If $w_0\lt0$, it has at most one on each of the first two pieces and none on the third. If $w_0=0$, it has exactly one, on <span class="nowrap">$(a,b)$.</span> Hence
 <p class="center">$\Psi$ has at most two zeros in $(c,c+\pi)$, and at most one if $g(c)=0$.</p>
 (a) Between consecutive zeros of $f$ there is a zero of $f'$, i.e. of $\Psi$. If $g(c)\ne0$, then $g$ has at most $2+1=3$ zeros in $(c,c+\pi)$ and none at $c$. If $g(c)=0$, it has at most $1+1=2$ zeros in $(c,c+\pi)$, plus $c$.
 (b) Suppose $\theta_1\ne\theta_2$ are double zeros in $[c,c+\pi)$. If neither equals $c$, then $f$ has double zeros at $\theta_1\lt\theta_2$. So $f'$ vanishes at $\theta_1$, at $\theta_2$ and in between, giving three zeros of $\Psi$, which contradicts the bound $2$. If $\theta_1=c$, then $g(c)=g'(c)=0$, so $f(\theta)\to0$ as $\theta\to c^+$ and as $\theta\to(c+\pi)^-$. With $f(\theta_2)=f'(\theta_2)=0$, Rolle&rsquo;s theorem on $[c,\theta_2]$ and $[\theta_2,c+\pi]$ gives three zeros of $\Psi$, which contradicts the bound $1$. <span class="qed">&#8718;</span></div>
@@ -297,7 +297,7 @@ So $\Psi$ is strictly monotone on $[c,a]$, $[a,b]$ and $[b,c+\pi]$, with alterna
 
 <div class="proof"><span class="lbl">Proof of Theorem&nbsp;<a class="r" data-to="thm-main"></a>.</span> Part (a) and the location statement are Lemma&nbsp;<a class="r" data-to="lem-location"></a>. Let $\Delta$ be non-degenerate; by reflection we may assume it positively oriented. By Theorem&nbsp;<a class="r" data-to="thm-cert"></a> and Propositions&nbsp;<a class="r" data-to="prop-cusps"></a> and&nbsp;<a class="r" data-to="prop-turning"></a>, the caustic $C$, parametrized by its tangent direction, satisfies the hypotheses of Theorem&nbsp;<a class="r" data-to="thm-hedgehog"></a>. Hence $C$ is a simple closed curve and $|\wind(C,\hat q)|\le1$ for $\hat q\notin C$.<br>
 &emsp;<i>Generic charges.</i> If $\hat q\notin C$, all critical points of $V_q$ are nondegenerate. By Proposition&nbsp;<a class="r" data-to="prop-wind"></a> there is at most one minimum, and by Lemma&nbsp;<a class="r" data-to="lem-morse"></a> there are $2$ or $4$ equilibria. The value is $4$ exactly when $\hat q$ lies inside $C$. Both cases occur: $C$ is a compact subset of $\Sigma$, so points of $\Sigma$ near its corners lie outside $C$. And $M\ne\emptyset$, because $\deg Z\ne0$ gives a point with $Z=0$, so $\hat F(M)$ is a nonempty open subset of the interior of $C$.<br>
-&emsp;<i>At most one critical point in $\overline M$.</i> If $\hat q\notin C$, this is the previous paragraph. Let $\hat q\in C$, and suppose that $\hat F(x)=\hat q$ for some $x\in M$. Then $\hat F$ maps a neighbourhood of $x$ in $M$ onto a neighbourhood of $\hat q$. This neighbourhood contains points outside the Jordan curve $C$, i.e. with winding number $0$, which contradicts Proposition&nbsp;<a class="r" data-to="prop-wind"></a>. So $\hat F^{-1}(\hat q)\cap\overline M\subset\partial M$, and it is a single point because $\omega\mapsto c(\omega)$ is injective.<br>
+&emsp;<i>At most one critical point in $\overline M$.</i> If $\hat q\notin C$, this is the previous paragraph. Let $\hat q\in C$, and suppose that $\hat F(x)=\hat q$ for some $x\in M$. Then $\hat F$ maps a neighbourhood of $x$ in $M$ onto a neighbourhood of <span class="nowrap">$\hat q$.</span> This neighbourhood contains points outside the Jordan curve $C$, i.e. with winding number $0$, which contradicts Proposition&nbsp;<a class="r" data-to="prop-wind"></a>. So $\hat F^{-1}(\hat q)\cap\overline M\subset\partial M$, and it is a single point because $\omega\mapsto c(\omega)$ is injective.<br>
 &emsp;<i>All charges.</i> Suppose $V_q$ had five distinct critical points. At most one lies in $\overline M$, so at least four lie in $\Delta^\circ\setminus\overline M$, where they are nondegenerate saddles. By the implicit function theorem, they persist as four distinct nondegenerate saddles of $V_{q'}$ for all $q'$ near $q$. Since $C$ is a curve, we may choose $\hat q'\notin C$, and then $V_{q'}$ has at most $3$ saddles by Lemma&nbsp;<a class="r" data-to="lem-morse"></a>. This contradiction shows that there are at most four equilibria for every $q$. In particular there are finitely many, and all are isolated. <span class="qed">&#8718;</span></div>
 
 <!-- ===================================================================== -->
@@ -510,6 +510,24 @@ python reproduce.py --workers 16</pre>
       '\\one': '\\mathbf{1}'
     },
     throwOnError: false
+  });
+  // keep inline math together with the punctuation that follows it, so that a line
+  // never starts with ". , ; : )"
+  Array.prototype.forEach.call(document.querySelectorAll('.katex'), function (k) {
+    if (k.closest('.katex-display')) return;
+    // auto-render puts each formula in its own wrapper span
+    var node = k;
+    while (!node.nextSibling && node.parentNode.tagName === 'SPAN' && node.parentNode.childNodes.length === 1) node = node.parentNode;
+    var t = node.nextSibling;
+    if (!t || t.nodeType !== 3) return;
+    var m = /^[.,;:)]+/.exec(t.nodeValue);
+    if (!m) return;
+    var w = document.createElement('span');
+    w.className = 'nowrap';
+    node.parentNode.insertBefore(w, node);
+    w.appendChild(node);
+    w.appendChild(document.createTextNode(m[0]));
+    t.nodeValue = t.nodeValue.slice(m[0].length);
   });
   var bad = document.querySelectorAll('.katex-error').length;
   var unresolved = Array.prototype.filter.call(document.querySelectorAll('a.r, cite'), function (e) { return e.textContent.indexOf('??') >= 0; }).length;

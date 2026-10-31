@@ -23,12 +23,12 @@ file under both conventions; the recorded hash is the one marked.
 To check a checkout independently of its line endings:
 
 ```python
-import hashlib, pathlib
+import hashlib
+import pathlib
+
 def h(path, crlf=False):
-    data = pathlib.Path(path).read_bytes().replace(b'
-', b'
-')
-    return hashlib.sha256(data.replace(b'
-', b'
-') if crlf else data).hexdigest()
+    data = pathlib.Path(path).read_bytes().replace(b'\r\n', b'\n')
+    return hashlib.sha256(data.replace(b'\n', b'\r\n') if crlf else data).hexdigest()
+
+print(h('certify.py', crlf=True))  # compare with the table above
 ```

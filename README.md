@@ -19,7 +19,8 @@ strict inequalities on a compact 4-parameter domain:
 The two main runs use the same interval implementation. Logs, parameters, runtime
 versions and source hashes are in [`certificates/review-2026-10-30/`](certificates/review-2026-10-30/).
 A second base-triangle run (1,618 boxes) also passed. The n0=12 run was later repeated
-in a separate session (CPython 3.11.9) with identical box counts. These JSON files summarize
+in a separate session (CPython 3.11.9) with identical box counts
+([`certificates/rerun-2026-10-31/`](certificates/rerun-2026-10-31/)). These JSON files summarize
 verified executions; they are not leaf-by-leaf certificates for a separate checker.
 
 It has **not** been peer-reviewed. An AI-assisted code and manuscript review
@@ -40,7 +41,7 @@ interval verification, none of which changed the outcome. Please read the caveat
 
 ## The argument in brief
 
-1. All equilibria lie inside the triangle of charges. For nondegenerate parameters their number is
+1. For non-collinear charges, all equilibria lie inside the triangle they span. For nondegenerate parameters their number is
    2 + 2·(number of local minima of V in the plane). So the claim is
    **at most one local minimum**.
 2. **Lami's theorem.** x is an equilibrium only for the charges q ∝ (λᵢ rᵢ^{s+2}), with λ
