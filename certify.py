@@ -1,6 +1,6 @@
-"""Parallel branch-and-bound certification of conditions (J), (I), (T) for exponent s.
+"""Parallel branch-and-bound certification of (J), (I), (T), (W) for exponent s.
 
-Usage:  python certify.py s nworkers [maxit]
+Usage:  python certify.py s nworkers [maxit] [n0]
 Writes certificate summary to cert_s{s}.json and any unresolved boxes to unresolved_s{s}.npy.
 """
 import sys
@@ -11,6 +11,8 @@ from multiprocessing import Pool
 from interval import I, PI_HI
 from verify import enclose_y as enclose, thetas_from_y
 from ad import DI
+from domains import simplex_boxes
+from provenance import metadata
 
 KEYS = ('zeta2', 'jac', 'Ih', 'turn', 'czre', 'czim', 'Wq')
 
@@ -25,7 +27,7 @@ def zeta2_naive(blo, bhi):
     def cs(x):
         # cos/sin for intervals possibly outside [0, 2pi]: reduce by multiples of 2pi (exact enough via interval)
         k = np.floor(x.lo / (2 * 3.141592653589793))
-        xr = x - I(k * 2 * 3.141592653589793, k * 2 * PI_HI)
+        xr = x - I(3.141592653589793, PI_HI) * (2.0 * k)
         return cos_i(xr), sin_i(xr)
     c2, s2 = cs(a2); c3, s3 = cs(a3)
     re = l1 + l2 * c2 + l3 * c3
@@ -49,7 +51,10 @@ def enclose_mvf(blo, bhi, s, keys=KEYS, need_bdry=True):
             acc = acc + dj * dev[j]
             contrib[:, j] = np.maximum(np.abs(dj.lo), np.abs(dj.hi)) * half[:, j]
         nv = eb[k].val()
-        out[k] = I(np.maximum(acc.lo, nv.lo), np.minimum(acc.hi, nv.hi))
+        lower, upper = np.maximum(acc.lo, nv.lo), np.minimum(acc.hi, nv.hi)
+        if np.any(lower > upper):
+            raise ArithmeticError('Empty interval intersection for ' + k)
+        out[k] = I(lower, upper)
         grad[k] = np.nan_to_num(contrib, nan=1e300, posinf=1e300)
     return out, grad
 
@@ -73,6 +78,8 @@ def process(args):
             break
         with np.errstate(all='ignore'):
             z2n = zeta2_naive(blo, bhi)
+        if np.any(z2n.lo > z2n.hi):
+            raise ArithmeticError('Invalid naive zeta2 interval')
         far = z2n.lo > k2hi
         st['disc_outside'] += int(far.sum())
         blo, bhi = blo[~far], bhi[~far]
@@ -143,17 +150,17 @@ def process(args):
 
 
 def initial_boxes(n0=12):
+    simplex_lo, simplex_hi = simplex_boxes(n0)
     a = np.linspace(2 * 3.141592653589793 / 3, 3.141592653589793, n0 + 1)
     a[-1] = PI_HI  # make sure theta3 = pi is covered
     a[0] = np.nextafter(2 * 3.141592653589793 / 3, 0)
     b = np.linspace(-1.0, 1.0, n0 + 1)
-    l = np.linspace(0.0, 1.0, n0 + 1)
     L, H = [], []
     for i in range(n0):
         for j in range(n0):
-            for k in range(n0):
-                for m in range(n0 - k):
-                    L.append([a[i], b[j], l[k], l[m]]); H.append([a[i + 1], b[j + 1], l[k + 1], l[m + 1]])
+            for low, high in zip(simplex_lo, simplex_hi):
+                L.append([a[i], b[j], *low])
+                H.append([a[i + 1], b[j + 1], *high])
     return np.array(L), np.array(H)
 
 
@@ -173,5 +180,10 @@ if __name__ == '__main__':
     np.save(f'unresolved_{tag}.npy', unres)
     summary = dict(s=s, n0=n0, initial_boxes=int(len(L)), stats=st, worst_certified=worst,
                    unresolved=int(len(unres)), seconds=time.time() - t0)
+    summary.update(metadata(['certify.py', 'verify.py', 'interval.py', 'ad.py', 'domains.py'],
+                            s=s, n0=n0, workers=nw, maxit=maxit, min_width=1e-9))
+    summary['worst_certified'] = {k: v if np.isfinite(v) else None for k, v in worst.items()}
     json.dump(summary, open(f'cert_{tag}.json', 'w'), indent=1)
     print(json.dumps(summary, indent=1))
+    if len(unres):
+        raise SystemExit(1)

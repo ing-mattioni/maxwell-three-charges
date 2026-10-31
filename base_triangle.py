@@ -14,9 +14,12 @@ import json
 import time
 import numpy as np
 from interval import I, C
+from domains import simplex_boxes
+from provenance import metadata
 
 s = 1.0
 kappa = s / (s + 2)
+kappa_hi = float((I(s) / (I(s) + 2.0)).hi)
 P = [0.0 + 0j, 1.0 + 0j, 0.5 + 0.125j]
 
 
@@ -27,7 +30,7 @@ def check(blo, bhi):
     # analytic discard near vertices: |Z| >= 2 lambda_i - 1 > kappa
     near_vertex = np.zeros(len(blo), bool)
     for li in lam:
-        near_vertex |= (2.0 * li - 1.0).lo > kappa
+        near_vertex |= (2.0 * li - 1.0).lo > kappa_hi
     # x = sum lambda_i p_i
     x = C(l1 * P[0].real + l2 * P[1].real + l3 * P[2].real, l1 * P[0].imag + l2 * P[1].imag + l3 * P[2].imag)
     w = [C.c(complex(p)) - x for p in P]                 # p_i - x
@@ -44,12 +47,8 @@ def check(blo, bhi):
 
 
 def main(n0=64, maxit=40):
-    g = np.linspace(0.0, 1.0, n0 + 1)
-    L, H = [], []
-    for i in range(n0):
-        for j in range(n0 - i):
-            L.append([g[i], g[j]]); H.append([g[i + 1], g[j + 1]])
-    lo, hi = np.array(L), np.array(H)
+    lo, hi = simplex_boxes(n0)
+    initial = len(lo)
     t0 = time.time()
     total = 0
     for it in range(maxit):
@@ -69,8 +68,12 @@ def main(n0=64, maxit=40):
         if len(lo) and (hi - lo).max() < 1e-12:
             break
     res = dict(triangle=[str(p) for p in P], boxes=int(total), unresolved=int(len(lo)), seconds=time.time() - t0)
+    res['initial_boxes'] = initial
+    res.update(metadata(['base_triangle.py', 'interval.py', 'domains.py'], n0=n0, maxit=maxit))
     print(json.dumps(res))
     json.dump(res, open('cert_base_triangle.json', 'w'), indent=1)
+    if len(lo):
+        raise SystemExit(1)
 
 
 if __name__ == '__main__':

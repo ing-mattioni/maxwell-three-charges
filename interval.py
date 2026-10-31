@@ -2,8 +2,9 @@
 
 Every arithmetic result is widened by one ulp in each direction (np.nextafter), which encloses
 the exact result of the IEEE round-to-nearest operation.  sin/cos are evaluated at the
-endpoints and widened by an absolute 1e-13 (far larger than the libm error), with interior
-extrema handled explicitly.  Complex intervals are rectangles (pairs of real intervals).
+endpoints using interval Taylor polynomials with outward-rounded remainder bounds;
+interior extrema are included explicitly. No platform libm accuracy is assumed.
+Complex intervals are rectangles (pairs of real intervals).
 """
 import numpy as np
 
@@ -229,8 +230,15 @@ def _poly_sin_cos(y):
         cc = cc * y2 + ccI
     ss = ss * y
     m = np.maximum(np.abs(y.lo), np.abs(y.hi))
-    rs = _up(_up(m ** 23) / 2.5e22)    # 23! = 2.585e22 > 2.5e22
-    rc = _up(_up(m ** 22) / 1.1e21)    # 22! = 1.124e21 > 1.1e21
+    # Enclose the powers themselves; do not assume a libm error bound for np.power.
+    mi = I(m)
+    m2 = mi.sq()
+    m4 = m2.sq()
+    m8 = m4.sq()
+    m16 = m8.sq()
+    m22 = m16 * m4 * m2
+    rs = ((m22 * mi) / 2.5e22).hi  # denominator < 23!
+    rc = (m22 / 1.1e21).hi        # denominator < 22!
     return ss + I(-rs, rs), cc + I(-rc, rc)
 
 

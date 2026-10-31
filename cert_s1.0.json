@@ -3,19 +3,41 @@
  "n0": 12,
  "initial_boxes": 11232,
  "stats": {
-  "boxes": 9965940,
+  "boxes": 9965924,
   "disc_struct": 0,
-  "disc_outside": 1023542,
-  "ver_int": 837586,
+  "disc_outside": 1023498,
+  "ver_int": 837622,
   "ver_bdry": 3127458,
   "ver_bdry_nocusp": 2430074
  },
  "worst_certified": {
-  "jac": -0.00020852467301352148,
-  "Ih": 3.21571176180313e-07,
-  "turn": 0.49999870678519875,
-  "W": 0.3771898511980486
+  "jac": -0.00020852467301311903,
+  "Ih": 3.2157117599296287e-07,
+  "turn": 0.4999987067852449,
+  "W": 0.37718985119804876
  },
  "unresolved": 0,
- "seconds": 424.820547580719
+ "seconds": 474.4712071418762,
+ "schema_version": 2,
+ "parameters": {
+  "s": 1.0,
+  "n0": 12,
+  "workers": 16,
+  "maxit": 60,
+  "min_width": 1e-09
+ },
+ "coverage": "outward-rounded exact rational simplex cells",
+ "runtime": {
+  "python": "3.11.4 (remotes/origin/main-dirty:bb6b562da, Mar 12 2024, 22:40:56) [MSC v.1937 64 bit (AMD64)]",
+  "numpy": "2.4.6",
+  "platform": "Windows-10-10.0.26300"
+ },
+ "source_sha256": {
+  "ad.py": "03964d91f2020200b82f7f5f9304a4ab3021c555557535df1fae680c937f6031",
+  "certify.py": "c4da8dccb8a3736759c81a68364489a4bbdbfe4c56ee2fac06481786350cfd6c",
+  "domains.py": "7351f66697a31baf2add1e705d9e68dc4cfb694c66bbc50c107514fff3f57338",
+  "interval.py": "8c3e4fdf7051477fc621b2a8cdae487b3844b7bfbf4d0f35baf4fbc9d2d9d317",
+  "provenance.py": "8b20470f4d13a7dd52bc82765b1a5b54efe067908520e71e7595db0b4d428434",
+  "verify.py": "569581f5fadb972a92fbb49deeb063d19c466fdf98d24d80a6a319a830dbbd21"
+ }
 }

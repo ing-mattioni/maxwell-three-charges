@@ -7,19 +7,27 @@
 This is Maxwell's (n−1)² bound for n = 3, for positive charges. Gabrielov, Novikov,
 Novikov and Shapiro (arXiv:2607.28785, July 2026) brought the best known bound down from
 12 to **6** and noted that closing the gap "would be equivalent to Maxwell's conjectured
-bound for three charges". This repository closes the gap for the Coulomb potential.
+bound for three charges". This repository presents a proposed computer-assisted proof closing that gap for the Coulomb potential.
 
 **Status.** The argument combines rigorous mathematics ([`notes/theory.md`](notes/theory.md))
 with a rigorous interval-arithmetic certificate. The certificate checks four explicit
 strict inequalities on a compact 4-parameter domain:
-- `cert_s1.0.json`: 9.97·10⁶ boxes, **0 unresolved**;
-- `cert_s1.0_n10.json`: an independent rerun from a different subdivision, also **0 unresolved**;
-- `cert_base_triangle.json`: the two-dimensional check on one base triangle, **0 unresolved**.
+- `cert_s1.0.json`: 9,965,924 boxes, **0 unresolved**;
+- `cert_s1.0_n10.json`: 9,966,320 boxes from a different subdivision, **0 unresolved**;
+- `cert_base_triangle.json`: 2,356 boxes on the fixed base triangle, **0 unresolved**.
 
-It has **not** been peer-reviewed. Please read the caveats below.
+The two main runs use the same interval implementation. Logs, parameters, runtime
+versions and source hashes are in [`certificates/review-2026-10-30/`](certificates/review-2026-10-30/).
+A second base-triangle run (1,618 boxes) also passed. The n0=12 run was later repeated
+in a separate session (CPython 3.11.9) with identical box counts. These JSON files summarize
+verified executions; they are not leaf-by-leaf certificates for a separate checker.
 
-**Paper.** A full write-up is in [`paper/paper.pdf`](paper/paper.pdf) (source `paper/paper.html`,
-built with `paper/build.ps1`; figures from `paper/figures.py`).
+It has **not** been peer-reviewed. An AI-assisted code and manuscript review
+([`paper/REVIEW.md`](paper/REVIEW.md), in Italian) found and fixed three defects in the
+interval verification, none of which changed the outcome. Please read the caveats below.
+
+**Paper.** [`paper/paper.pdf`](paper/paper.pdf) (source `paper/paper.html`, built with
+`paper/build.ps1`; figures from `paper/figures.py`). See the [build instructions](paper/README.md).
 
 ## Background
 
@@ -32,12 +40,12 @@ built with `paper/build.ps1`; figures from `paper/figures.py`).
 
 ## The argument in brief
 
-1. All equilibria lie inside the triangle of charges, and their number is
+1. All equilibria lie inside the triangle of charges. For nondegenerate parameters their number is
    2 + 2·(number of local minima of V in the plane). So the claim is
    **at most one local minimum**.
 2. **Lami's theorem.** x is an equilibrium only for the charges q ∝ (λᵢ rᵢ^{s+2}), with λ
    the barycentric coordinates of x. The Hessian there is ∝ (s+2)T − I, with T = Σλᵢuᵢuᵢᵀ.
-   So x is a minimum iff |Z(x)| < κ = s/(s+2) (κ = 1/3 for Coulomb), where
+   So x is a nondegenerate planar minimum iff |Z(x)| < κ = s/(s+2) (κ = 1/3 for Coulomb), where
    **Z(x) = Σ λᵢ uᵢ²** in complex notation.
 3. **Gauss-map picture.** V_q = ⟨q, Φ⟩ is a height function on the surface S = Φ(triangle),
    with Φ = (r₁^{−s}, r₂^{−s}, r₃^{−s}). So x ↦ [q] is the Gauss map of S, and M = {|Z| < κ}
@@ -46,7 +54,9 @@ built with `paper/build.ps1`; figures from `paper/figures.py`).
 4. **Hedgehog lemma.** Suppose a closed front has no inflections, total tangent turning π,
    and exactly 3 ordinary cusps. Then it is simple, and its winding numbers are 0 or ±1.
    The proof uses a Sturm comparison for g + g″ = −ρ: at most 3 tangent lines pass through
-   any point.
+   any point. For points off the front, this bound follows from Martinez-Maure's Sturm-type
+   comparison theorem (2008, [DOI](https://doi.org/10.1215/ijm/1254403726)); the paper gives a
+   self-contained proof, including the double-zero refinement that makes the front simple.
 5. These hypotheses reduce to four strict inequalities in a local chart (θᵢ, λᵢ) of
    (triangle, point), where everything is in closed form:
    - (J) Z is orientation-reversing on the closure of M;
@@ -59,7 +69,8 @@ built with `paper/build.ps1`; figures from `paper/figures.py`).
    mean-value forms (interval forward-mode AD).
 
 Along the way:
-- Z is (numerically) a diffeomorphism from the triangle onto the unit disk;
+- Z is proved to be a diffeomorphism on the closed minimum region; extension to the
+  entire triangle is a numerical observation. The boundary degree uses blown-up vertices.
 - C\* (the dual of the caustic) is automatically one-sided;
 - the flat-triangle limit is universal.
 
@@ -86,8 +97,8 @@ Along the way:
   random positive configurations, covering very flat triangles and charge ratios over
   6 decades.
   - Counts found: 2 (63,975×) and 4 (20×); never 6.
-  - 5 extreme cases gave odd counts, which Poincaré–Hopf forbids. The exact winding method
-    shows that all five have exactly 2 equilibria: Newton had missed or duplicated points.
+  - 5 extreme cases gave odd counts, which Poincaré–Hopf forbids. Numerical evaluation of the winding criterion
+    is consistent with 2 equilibria in all five: Newton had missed or duplicated points.
 - **Mixed signs (not certified).** The same structure is observed: maxima are provably
   impossible, M_A is a disk, the caustic has no inflections and exactly 3 cusps, and the
   winding is ≤ 1. See notes §8.
@@ -111,25 +122,47 @@ q is the winding number of the caustic around q.*
 | file | purpose |
 |---|---|
 | `notes/theory.md` | reduction, lemmas, hedgehog lemma, certificate design, mixed signs |
+| `domains.py`, `provenance.py`, `reproduce.py` | exact simplex covers, source hashes, logged reproducibility runner |
 | `interval.py`, `ad.py` | outward-rounded interval arithmetic; interval forward-mode AD |
 | `verify.py` | interval evaluation of ζ, the Jacobian, Ǐ, the turning rate, the cusp test and (W) |
 | `certify.py` | parallel branch and bound; writes `cert_*.json` |
 | `base_triangle.py` | rigorous 2D check that fixes the vertex labels on one base triangle (pins the total turning) |
 | `scan_W_allvertices.py` | numerical scan showing why (W) is used only at the base triangle |
-| `paper/` | the paper (`paper.pdf`), its HTML source, figure script and build script |
+| `paper/` | the paper (`paper.pdf`), its HTML source, figure script, build scripts and the review report |
+| `certificates/` | logs, parameters and source hashes of the recorded certificate runs |
 | `closedform.py`, `localchart.py` | float implementations of the closed forms (two independent derivations) |
 | `core.py`, `fast.py` | direct numerics: critical points, Z, tracing ∂M |
-| `tests/test_enclosures.py` | containment tests of the enclosures |
+| `tests/test_enclosures.py`, `tests/test_rigorous_arithmetic.py` | containment, exact domain coverage and 80-digit arithmetic regressions |
 | `scan_*.py`, `stress.py`, `dual_curve.py`, `caustic_geometry.py`, `test_convexcap.py` | exploration |
 | `mixed_caustic.py`, `collinear_mixed.py`, `mixed_explore.py` | mixed-sign exploration |
 | `figs/` | figures (minimum regions and caustics) |
 
 ## Reproduce
 
+For certification alone, only NumPy is required. The additional arithmetic tests
+use mpmath. Exploratory scripts and figure generation also use SciPy/Matplotlib.
+
+```powershell
+python -m pip install -r requirements-review.txt
+python reproduce.py --workers 16
 ```
-pip install numpy scipy matplotlib
-python tests/test_enclosures.py
-python certify.py 1.0 16 60        # Coulomb, 16 workers  -> cert_s1.0.json   (~7 min)
-python certify.py 1.0 16 80 10     # independent subdivision -> cert_s1.0_n10.json
-python base_triangle.py            # base triangle            -> cert_base_triangle.json
+
+The runner executes both test suites, the n0=12 and n0=10 certificates, and the
+base-triangle checks at n0=64 and n0=48. It uses a fresh output directory, retains
+logs, checks source hashes and the binary-tree count, and rejects unresolved boxes.
+The main runs take about eight minutes each with 16 workers. The recorded runs used
+CPython 3.11, NumPy 2.4.6 and mpmath 1.3.0.
+
+Run individual certificates in separate output directories if preserving earlier
+results, since the individual scripts write fixed filenames:
+
+```powershell
+python certify.py 1.0 16 60
+python certify.py 1.0 16 80 10
+python base_triangle.py 64
 ```
+
+The review reran the complete certificate jobs and 270,000 enclosure samples.
+The historical 64,000-configuration Newton scan is reported exploration; this
+review checked a smaller 128-configuration batch, not a complete rerun of that scan.
+Neither random tests nor Newton counts are used to prove the universal bound.

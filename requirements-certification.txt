@@ -1,0 +1,2 @@
+# Versions used for the recorded binary64 certificates.
+numpy==2.4.6

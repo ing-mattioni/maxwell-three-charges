@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 unresolved_*.npy
 data/*.npy
+paper/*.layout.json
+paper/paper_build.pdf

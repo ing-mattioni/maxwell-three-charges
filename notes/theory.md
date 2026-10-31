@@ -1,5 +1,9 @@
 # Maxwell's problem for three point charges — the reduction
 
+These notes summarize [the paper](../paper/paper.html), which gives the complete
+proofs, including boundary blow-up, Sturm comparison and degenerate parameters.
+Updated with the reviewed certificates of 30 October 2026.
+
 Notation. Charges q₁,q₂,q₃ > 0 at the vertices p₁,p₂,p₃ of a non-degenerate triangle Δ ⊂ ℝ² ⊂ ℝ³.
 Potential V(x) = Σ qᵢ |x − pᵢ|^{−s}, with s = 1 the Coulomb case
 (s = 2α in the notation of Gabrielov–Novikov–Shapiro). For x in the plane:
@@ -42,13 +46,13 @@ Hence the critical point is
 It is never a maximum.
 
 So M := {x ∈ Δ° : |Z(x)| < κ} is a purely geometric "minimum region", and
-**#{minima of V_q} = #(F⁻¹([q]) ∩ M).**
+**#{nondegenerate planar minima of V_q} = #(F⁻¹([q]) ∩ M).**
 
 **Lemma 4 (Morse count).** For Morse V_q: #saddles = #minima + 2. Hence #equilibria = 2 + 2·#minima.
 (Use Poincaré–Hopf on S² = ℝ² ∪ {∞}: each charge and ∞ has index +1.)
 
-So Maxwell's bound of 4 for three positive charges ⇔ **at most one local minimum**, i.e.
-F|_M is injective.
+For Morse parameters, Maxwell's bound is equivalent to **at most one planar minimum**,
+i.e. F|_M is injective. Degenerate parameters require the separate argument below.
 
 ## 3. Gauss-map picture
 
@@ -95,19 +99,31 @@ tangent lines through q.
 It crosses the n′-axis only clockwise, once per zero of g. This gives
 wind = (1 − n)/2, where n = #zeros of g in [0, π).
 
-(ii) Sturm bound. Put W(θ) = g′ sin(θ−c) − g cos(θ−c). Then W′ = (g + g″) sin(θ − c).
-On (c, c+π), Rolle applied to g/sin(θ−c) gives #zeros(g) ≤ #sign changes(ρ) + 2.
-Choose c at a cusp: then ρ has only 2 sign changes in (c, c+π), so n ≤ 4. Since n is odd,
-n ≤ 3, and hence |wind| ≤ 1.
+(ii) Sturm bound. For q off the front, the three-tangent bound follows from the comparison
+theorem of Y. Martinez-Maure, *A Sturm-type comparison theorem by a geometric study of plane
+multihedgehogs*, Illinois J. Math. 52 (2008), 981–993,
+https://doi.org/10.1215/ijm/1254403726: #zeros(h) ≤ #zeros(h + h″) + 2 on [0, 2π) gives
+≤ 8 zeros of g per period, so ≤ 4 per half-period, and ≤ 3 by parity. The paper includes an
+elementary proof that also covers q on the front:
+choose a zero c of ρ and write Ψ = g′ sin(θ−c) − g cos(θ−c).
+Then Ψ′ = −ρ sin(θ−c), so Ψ has three alternating monotonicity intervals on
+[c,c+π], with equal endpoint values. It has at most two interior zeros, and
+at most one if g(c)=0. Rolle's theorem applied to g/sin(θ−c) gives at most
+three zeros of g per half-period, including the endpoint case.
 
-(iii) Simplicity. A double point P = x(θ₁) = x(θ₂) makes θ₁ and θ₂ double zeros of g_P.
-That is total multiplicity ≥ 4, and ≥ 5 by parity, contradicting the multiplicity-counting
-version of (ii). ∎
+(iii) Simplicity. Two distinct double zeros of g would force at least three
+zeros of Ψ, including when one double zero is c (use the continuous extension
+of g/sin at both endpoints). This is impossible. A double point of C gives
+two such double zeros, so C is simple. This avoids an unproved
+multiplicity-counting extension of the Sturm bound.
 
-With C simple, a non-Morse q (q ∈ C) has exactly one degenerate critical point: a fold or a
-cusp of F. Perturbing q to the side where it splits shows that the number of *isolated*
-equilibria is ≤ 4 for every q. Non-isolated equilibria would form a curve in ∂M mapped to a
-single point, which injectivity of F|∂M excludes.
+For q on C, boundary injectivity and degree theory imply that at most one
+point of the closed minimum region maps to q. Every critical point outside
+that region is a nondegenerate saddle. If there were at least five critical
+points, at least four saddles would persist under a generic small perturbation,
+contradicting the Morse bound of at most three saddles. This also handles
+degenerate parameters without assuming a fold/cusp classification of F.
+See the main theorem's proof in the paper for the degree and persistence details.
 
 ## 6. The local chart and the conditions to verify
 
@@ -137,9 +153,11 @@ where ť = t/σ₃, Q(a,b) = (a·k)(b·k) = ½Re(a b̄) + ½Re(a b k̄²), and k
 - **(W)** |d arg u₁/dω| < ½ wherever |ζ| = κ.
 
 **Lemma 7.** (J) ⇒ the closure of M is a closed disk, and Z maps it diffeomorphically onto
-{|ζ| ≤ κ}. Proof: Z extends to ∂Δ with degree −1 (each edge maps to a point, the angle at
-vertex pᵢ maps to an arc of length 2αᵢ), and every preimage of a point with |ζ| ≤ κ has
-local degree −1.
+{|ζ| ≤ κ}. Proof: blow up each vertex into its arc of approach directions. Z extends
+continuously to this compactified disk, not to the ordinary vertices of Δ.
+Each edge maps to a point on the unit circle; the vertex arcs contribute a
+total clockwise turn of 2π. Thus Z is proper with degree −1. Every preimage
+of a point with |ζ| ≤ κ has local degree −1, so there is exactly one.
 
 Then:
 - (T) ⇒ the relative angle arg t − arg k decreases strictly through every cusp. It changes
@@ -151,10 +169,10 @@ Then:
   triangle. (W) is certified for the vertex labelled 1 in the max-angle frame, and that label
   can change along ∂M of a fat triangle. So (W) is used at one base triangle
   Δ₀ = (0, 1, ½ + i/8), where `base_triangle.py` proves rigorously that θ₃ is the strictly
-  largest angle on all of M̄ (`cert_base_triangle.json`: 2,410 boxes, 0 unresolved). There
+  largest angle on all of M̄ (`cert_base_triangle.json`: 2,356 boxes, 0 unresolved). There
   u₁·k has exactly one zero along ∂M(Δ₀), so n(e₁) = 1, and since wind(C, e₁) = 0, Θ = π.
-  (The bound |d arg u_j/dω| < ½ cannot be certified for all three vertices at once: for p₃
-  it tends to ½ in the flat limit, see `scan_W_allvertices.py`.)
+  (There is no positive uniform gap below ½ for all three vertices on the closed
+  flat-limit domain: for p₃ the quantity tends to ½, see `scan_W_allvertices.py`.)
 
 All four hypotheses of the hedgehog lemma then hold for every triangle. This gives
 **at most 4 equilibria** for three positive Coulomb charges.
@@ -164,16 +182,21 @@ All four hypotheses of the hedgehog lemma then hold for every triangle. This giv
 `certify.py` covers the whole closed domain
   θ₃ ∈ [2π/3, π],  τ ∈ [−1, 1],  λ ∈ simplex,  with θ₁,₂ = (2π − θ₃)/2 ± τ(3θ₃ − 2π)/2.
 This is exactly the set of local data with θ₃ = max θᵢ. Every other configuration is
-equivalent to one of these by cyclic relabelling and, if needed, a reflection; all four
-conditions are invariant under both.
+equivalent to one of these by cyclic relabelling and, if needed, a reflection.
+The label-dependent condition (W) is used globally only at the fixed base triangle,
+then extended by constancy of total turning over the connected shape space.
 
-The domain is covered by boxes, processed by branch and bound. For each box we compute
+The simplex cells use exact rational endpoints enclosed outward in binary64
+(`domains.py`). This includes the thin diagonal regions that rounded `linspace`
+endpoints can omit. The resulting boxes are processed by branch and bound. For each box we compute
 rigorous enclosures of ζ², the Jacobian, Ǐ, the turning rate and the cusp indicator
 conj(t)²ζ. These are mean-value forms f(c) + ∇f(B)·(B − c), with ∇f(B) from interval
 forward-mode AD, intersected with the naive enclosure. Arithmetic is IEEE double with
 one-ulp outward rounding per operation. Endpoint values of sin and cos are enclosed by Taylor
 series, after range reduction by an interval enclosure of π/2, with an explicit Lagrange
-remainder; interior extrema are handled explicitly. No libm accuracy is assumed.
+remainder, whose powers are also evaluated by interval products; interior extrema
+are handled explicitly. Signed multiples of π preserve interval endpoint order.
+No libm accuracy is assumed.
 
 A box is closed only when one of the following holds, each a positively established
 strict inequality (so NaN can never certify):
@@ -182,9 +205,13 @@ strict inequality (so NaN can never certify):
 - (J), (I), (T) and (W) all hold, where (T) may be replaced by
   "no cusp is possible in the box": Im(conj(t)²ζ) ≠ 0 or Re(conj(t)²ζ) > 0.
 
-**Result for s = 1.** 9.97·10⁶ boxes, 0 unresolved, 402 s on 16 cores (`cert_s1.0.json`).
-An independent rerun from a different initial subdivision also left 0 unresolved boxes
-(`cert_s1.0_n10.json`).
+**Results for s = 1, 16 processes.** The n0=12 run processed 9,965,924 boxes
+in 474.47 s; n0=10 processed 9,966,320 in 496.81 s. Both left 0 unresolved boxes.
+Base-triangle runs processed 2,356 boxes (n0=64) and 1,618 (n0=48), also with 0
+unresolved. JSON files record parameters, source hashes and runtime versions.
+These are two subdivisions of the same implementation, not independent arithmetic
+proofs; the summaries are not certificates for a separate leaf-by-leaf checker.
+Run `python reproduce.py --workers 16` to retain logs and validate the outputs.
 
 Validation:
 - the closed forms were checked against an independent linear-solve implementation, to
@@ -194,13 +221,17 @@ Validation:
 
 ## 8. Mixed signs (partial)
 
-Let q = (+,+,−) (the other mixed case follows by global sign flip). Then:
+Let q₁,q₂ > 0 > q₃. A global sign flip preserves equilibria but exchanges
+minima and maxima, so statements about their type below use this sign convention. Then:
 - Equilibria lie in R_A = {λ₁,λ₂ > 0 > λ₃} (beyond edge p₁p₂) or in
   R_B = {λ₁,λ₂ < 0 < λ₃} (the vertical angle at p₃).
-- **Maxima are impossible.** In R_B, p₃ lies inside the triangle (x, p₁, p₂). For e ⊥ u₃,
-  eᵀTe = λ₁(u₁·e)² + λ₂(u₂·e)² ≤ 0, so λ_min(T) ≤ 0 < 1/(s+2).
-- Poincaré–Hopf gives #equilibria = 2 + 2·#minima if Σq ≠ 0, and 1 + 2·#minima if Σq = 0.
-  So Maxwell's bound ⇔ at most one minimum in M_A = R_A ∩ {|Z| < κ}.
+- **Maxima are impossible.** In R_A the planar Hessian has positive trace s²W.
+  In R_B, W<0 and λ₁,λ₂<0. For e perpendicular to u₃,
+  eᵀTe = λ₁(u₁·e)² + λ₂(u₂·e)² < 0, so I−(s+2)T has a positive direction.
+  Its trace is −s<0, so it also has a negative eigenvalue: these points are saddles.
+- For nondegenerate critical points, Poincaré–Hopf gives #equilibria = 2 + 2·#minima if Σq ≠ 0, and 1 + 2·#minima if Σq = 0.
+  Thus at most one nondegenerate minimum in M_A = R_A ∩ {|Z| < κ} would give
+  the generic bound. Degenerate parameters would still need separate treatment.
 - In the local chart the same closed forms hold, with rᵢ = c·σᵢ/λᵢ, c = −1, and
   Ǐ = ½σ₁σ₂ + c·{…}.
 - Numerically (`mixed_caustic.py`): M_A is a single star-shaped disk, and the caustic
