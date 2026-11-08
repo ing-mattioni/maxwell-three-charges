@@ -90,7 +90,7 @@
 <div class="subtitle">A computer-assisted proof of Maxwell&rsquo;s bound for three charges</div>
 <div class="author">Claudio Mattioni</div>
 <div class="affil">github.com/ing-mattioni</div>
-<div class="date">30 October 2026, revised 31 October 2026 &middot; preprint</div>
+<div class="date">30 October 2026, revised 8 November 2026 &middot; preprint</div>
 
 <div class="abstract"><span class="hd">Abstract</span>
 Maxwell conjectured in 1873 that the electrostatic field of $n$ point charges in $\R^3$ has at most $(n-1)^2$ isolated equilibrium points. The conjecture is now known to fail for $n=5$. For three positive charges the best bound in the literature is $6$, obtained in 2026 by Gabrielov, Novikov, Novikov and Shapiro, who improved the earlier bound $12$ of Gabrielov, Novikov and Shapiro. We prove that three positive Coulomb charges in $\R^3$ have at most four equilibria, which is Maxwell&rsquo;s bound for $n=3$ and is sharp.
@@ -233,7 +233,7 @@ contains $c(\omega)$ and $c'(\omega)$ is parallel to it. Thus $C$ is a front wit
 
 <!-- ===================================================================== -->
 <h2 class="sec" id="sec-hedgehog">A Sturm-type lemma for fronts</h2>
-<p>The support-function description of fronts is classical; see <cite data-k="llr,mm06"></cite>. The three-tangent bound of Lemma&nbsp;<a class="r" data-to="lem-sturm"></a>(a) is essentially known. Martinez-Maure&rsquo;s Sturm-type comparison theorem <cite data-k="mm08"></cite> states that a $2\pi$-periodic function $h$ has at most as many zeros in $[0,2\pi)$ as $h+h''$, plus two. For $q$ off the curve, apply it to $g_q$ below: $g_q+g_q''=-\rho$ has six zeros in $[0,2\pi)$, so $g_q$ has at most eight, hence at most four in $[0,\pi)$ by antiperiodicity, and at most three by the parity in Lemma&nbsp;<a class="r" data-to="lem-wind"></a>. We give a self-contained elementary proof. It also covers points $q$ on the curve and shows that $g_q$ cannot have two distinct double zeros (Lemma&nbsp;<a class="r" data-to="lem-sturm"></a>(b)). That refinement is what gives the simplicity of $C$.</p>
+<p>The support-function description of fronts is classical, as developed in <cite data-k="llr,mm06"></cite>. The three-tangent bound of Lemma&nbsp;<a class="r" data-to="lem-sturm"></a>(a) follows from Theorem&nbsp;2 of Martinez-Maure <cite data-k="mm08"></cite> (p.&nbsp;987). In the notation below, his theorem states that for a real $h\in C^2(\R)$ satisfying $h(\theta+\pi)=-h(\theta)$, the number of zeros of $g_q$ in $[0,2\pi)$ is at most the number of zeros of $\rho=h+h''$, for every $q\in\R^2$. Under the hypotheses of Lemma&nbsp;<a class="r" data-to="lem-sturm"></a>, $\rho$ has six zeros in $[0,2\pi)$, so $g_q$ has at most six there. Antiperiodicity then gives at most three zeros in $[0,\pi)$ for every $q$, including points on the curve. We give a self-contained elementary proof of this bound. The same argument also excludes two distinct double zeros of $g_q$ (Lemma&nbsp;<a class="r" data-to="lem-sturm"></a>(b)), which yields the simplicity of $C$.</p>
 
 <p>This section is pure plane geometry. Identify $\R^2$ with $\C$, let $n(\theta)=e^{i\theta}$, $n'(\theta)=ie^{i\theta}$, and fix $\Theta\in\pi(2\mathbb Z+1)$ with $\Theta\gt0$. Let $h\in C^\infty(\R)$ satisfy $h(\theta+\Theta)=-h(\theta)$. The associated curve and its <i>radius-of-curvature function</i> are</p>
 <div class="eq" id="eq-hedgehog">$$x(\theta)=h(\theta)\,n(\theta)+h'(\theta)\,n'(\theta),\qquad \rho=h+h''.$$</div>

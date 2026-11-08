@@ -99,12 +99,13 @@ tangent lines through q.
 It crosses the n′-axis only clockwise, once per zero of g. This gives
 wind = (1 − n)/2, where n = #zeros of g in [0, π).
 
-(ii) Sturm bound. For q off the front, the three-tangent bound follows from the comparison
-theorem of Y. Martinez-Maure, *A Sturm-type comparison theorem by a geometric study of plane
+(ii) Sturm bound. The three-tangent bound follows from Theorem 2 (p. 987) of
+Y. Martinez-Maure, *A Sturm-type comparison theorem by a geometric study of plane
 multihedgehogs*, Illinois J. Math. 52 (2008), 981–993,
-https://doi.org/10.1215/ijm/1254403726: #zeros(h) ≤ #zeros(h + h″) + 2 on [0, 2π) gives
-≤ 8 zeros of g per period, so ≤ 4 per half-period, and ≤ 3 by parity. The paper includes an
-elementary proof that also covers q on the front:
+https://doi.org/10.1215/ijm/1254403726: for h ∈ C²(ℝ) with h(θ + π) = −h(θ),
+#zeros(g_q) ≤ #zeros(ρ) on [0, 2π) for every q, where ρ = h + h″. Here ρ has six zeros
+in [0, 2π), so g_q has at most six, and by antiperiodicity at most three in [0, π),
+including for q on the front. The paper includes a self-contained elementary proof:
 choose a zero c of ρ and write Ψ = g′ sin(θ−c) − g cos(θ−c).
 Then Ψ′ = −ρ sin(θ−c), so Ψ has three alternating monotonicity intervals on
 [c,c+π], with equal endpoint values. It has at most two interior zeros, and

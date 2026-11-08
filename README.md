@@ -54,10 +54,10 @@ interval verification, none of which changed the outcome. Please read the caveat
    **caustic** C = F(∂M) around q.
 4. **Hedgehog lemma.** Suppose a closed front has no inflections, total tangent turning π,
    and exactly 3 ordinary cusps. Then it is simple, and its winding numbers are 0 or ±1.
-   The proof uses a Sturm comparison for g + g″ = −ρ: at most 3 tangent lines pass through
-   any point. For points off the front, this bound follows from Martinez-Maure's Sturm-type
-   comparison theorem (2008, [DOI](https://doi.org/10.1215/ijm/1254403726)); the paper gives a
-   self-contained proof, including the double-zero refinement that makes the front simple.
+   A Sturm comparison for g + g″ = −ρ bounds the number of tangent lines through any point
+   by 3. This follows from Martinez-Maure's Theorem 2 (2008, p. 987), including for points
+   on the front. The paper gives a self-contained proof and the double-zero refinement
+   that makes the front simple. [Source](https://doi.org/10.1215/ijm/1254403726)
 5. These hypotheses reduce to four strict inequalities in a local chart (θᵢ, λᵢ) of
    (triangle, point), where everything is in closed form:
    - (J) Z is orientation-reversing on the closure of M;
