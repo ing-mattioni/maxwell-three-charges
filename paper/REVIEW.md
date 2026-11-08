@@ -2,7 +2,8 @@
 
 Revisione interna del 30-31 ottobre 2026, assistita da OpenAI Codex.
 Non costituisce una peer review esterna o una formalizzazione della dimostrazione.
-Base Git esaminata: `9b1bad1`; le modifiche descritte sono locali.
+Base Git esaminata: `d75df2b` (hash dopo la riscrittura della cronologia dell'8 novembre 2026,
+che ha cambiato solo l'email dell'autore); le modifiche descritte sono locali.
 
 ## Valutazione
 
