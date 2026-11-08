@@ -167,3 +167,17 @@ The review reran the complete certificate jobs and 270,000 enclosure samples.
 The historical 64,000-configuration Newton scan is reported exploration; this
 review checked a smaller 128-configuration batch, not a complete rerun of that scan.
 Neither random tests nor Newton counts are used to prove the universal bound.
+
+## License
+
+Copyright © 2026 Claudio Mattioni. Except where otherwise noted:
+
+- **Software** (MIT, [`LICENSE`](LICENSE)): all Python files, including `tests/` and
+  `paper/figures.py`, and the build scripts `paper/build.ps1` and `paper/build.cjs`.
+- **Everything else original** (CC BY 4.0, [`LICENSE-CC-BY-4.0.txt`](LICENSE-CC-BY-4.0.txt),
+  <https://creativecommons.org/licenses/by/4.0/>): the manuscript (`paper/paper.html`,
+  `paper/paper.pdf`), the figures (`paper/*.svg`, `figs/`), the notes and documentation
+  (`notes/`, the Markdown files), and the computational records (`cert_*.json`,
+  `certificates/`, `data/`).
+- **Third-party material** keeps its own license: KaTeX in `paper/vendor/katex/` (MIT,
+  see `paper/vendor/katex/LICENSE`).
