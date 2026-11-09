@@ -1,0 +1,7 @@
+sin/cos at 20021 points: violations 0  largest enclosure width 6.994405055138486e-15
+sin/cos on 5000 intervals: violations 0
+out-of-range argument refused, as intended
+boxes 5000  finite enclosures per quantity: {'z2': 5000, 'jac': 5000, 'Ich': 4821, 'nu': 4820, 'czre': 4821, 'czim': 4821, 'W': 4821}
+point checks per quantity: {'z2': 20000, 'jac': 20000, 'Ich': 19284, 'nu': 19280, 'czre': 19284, 'czim': 19284, 'W': 19284}
+violations per quantity  : {'z2': 0, 'jac': 0, 'Ich': 0, 'nu': 0, 'czre': 0, 'czim': 0, 'W': 0}
+all validation checks passed

@@ -10,7 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np
 import mpmath as mp
 from domains import simplex_boxes
-from interval import I, PI_LO, PI_HI, sin_i, cos_i, sincos_point
+from interval import I, PI_LO, PI_HI, TRIG_ARG_LO, TRIG_ARG_HI, sin_i, cos_i, sincos_point
 from certify import initial_boxes, zeta2_naive
 
 
@@ -82,9 +82,60 @@ def test_negative_range_reduction():
     assert mp.mpf(float(z2.lo[0])) <= abs(z)**2 <= mp.mpf(float(z2.hi[0]))
 
 
+def test_trig_domain_guard():
+    # sin_i/cos_i add only the extrema at 0, pi/2, pi, 3pi/2 and 2pi. Outside
+    # (-pi/2, 5pi/2) the hull of the endpoint values is not an enclosure, so
+    # such arguments must be refused instead of being evaluated.
+    for low, high in ((-2., -1.), (7., 8.), (6., 9.5), (PI_LO, 13.)):
+        for extension in (sin_i, cos_i):
+            try:
+                extension(I(np.array([low]), np.array([high])))
+            except ArithmeticError:
+                continue
+            raise AssertionError('out-of-range trigonometric argument accepted')
+    # The whole admissible range contains all handled extrema of both functions.
+    whole = I(np.array([TRIG_ARG_LO]), np.array([TRIG_ARG_HI]))
+    for extension in (sin_i, cos_i):
+        bounds = extension(whole)
+        assert bounds.lo[0] == -1 and bounds.hi[0] == 1
+    assert mp.mpf(TRIG_ARG_LO) > -mp.pi/2 and mp.mpf(TRIG_ARG_HI) < 5*mp.pi/2
+
+
+def test_wide_angle_boxes():
+    # Regression: this box touches theta3 = pi, tau = 1 and is wide in the angles.
+    # 2*theta2 then starts just below 0, is reduced with k = -1, and the reduced
+    # interval [2*pi, 2*pi + 6.8] spans more than a period. The prefilter must
+    # not treat sin and cos as monotone there.
+    mp.mp.dps = 50
+    low = np.array([[2.6179938779914944, -1., .25, 0.]])
+    high = np.array([[PI_HI, 1., .5, .25]])
+    z2 = zeta2_naive(low, high)
+    assert z2.lo[0] <= z2.hi[0]
+
+    def exact(point):
+        theta3, tau, l1, l2 = [mp.mpf(float(x)) for x in point]
+        theta2 = (2*mp.pi-theta3)/2-tau*(3*theta3-2*mp.pi)/2
+        return abs(l1+l2*mp.exp(2j*theta3)+(1-l1-l2)*mp.exp(-2j*theta2))**2
+
+    # A point of the closed minimum region inside the box (theta2 is close to pi/2).
+    witness = exact((3.1, 0.013786943456877778, .25, .25))
+    assert witness < mp.mpf(1)/9
+    assert mp.mpf(float(z2.lo[0])) <= witness <= mp.mpf(float(z2.hi[0]))
+    rng = np.random.default_rng(20261109)
+    for point in low + (high-low)*rng.uniform(size=(200, 4)):
+        assert mp.mpf(float(z2.lo[0])) <= exact(point) <= mp.mpf(float(z2.hi[0]))
+    # The same holds on the single box of the coarsest admissible grid.
+    low, high = initial_boxes(1)
+    z2 = zeta2_naive(low, high)
+    for point in low[0] + (high[0]-low[0])*rng.uniform(size=(200, 4)):
+        assert mp.mpf(float(z2.lo[0])) <= exact(point) <= mp.mpf(float(z2.hi[0]))
+
+
 if __name__ == '__main__':
     test_simplex_cover()
     test_angular_cover()
     test_trigonometry()
     test_negative_range_reduction()
+    test_trig_domain_guard()
+    test_wide_angle_boxes()
     print('all exact-coverage and high-precision arithmetic tests passed')

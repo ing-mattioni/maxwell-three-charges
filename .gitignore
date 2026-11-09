@@ -1,6 +1,8 @@
 __pycache__/
 *.pyc
 unresolved_*.npy
+/independent_domain.json
+/independent_base.json
 data/*.npy
 paper/*.layout.json
 paper/paper_build.pdf

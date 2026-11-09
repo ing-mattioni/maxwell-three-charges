@@ -1,0 +1,42 @@
+{
+ "schema_version": 1,
+ "description": "independent certification of (J), (I), (T), (W) on the chart domain, s = 1",
+ "s": 1.0,
+ "initial_boxes": 4096,
+ "boxes": 84329540,
+ "unresolved": 0,
+ "closed": {
+  "outside_domain": 1344,
+  "outside_minimum_region": 8285039,
+  "interior": 5686689,
+  "boundary": 28193746
+ },
+ "max_depth": 24,
+ "binary_tree_identity": true,
+ "theta3_range": [
+  2.0943951023931944,
+  3.1415926535897936
+ ],
+ "seconds": 811.6812579631805,
+ "parameters": {
+  "workers": 16,
+  "grid": 8,
+  "split_weights": [
+   1.0,
+   0.8,
+   1.6,
+   1.6
+  ],
+  "min_width": 1e-13,
+  "max_depth": 160
+ },
+ "runtime": {
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "numpy": "2.4.6",
+  "platform": "Windows-10-10.0.26300-SP0"
+ },
+ "source_sha256": {
+  "independent/certify_domain.py": "70e4e3ef5ffcdb52bd262dbeed35414ce942bcd7829be02126fbbfebdd3ed5fb",
+  "independent/evaluator.py": "cc7b8d7ee110ca0ea3813a8afbcadab5d10b3de9b5d9107eeab4331f4e289bc5"
+ }
+}

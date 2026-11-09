@@ -1,16 +1,19 @@
-"""Computer-assisted verification of the three boundary conditions for s = 1 (Coulomb).
+"""Interval enclosures of the quantities behind conditions (J), (I), (T), (W).
 
-Domain (WLOG by cyclic relabelling, theta3 is the largest angle):
-    theta1, theta2 in [0, pi],  theta3 = 2pi - theta1 - theta2 in [max(theta1, theta2), pi],
+Chart (WLOG by cyclic relabelling, theta3 is the largest angle):
+    y1 = theta3 in [2pi/3, pi],  y2 = tau in [-1, 1]  (see thetas_from_y),
     lambda1, lambda2 >= 0, lambda3 = 1 - lambda1 - lambda2 >= 0.
-Conditions to certify:
-  (J)  jac  < 0          on  { |zeta| <= kappa }         (Z is an orientation-reversing local diffeo on M-bar)
-  (I)  Ih   > 0          on  { |zeta|  = kappa }         (caustic has no inflections)
-  (T)  turn < 1/2        on  { |zeta|  = kappa }         (exactly three simple cusps)
-where zeta = sum lambda_i v_i^2 and kappa = s/(s+2).
+enclose_y returns enclosures of the rescaled quantities of Section 6 of the paper:
+    zeta2 = |zeta|^2,  zeta = sum lambda_i v_i^2
+    jac   = sigma3^2 J                         (J): jac < 0 on { |zeta| <= kappa }
+    Ih    = inflection function, eq. (6.9)     (I): Ih > 0 on { |zeta| = kappa }
+    turn  = nu = d arg t / d omega             (T): turn < 1/2 at the cusps
+    czre, czim = real and imaginary parts of conj(t)^2 zeta / sigma3^2
+                 (a cusp needs czim = 0 and czre < 0)
+    Wq    = rho_1 Im t                         (W): |Wq| < 1/2 on { |zeta| = kappa }
+with kappa = s/(s+2).  This module only evaluates; the branch and bound, the mean-value
+forms and the decision to close a box are in certify.py.
 """
-import sys
-import time
 import numpy as np
 from interval import I, C, sin_i, cos_i, PI_LO, PI_HI
 
@@ -104,90 +107,3 @@ def enclose(th1, th2, l1, l2, s, need_bdry=True, th3=None):
     Wq = s3 * t.im * rho[0]
     out.update(Ih=Ih, turn=turn, czre=cz.re, czim=cz.im, Wq=Wq)
     return out
-
-
-KEYS = ('zeta2', 'jac', 'Ih', 'turn', 'czre', 'czim')
-
-
-def enclose_mvf(blo, bhi, s):
-    """mean-value-form enclosures (intersected with naive ones) of all quantities on boxes"""
-    from ad import DI, mvf
-    c = 0.5 * (blo + bhi)
-    ec = enclose(*(I(c[:, j], c[:, j]) for j in range(4)), s)
-    eb = enclose(*(DI.var(I(blo[:, j], bhi[:, j]), j) for j in range(4)), s)
-    return {k: mvf(eb[k], ec[k], blo, bhi) for k in KEYS}
-
-
-def run(s=1.0, maxit=60, batch=200000, verbose=True, tag=''):
-    kappa = s / (s + 2)
-    k2lo, k2hi = kappa * kappa * (1 - 1e-15), kappa * kappa * (1 + 1e-15)
-    # initial boxes: theta in [1.0, pi] (smaller theta are excluded analytically below), lambda in [0,1]^2
-    lo = np.array([[1.0, 1.0, 0.0, 0.0]])
-    hi = np.array([[PI_HI, PI_HI, 1.0, 1.0]])
-    # subdivide initially
-    n0 = 16
-    g = np.linspace(0, 1, n0 + 1)
-    L, H = [], []
-    for a in range(n0):
-        for b in range(n0):
-            for c in range(n0):
-                for d in range(n0):
-                    L.append([1.0 + (PI_HI - 1.0) * g[a], 1.0 + (PI_HI - 1.0) * g[b], g[c], g[d]])
-                    H.append([1.0 + (PI_HI - 1.0) * g[a + 1], 1.0 + (PI_HI - 1.0) * g[b + 1], g[c + 1], g[d + 1]])
-    lo, hi = np.array(L), np.array(H)
-    stats = dict(verified_bdry=0, verified_int=0, discarded=0, boxes=0)
-    vol_ver = 0.0
-    it = 0
-    failed = []
-    t0 = time.time()
-    while len(lo) and it < maxit:
-        it += 1
-        newlo, newhi = [], []
-        for k in range(0, len(lo), batch):
-            blo, bhi = lo[k:k + batch], hi[k:k + batch]
-            stats['boxes'] += len(blo)
-            th1, th2, l1, l2 = (I(blo[:, j], bhi[:, j]) for j in range(4))
-            th3 = TWO_PI - th1 - th2
-            l3 = 1.0 - l1 - l2
-            # structural discards
-            disc = (th3.hi < th1.lo) | (th3.hi < th2.lo) | (th3.lo > PI_HI) | (l3.hi < 0)
-            keep = ~disc
-            stats['discarded'] += int(disc.sum())
-            blo, bhi = blo[keep], bhi[keep]
-            if len(blo) == 0:
-                continue
-            th1, th2, l1, l2 = (I(blo[:, j], bhi[:, j]) for j in range(4))
-            e = enclose_mvf(blo, bhi, s)
-            z2 = e['zeta2']
-            outside = z2.lo > k2hi            # |zeta| > kappa: not in M-bar
-            inside = z2.hi < k2lo             # strictly inside M: only (J) needed
-            ok_int = inside & (e['jac'].hi < 0)
-            ok_bd = (~outside) & (~inside) & (e['jac'].hi < 0) & (e['Ih'].lo > 0) & ((e['turn'].hi < 0.5) | ~((e['czim'].lo <= 0) & (e['czim'].hi >= 0) & (e['czre'].lo <= 0)))
-            done = outside | ok_int | ok_bd
-            stats['discarded'] += int(outside.sum())
-            stats['verified_int'] += int(ok_int.sum())
-            stats['verified_bdry'] += int(ok_bd.sum())
-            blo, bhi = blo[~done], bhi[~done]
-            if len(blo) == 0:
-                continue
-            # bisect along the dimension with largest width (scaled)
-            w = (bhi - blo) * np.array([1.0, 1.0, 2.0, 2.0])
-            dim = np.argmax(w, axis=1)
-            mid = 0.5 * (blo[np.arange(len(blo)), dim] + bhi[np.arange(len(blo)), dim])
-            b1hi = bhi.copy(); b1hi[np.arange(len(blo)), dim] = mid
-            b2lo = blo.copy(); b2lo[np.arange(len(blo)), dim] = mid
-            newlo += [blo, b2lo]
-            newhi += [b1hi, bhi]
-        lo = np.concatenate(newlo) if newlo else np.zeros((0, 4))
-        hi = np.concatenate(newhi) if newhi else np.zeros((0, 4))
-        if verbose:
-            print(f'{tag} it={it:3d} pending={len(lo):9d} stats={stats} min_width={(hi-lo).min(axis=0) if len(lo) else None} t={time.time()-t0:.0f}s', flush=True)
-    return lo, hi, stats
-
-
-if __name__ == '__main__':
-    s = float(sys.argv[1]) if len(sys.argv) > 1 else 1.0
-    maxit = int(sys.argv[2]) if len(sys.argv) > 2 else 40
-    lo, hi, st = run(s, maxit)
-    np.save('pending_lo.npy', lo); np.save('pending_hi.npy', hi)
-    print('FINAL', st, 'pending', len(lo))

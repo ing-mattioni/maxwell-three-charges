@@ -17,15 +17,27 @@ strict inequalities on a compact 4-parameter domain:
 - `cert_base_triangle.json`: 2,356 boxes on the fixed base triangle, **0 unresolved**.
 
 The two main runs use the same interval implementation. Logs, parameters, runtime
-versions and source hashes are in [`certificates/review-2026-10-30/`](certificates/review-2026-10-30/).
-A second base-triangle run (1,618 boxes) also passed. The n0=12 run was later repeated
-in a separate session (CPython 3.11.9) with identical box counts
-([`certificates/rerun-2026-10-31/`](certificates/rerun-2026-10-31/)). These JSON files summarize
-verified executions; they are not leaf-by-leaf certificates for a separate checker.
+versions and source hashes are in [`certificates/review-2026-11-10/`](certificates/review-2026-11-10/).
+A second base-triangle run (1,618 boxes) also passed. The runs recorded with the earlier
+sources have the same box counts; they are kept in `certificates/review-2026-10-30/` and
+`certificates/rerun-2026-10-31/` (see [`certificates/README.md`](certificates/README.md)).
+These JSON files summarize verified executions; they are not leaf-by-leaf certificates
+for a separate checker.
 
-It has **not** been peer-reviewed. An AI-assisted code and manuscript review
-([`paper/REVIEW.md`](paper/REVIEW.md), in Italian) found and fixed three defects in the
-interval verification, none of which changed the outcome. Please read the caveats below.
+A second implementation, written from the paper alone and sharing no code with the first
+([`independent/`](independent/)), certified the same inequalities on the whole domain:
+84,329,540 boxes, **0 unresolved**, and 1,279 boxes for the base triangle.
+
+It has **not** been peer-reviewed. Two AI-assisted reviews are documented, both in Italian:
+- [`paper/REVIEW.md`](paper/REVIEW.md) (30–31 October 2026, GPT-6-Astra in OpenAI Codex)
+  found and fixed three defects in the interval verification;
+- [`paper/REVIEW-2026-11-09.md`](paper/REVIEW-2026-11-09.md) (9–10 November 2026, Claude
+  Fable 5.2) checked the mathematics and the closed forms, wrote the second implementation,
+  and found a latent defect in the range handling of sin and cos and an unused non-rigorous
+  code path. Both are fixed; its other remarks are still open.
+
+None of this changed the outcome, and neither review replaces an independent human expert.
+Please read the caveats below.
 
 **Paper.** [`paper/paper.pdf`](paper/paper.pdf) (source `paper/paper.html`, built with
 `paper/build.ps1`; figures from `paper/figures.py`). See the [build instructions](paper/README.md).
@@ -80,8 +92,10 @@ Along the way:
 - **Floating-point rigor.** The interval arithmetic uses IEEE double with one-ulp outward
   rounding per operation. sin and cos are enclosed rigorously by Taylor series with explicit
   remainder bounds, so the certificate relies only on correctly rounded +, −, ×, ÷ and √.
-  It does not depend on the accuracy of the platform libm. A port to MPFR or Arb would
-  still be a welcome independent check.
+  It does not depend on the accuracy of the platform libm. Arguments outside the range
+  where the sin/cos extensions are valid are rejected. The second implementation in
+  `independent/` uses the same binary64 arithmetic, so a port to MPFR or Arb would still
+  be a welcome independent check.
 - **Closed forms.** They were derived by hand and validated in three ways:
   - against an independent implementation (agreement to 10⁻¹⁴);
   - against finite differences along traced boundaries of concrete triangles;
@@ -129,7 +143,8 @@ q is the winding number of the caustic around q.*
 | `certify.py` | parallel branch and bound; writes `cert_*.json` |
 | `base_triangle.py` | rigorous 2D check that fixes the vertex labels on one base triangle (pins the total turning) |
 | `scan_W_allvertices.py` | numerical scan showing why (W) is used only at the base triangle |
-| `paper/` | the paper (`paper.pdf`), its HTML source, figure script, build scripts and the review report |
+| `independent/` | second implementation, sharing no code with the files above: own interval arithmetic without AD (`evaluator.py`), certification of the domain and of the base triangle (`certify_domain.py`, `certify_base.py`), validation against 40-digit values and against first principles |
+| `paper/` | the paper (`paper.pdf`), its HTML source, figure script, build scripts and the two review reports |
 | `certificates/` | logs, parameters and source hashes of the recorded certificate runs |
 | `closedform.py`, `localchart.py` | float implementations of the closed forms (two independent derivations) |
 | `core.py`, `fast.py` | direct numerics: critical points, Z, tracing ∂M |
@@ -163,9 +178,18 @@ python certify.py 1.0 16 80 10
 python base_triangle.py 64
 ```
 
-The review reran the complete certificate jobs and 270,000 enclosure samples.
-The historical 64,000-configuration Newton scan is reported exploration; this
-review checked a smaller 128-configuration batch, not a complete rerun of that scan.
+The second implementation is run separately. It needs only NumPy and writes
+`independent_domain.json` and `independent_base.json` in the current directory:
+
+```powershell
+python independent/certify_domain.py 16
+python independent/certify_base.py
+```
+
+Both reviews reran the complete certificate jobs and 270,000 enclosure samples.
+The historical 64,000-configuration Newton scan is reported exploration; the October
+review checked a smaller 128-configuration batch and the November review 224
+configurations of its own, not a complete rerun of that scan.
 Neither random tests nor Newton counts are used to prove the universal bound.
 
 ## License

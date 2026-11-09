@@ -14,6 +14,19 @@ _up = lambda x: np.nextafter(x, np.inf)
 PI_LO = 3.141592653589793      # float(pi) < pi
 PI_HI = np.nextafter(PI_LO, 4)  # > pi
 TRIG_PAD = 0.0  # endpoint values are now rigorous (sincos_point); no libm assumption
+# sin_i and cos_i add the extrema at 0, pi/2, pi, 3pi/2 and 2pi only.  Both are therefore
+# enclosures for arguments inside (-pi/2, 5pi/2) and not beyond; arguments outside
+# [TRIG_ARG_LO, TRIG_ARG_HI] are refused.
+TRIG_ARG_LO = -1.5
+TRIG_ARG_HI = 7.8
+
+
+def _require_trig_range(x):
+    """Raise unless the interval argument of sin_i/cos_i lies in [TRIG_ARG_LO, TRIG_ARG_HI].
+    NaN endpoints pass: they give NaN enclosures, which can never close a box."""
+    if np.any(x.lo < TRIG_ARG_LO) or np.any(x.hi > TRIG_ARG_HI):
+        raise ArithmeticError('sin_i/cos_i: interval argument outside [%g, %g]'
+                              % (TRIG_ARG_LO, TRIG_ARG_HI))
 
 
 class I:
@@ -105,9 +118,10 @@ class I:
 
 
 def cos_i(x):
-    """cos on intervals contained in [-0.1, 2*pi+0.1]"""
+    """cos on intervals contained in [TRIG_ARG_LO, TRIG_ARG_HI] (checked)"""
     if type(x).__name__ == 'DI':
         return x.cos()
+    _require_trig_range(x)
     a, b = x.lo, x.hi
     _, cA = sincos_point(a)
     _, cB = sincos_point(b)
@@ -124,9 +138,10 @@ def cos_i(x):
 
 
 def sin_i(x):
-    """sin on intervals contained in [-0.1, 2*pi+0.1]"""
+    """sin on intervals contained in [TRIG_ARG_LO, TRIG_ARG_HI] (checked)"""
     if type(x).__name__ == 'DI':
         return x.sin()
+    _require_trig_range(x)
     a, b = x.lo, x.hi
     sA, _ = sincos_point(a)
     sB, _ = sincos_point(b)

@@ -3,6 +3,7 @@
 DI.lo / DI.hi have shape (5, N): row 0 = value enclosure, rows 1..4 = enclosures of the
 partial derivatives with respect to the 4 box coordinates.  All operations reuse the
 outward-rounded interval primitives of interval.py, so the enclosures are rigorous.
+The mean-value form built from these derivatives is certify.enclose_mvf.
 """
 import numpy as np
 import interval as iv
@@ -125,15 +126,3 @@ class DI:
     def cos(self):
         a0 = self.val()
         return self._chain(iv.cos_i(a0), -iv.sin_i(a0))
-
-
-def mvf(f_box, f_center, box_lo, box_hi):
-    """mean value form enclosure intersected with the naive one.
-    f_box: DI evaluated on the box; f_center: I evaluated at the centre point."""
-    c = 0.5 * (box_lo + box_hi)
-    acc = f_center
-    for k in range(ND):
-        dk = f_box.d(k)
-        acc = acc + dk * I(box_lo[:, k] - c[:, k], box_hi[:, k] - c[:, k])
-    nv = f_box.val()
-    return I(np.maximum(acc.lo, nv.lo), np.minimum(acc.hi, nv.hi))

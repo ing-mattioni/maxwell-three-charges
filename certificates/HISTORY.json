@@ -1,0 +1,12 @@
+{
+  "description": "Certificate directories recorded with earlier sources. The source hashes in their JSON files refer to the files of the given commit, not to the current tree.",
+  "historical": {
+    "review-2026-10-30": {
+      "source_commit": "1d7c1f83455d7a0542e605a4d7e89efc2edc2778"
+    },
+    "rerun-2026-10-31": {
+      "source_commit": "1d7c1f83455d7a0542e605a4d7e89efc2edc2778"
+    }
+  },
+  "current": "review-2026-11-10"
+}

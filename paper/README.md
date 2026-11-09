@@ -37,5 +37,8 @@ mathematics. After substantive edits, render the pages with Poppler and look at 
 pdftoppm -scale-to 1500 -png paper/paper.pdf path/to/existing-directory/page
 ```
 
-The certificate runs are recorded in `../certificates/review-2026-10-30/`.
-`REVIEW.md` is the report of the AI-assisted review of 30–31 October 2026 (in Italian).
+The certificate runs are recorded in `../certificates/review-2026-11-10/`; the runs made
+with the earlier sources are kept beside it (see `../certificates/README.md`).
+`REVIEW.md` is the report of the AI-assisted review of 30–31 October 2026, and
+`REVIEW-2026-11-09.md` that of the independent verification of 9–10 November 2026 (both in
+Italian).

@@ -1,0 +1,298 @@
+{"evals": 5298, "o": 6, "i": 942, "ii": 61, "iii": 1648, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 0.9045572280883789}
+{"evals": 4806, "o": 9, "i": 1034, "ii": 38, "iii": 1330, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 0.9182727336883545}
+{"evals": 98660, "o": 7, "i": 14101, "ii": 4280, "iii": 30950, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 8.66692566871643}
+{"evals": 95370, "o": 4, "i": 14255, "ii": 1747, "iii": 31687, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 9.346730947494507}
+{"evals": 125818, "o": 2, "i": 10123, "ii": 12007, "iii": 40785, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 12.392596006393433}
+{"evals": 151680, "o": 5, "i": 14487, "ii": 9398, "iii": 51958, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 20.83797025680542}
+{"evals": 171614, "o": 8, "i": 15397, "ii": 14907, "iii": 55503, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 23.698209047317505}
+{"evals": 201878, "o": 7, "i": 22497, "ii": 12600, "iii": 65843, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 26.509790420532227}
+{"evals": 250346, "o": 6, "i": 27497, "ii": 15853, "iii": 81825, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 35.70543837547302}
+{"evals": 272196, "o": 4, "i": 37082, "ii": 18341, "iii": 80679, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 35.71512746810913}
+{"evals": 286650, "o": 5, "i": 25005, "ii": 23426, "iii": 94897, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 36.183194160461426}
+{"evals": 2758, "o": 5, "i": 754, "ii": 10, "iii": 618, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 1.3663849830627441}
+{"evals": 136272, "o": 3, "i": 17753, "ii": 7228, "iii": 43160, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 22.88720679283142}
+{"evals": 154580, "o": 7, "i": 18089, "ii": 7695, "iii": 51507, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 19.95293426513672}
+{"evals": 84492, "o": 10, "i": 1082, "ii": 16386, "iii": 24776, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 9.130081176757812}
+{"evals": 317160, "o": 6, "i": 21879, "ii": 26225, "iii": 110478, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 48.285051584243774}
+{"evals": 64, "o": 5, "i": 28, "ii": 7, "iii": 0, "unresolved": 0, "maxdepth": 4, "initial": 16, "seconds": 0.24269986152648926}
+{"evals": 122922, "o": 8, "i": 6820, "ii": 13394, "iii": 41247, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 11.292210578918457}
+{"evals": 295180, "o": 3, "i": 27067, "ii": 23667, "iii": 96861, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 45.16323804855347}
+{"evals": 475800, "o": 5, "i": 54199, "ii": 27240, "iii": 156464, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 72.55583095550537}
+{"evals": 56248, "o": 7, "i": 5320, "ii": 4562, "iii": 18243, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 5.881755352020264}
+{"evals": 469742, "o": 7, "i": 43891, "ii": 36091, "iii": 154890, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 71.69505095481873}
+{"evals": 296572, "o": 2, "i": 30285, "ii": 21907, "iii": 96100, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 47.58088231086731}
+{"evals": 71610, "o": 5, "i": 5786, "ii": 5629, "iii": 24393, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 9.199098825454712}
+{"evals": 10534, "o": 8, "i": 1434, "ii": 404, "iii": 3429, "unresolved": 0, "maxdepth": 18, "initial": 16, "seconds": 1.6962065696716309}
+{"evals": 610320, "o": 3, "i": 57786, "ii": 38549, "iii": 208830, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 94.85151720046997}
+{"evals": 1958, "o": 6, "i": 348, "ii": 33, "iii": 600, "unresolved": 0, "maxdepth": 17, "initial": 16, "seconds": 1.408785343170166}
+{"evals": 571246, "o": 4, "i": 62668, "ii": 35178, "iii": 187781, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 98.31690526008606}
+{"evals": 369192, "o": 6, "i": 35308, "ii": 27390, "iii": 121900, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 66.05983281135559}
+{"evals": 23036, "o": 5, "i": 2488, "ii": 898, "iii": 8135, "unresolved": 0, "maxdepth": 18, "initial": 16, "seconds": 5.0781333446502686}
+{"evals": 526496, "o": 3, "i": 48185, "ii": 39993, "iii": 175075, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 80.05740880966187}
+{"evals": 330778, "o": 4, "i": 30524, "ii": 20735, "iii": 114134, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 60.07167959213257}
+{"evals": 114672, "o": 3, "i": 11158, "ii": 11942, "iii": 34241, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 13.02365493774414}
+{"evals": 711198, "o": 4, "i": 79732, "ii": 40886, "iii": 234985, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 110.94990706443787}
+{"evals": 567452, "o": 3, "i": 52784, "ii": 35226, "iii": 195721, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 103.50310850143433}
+{"evals": 169282, "o": 5, "i": 17504, "ii": 11008, "iii": 56132, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 20.071101665496826}
+{"evals": 118096, "o": 5, "i": 9057, "ii": 10547, "iii": 39447, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 15.485486507415771}
+{"evals": 63406, "o": 5, "i": 2632, "ii": 8512, "iii": 20562, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 6.982159614562988}
+{"evals": 804948, "o": 8, "i": 75657, "ii": 48689, "iii": 278128, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 121.13643550872803}
+{"evals": 455292, "o": 5, "i": 60283, "ii": 21409, "iii": 145957, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 64.92207598686218}
+{"evals": 139952, "o": 3, "i": 11131, "ii": 12234, "iii": 46616, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 18.49448013305664}
+{"evals": 611380, "o": 6, "i": 65127, "ii": 35588, "iii": 204977, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 96.69408226013184}
+{"evals": 95968, "o": 3, "i": 8919, "ii": 9408, "iii": 29662, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 16.756575345993042}
+{"evals": 357564, "o": 4, "i": 29618, "ii": 26899, "iii": 122269, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 53.33857011795044}
+{"evals": 107358, "o": 4, "i": 12575, "ii": 4568, "iii": 36540, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 19.333675146102905}
+{"evals": 132684, "o": 7, "i": 13198, "ii": 7922, "iii": 45223, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 16.735524654388428}
+{"evals": 473692, "o": 7, "i": 44346, "ii": 34505, "iii": 157996, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 79.3414261341095}
+{"evals": 986246, "o": 5, "i": 86254, "ii": 62166, "iii": 344706, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 159.3515088558197}
+{"evals": 75252, "o": 6, "i": 8495, "ii": 4108, "iii": 25025, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 9.270140886306763}
+{"evals": 740700, "o": 2, "i": 82785, "ii": 41908, "iii": 245663, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 108.18640494346619}
+{"evals": 492128, "o": 8, "i": 53492, "ii": 31743, "iii": 160829, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 64.91013956069946}
+{"evals": 87834, "o": 3, "i": 8450, "ii": 6105, "iii": 29367, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 10.160319805145264}
+{"evals": 472920, "o": 2, "i": 54022, "ii": 25616, "iii": 156828, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 70.410480260849}
+{"evals": 197972, "o": 4, "i": 25159, "ii": 8655, "iii": 65176, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 25.74891996383667}
+{"evals": 884376, "o": 4, "i": 77851, "ii": 72226, "iii": 292115, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 142.5011899471283}
+{"evals": 508562, "o": 2, "i": 56611, "ii": 25139, "iii": 172537, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 84.71958208084106}
+{"evals": 308676, "o": 8, "i": 29139, "ii": 25115, "iii": 100084, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 45.00544810295105}
+{"evals": 59902, "o": 8, "i": 6022, "ii": 3197, "iii": 20732, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 7.2151103019714355}
+{"evals": 81408, "o": 5, "i": 7776, "ii": 5064, "iii": 27867, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 13.090901851654053}
+{"evals": 282688, "o": 6, "i": 23643, "ii": 24094, "iii": 93609, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 48.73389554023743}
+{"evals": 125820, "o": 5, "i": 10708, "ii": 11172, "iii": 41033, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 20.59953808784485}
+{"evals": 645324, "o": 4, "i": 64084, "ii": 42567, "iii": 216015, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 100.55084109306335}
+{"evals": 582294, "o": 5, "i": 47527, "ii": 37971, "iii": 205652, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 96.37656545639038}
+{"evals": 659490, "o": 6, "i": 57732, "ii": 43270, "iii": 228745, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 107.81033706665039}
+{"evals": 406002, "o": 7, "i": 39593, "ii": 25212, "iii": 138197, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 64.39183449745178}
+{"evals": 423462, "o": 5, "i": 45579, "ii": 21612, "iii": 144543, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 54.61668133735657}
+{"evals": 92608, "o": 5, "i": 13450, "ii": 2582, "iii": 30275, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 13.462480545043945}
+{"evals": 266896, "o": 9, "i": 22616, "ii": 23357, "iii": 87474, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 39.815536975860596}
+{"evals": 627976, "o": 3, "i": 54055, "ii": 48535, "iii": 211403, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 113.97695064544678}
+{"evals": 409172, "o": 5, "i": 39161, "ii": 27909, "iii": 137519, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 62.924957275390625}
+{"evals": 78922, "o": 6, "i": 6377, "ii": 7930, "iii": 25156, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 10.69886827468872}
+{"evals": 30960, "o": 6, "i": 4512, "ii": 1511, "iii": 9459, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 3.41864013671875}
+{"evals": 163800, "o": 7, "i": 16768, "ii": 9286, "iii": 55847, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 18.644603729248047}
+{"evals": 246552, "o": 5, "i": 21990, "ii": 17924, "iii": 83365, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 35.81048607826233}
+{"evals": 716750, "o": 3, "i": 66013, "ii": 53052, "iii": 239315, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 111.4374213218689}
+{"evals": 67544, "o": 4, "i": 7873, "ii": 4045, "iii": 21858, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 6.392568826675415}
+{"evals": 237214, "o": 7, "i": 22797, "ii": 18774, "iii": 77037, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 36.583996295928955}
+{"evals": 587792, "o": 9, "i": 52327, "ii": 39420, "iii": 202148, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 101.8487536907196}
+{"evals": 98174, "o": 5, "i": 6682, "ii": 8529, "iii": 33879, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 14.669389724731445}
+{"evals": 20148, "o": 4, "i": 1323, "ii": 1922, "iii": 6833, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 2.807873010635376}
+{"evals": 269926, "o": 2, "i": 21668, "ii": 21932, "iii": 91369, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 35.52460074424744}
+{"evals": 27316, "o": 3, "i": 3993, "ii": 1179, "iii": 8491, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 5.072321653366089}
+{"evals": 284098, "o": 6, "i": 23809, "ii": 20944, "iii": 97298, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 43.198246240615845}
+{"evals": 45464, "o": 7, "i": 5726, "ii": 1494, "iii": 15513, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 4.934114217758179}
+{"evals": 521360, "o": 0, "i": 44395, "ii": 35231, "iii": 181062, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 78.57834315299988}
+{"evals": 636890, "o": 4, "i": 65847, "ii": 42991, "iii": 209611, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 104.93687343597412}
+{"evals": 65910, "o": 4, "i": 4597, "ii": 6474, "iii": 21888, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 12.20855712890625}
+{"evals": 340202, "o": 7, "i": 39311, "ii": 25126, "iii": 105665, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 50.727163791656494}
+{"evals": 656302, "o": 2, "i": 72540, "ii": 52124, "iii": 203493, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 113.70702958106995}
+{"evals": 636238, "o": 7, "i": 59308, "ii": 42640, "iii": 216172, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 116.8904333114624}
+{"evals": 320698, "o": 8, "i": 29301, "ii": 21790, "iii": 109258, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 56.834280490875244}
+{"evals": 1162960, "o": 5, "i": 118806, "ii": 82165, "iii": 380512, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 192.18862891197205}
+{"evals": 587190, "o": 3, "i": 57285, "ii": 45889, "iii": 190426, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 102.09771752357483}
+{"evals": 571170, "o": 6, "i": 63304, "ii": 39559, "iii": 182724, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 90.05791926383972}
+{"evals": 320414, "o": 5, "i": 26375, "ii": 28850, "iii": 104985, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 53.94862151145935}
+{"evals": 438242, "o": 8, "i": 46033, "ii": 20450, "iii": 152638, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 59.21497201919556}
+{"evals": 218546, "o": 2, "i": 16882, "ii": 16548, "iii": 75849, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 31.058263301849365}
+{"evals": 100444, "o": 8, "i": 11306, "ii": 5486, "iii": 33430, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 9.471636533737183}
+{"evals": 22858, "o": 4, "i": 943, "ii": 3190, "iii": 7300, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 2.827272653579712}
+{"evals": 2418, "o": 9, "i": 1085, "ii": 0, "iii": 123, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 1.191112995147705}
+{"evals": 124354, "o": 3, "i": 14044, "ii": 7407, "iii": 40731, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 12.961116313934326}
+{"evals": 26, "o": 5, "i": 16, "ii": 0, "iii": 0, "unresolved": 0, "maxdepth": 4, "initial": 16, "seconds": 0.25301241874694824}
+{"evals": 151266, "o": 4, "i": 14316, "ii": 12375, "iii": 48946, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 20.964228868484497}
+{"evals": 318320, "o": 4, "i": 24124, "ii": 26944, "iii": 108096, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 48.32742667198181}
+{"evals": 30, "o": 9, "i": 14, "ii": 0, "iii": 0, "unresolved": 0, "maxdepth": 4, "initial": 16, "seconds": 0.5197238922119141}
+{"evals": 327906, "o": 5, "i": 29810, "ii": 24055, "iii": 110091, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 49.27353596687317}
+{"evals": 173632, "o": 3, "i": 16185, "ii": 9834, "iii": 60802, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 23.334487915039062}
+{"evals": 646872, "o": 3, "i": 71707, "ii": 41018, "iii": 210716, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 96.73094773292542}
+{"evals": 324540, "o": 6, "i": 40462, "ii": 22334, "iii": 99476, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 47.100688457489014}
+{"evals": 220316, "o": 4, "i": 23117, "ii": 11329, "iii": 75716, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 28.477986812591553}
+{"evals": 6064, "o": 9, "i": 1729, "ii": 0, "iii": 1302, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 1.931440830230713}
+{"evals": 769106, "o": 4, "i": 56792, "ii": 57630, "iii": 270135, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 114.12516784667969}
+{"evals": 795394, "o": 6, "i": 80854, "ii": 49618, "iii": 267227, "unresolved": 0, "maxdepth": 24, "initial": 16, "seconds": 124.54476523399353}
+{"evals": 350046, "o": 4, "i": 35441, "ii": 25311, "iii": 114275, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 55.720728635787964}
+{"evals": 376370, "o": 8, "i": 46320, "ii": 18985, "iii": 122880, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 60.06354475021362}
+{"evals": 380740, "o": 6, "i": 41028, "ii": 25211, "iii": 124133, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 67.20714998245239}
+{"evals": 570748, "o": 1, "i": 72937, "ii": 29925, "iii": 182519, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 99.07215595245361}
+{"evals": 36858, "o": 6, "i": 5576, "ii": 1587, "iii": 11268, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 6.106250047683716}
+{"evals": 301688, "o": 3, "i": 33692, "ii": 19157, "iii": 98000, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 46.8730788230896}
+{"evals": 665660, "o": 4, "i": 60096, "ii": 48814, "iii": 223924, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 105.18629121780396}
+{"evals": 175796, "o": 4, "i": 21046, "ii": 9693, "iii": 57163, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 21.222046613693237}
+{"evals": 425650, "o": 1, "i": 37821, "ii": 33325, "iii": 141686, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 75.08348369598389}
+{"evals": 436476, "o": 3, "i": 40396, "ii": 30631, "iii": 147216, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 68.39867067337036}
+{"evals": 1040738, "o": 3, "i": 83967, "ii": 68187, "iii": 368220, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 181.50386881828308}
+{"evals": 425746, "o": 3, "i": 38198, "ii": 34155, "iii": 140525, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 62.69596242904663}
+{"evals": 8824, "o": 7, "i": 956, "ii": 553, "iii": 2904, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 2.71248459815979}
+{"evals": 120436, "o": 3, "i": 17320, "ii": 4302, "iii": 38601, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 12.155699729919434}
+{"evals": 54, "o": 8, "i": 27, "ii": 0, "iii": 0, "unresolved": 0, "maxdepth": 6, "initial": 16, "seconds": 0.33228015899658203}
+{"evals": 91218, "o": 7, "i": 15589, "ii": 2429, "iii": 27592, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 11.346911907196045}
+{"evals": 254460, "o": 5, "i": 21037, "ii": 18414, "iii": 87782, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 35.818341970443726}
+{"evals": 171080, "o": 5, "i": 20912, "ii": 9728, "iii": 54903, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 20.916377305984497}
+{"evals": 170228, "o": 3, "i": 19680, "ii": 7322, "iii": 58117, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 23.74753451347351}
+{"evals": 51352, "o": 7, "i": 2178, "ii": 7381, "iii": 16118, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 5.305610418319702}
+{"evals": 661752, "o": 5, "i": 59461, "ii": 38195, "iii": 233223, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 104.70108389854431}
+{"evals": 937048, "o": 3, "i": 89584, "ii": 78946, "iii": 299999, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 155.38453769683838}
+{"evals": 605640, "o": 6, "i": 53061, "ii": 38600, "iii": 211161, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 101.40239143371582}
+{"evals": 138982, "o": 5, "i": 15751, "ii": 6612, "iii": 47131, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 17.460437297821045}
+{"evals": 189300, "o": 4, "i": 25134, "ii": 8430, "iii": 61090, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 27.24381685256958}
+{"evals": 874384, "o": 4, "i": 86004, "ii": 60624, "iii": 290568, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 141.82882046699524}
+{"evals": 103874, "o": 7, "i": 12460, "ii": 7149, "iii": 32329, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 13.382800102233887}
+{"evals": 352086, "o": 8, "i": 37740, "ii": 22721, "iii": 115582, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 61.384430170059204}
+{"evals": 6128, "o": 9, "i": 1340, "ii": 0, "iii": 1723, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 2.2300498485565186}
+{"evals": 293808, "o": 6, "i": 28816, "ii": 22033, "iii": 96057, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 43.39030456542969}
+{"evals": 22330, "o": 3, "i": 1441, "ii": 3542, "iii": 6187, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 3.944861650466919}
+{"evals": 217142, "o": 5, "i": 19093, "ii": 18277, "iii": 71204, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 27.041301488876343}
+{"evals": 197828, "o": 6, "i": 17979, "ii": 14009, "iii": 66928, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 30.065760135650635}
+{"evals": 29198, "o": 8, "i": 4299, "ii": 1410, "iii": 8890, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 5.8598127365112305}
+{"evals": 416272, "o": 7, "i": 23631, "ii": 34094, "iii": 150412, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 63.70466661453247}
+{"evals": 956, "o": 5, "i": 365, "ii": 0, "iii": 116, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 1.3112788200378418}
+{"evals": 473002, "o": 4, "i": 46742, "ii": 28297, "iii": 161466, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 70.1149435043335}
+{"evals": 619094, "o": 4, "i": 61692, "ii": 41589, "iii": 206270, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 97.1980049610138}
+{"evals": 211144, "o": 5, "i": 20856, "ii": 14084, "iii": 70635, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 27.791815280914307}
+{"evals": 38950, "o": 5, "i": 3640, "ii": 3131, "iii": 12707, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 3.7277309894561768}
+{"evals": 145638, "o": 4, "i": 11754, "ii": 13487, "iii": 47582, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 16.098158836364746}
+{"evals": 11362, "o": 4, "i": 1442, "ii": 561, "iii": 3682, "unresolved": 0, "maxdepth": 17, "initial": 16, "seconds": 1.7348339557647705}
+{"evals": 26, "o": 7, "i": 14, "ii": 0, "iii": 0, "unresolved": 0, "maxdepth": 3, "initial": 16, "seconds": 0.21655893325805664}
+{"evals": 16, "o": 6, "i": 10, "ii": 0, "iii": 0, "unresolved": 0, "maxdepth": 0, "initial": 16, "seconds": 0.011945962905883789}
+{"evals": 36300, "o": 8, "i": 3828, "ii": 2387, "iii": 11935, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 4.131676435470581}
+{"evals": 773544, "o": 5, "i": 85876, "ii": 39187, "iii": 261712, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 125.33201742172241}
+{"evals": 950206, "o": 3, "i": 85228, "ii": 62837, "iii": 327043, "unresolved": 0, "maxdepth": 24, "initial": 16, "seconds": 152.12757277488708}
+{"evals": 169560, "o": 7, "i": 16859, "ii": 10212, "iii": 57710, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 21.672621726989746}
+{"evals": 271208, "o": 5, "i": 26029, "ii": 18227, "iii": 91351, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 45.64359998703003}
+{"evals": 61326, "o": 9, "i": 8886, "ii": 3472, "iii": 18304, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 7.753608703613281}
+{"evals": 220436, "o": 3, "i": 24108, "ii": 17509, "iii": 68606, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 30.552862644195557}
+{"evals": 264536, "o": 5, "i": 28861, "ii": 13851, "iii": 89559, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 38.23175835609436}
+{"evals": 4242, "o": 5, "i": 880, "ii": 83, "iii": 1161, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 1.5919296741485596}
+{"evals": 103030, "o": 4, "i": 9848, "ii": 6572, "iii": 35099, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 15.77738881111145}
+{"evals": 682602, "o": 5, "i": 57377, "ii": 55024, "iii": 228903, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 108.08210921287537}
+{"evals": 391884, "o": 7, "i": 39308, "ii": 26813, "iii": 129822, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 60.342082262039185}
+{"evals": 672790, "o": 7, "i": 65820, "ii": 47096, "iii": 223480, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 100.65273714065552}
+{"evals": 222024, "o": 7, "i": 28637, "ii": 9313, "iii": 73063, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 34.260857343673706}
+{"evals": 574438, "o": 5, "i": 55494, "ii": 36232, "iii": 195496, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 81.58068823814392}
+{"evals": 128642, "o": 5, "i": 13939, "ii": 7825, "iii": 42560, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 17.01500391960144}
+{"evals": 352854, "o": 7, "i": 40838, "ii": 13108, "iii": 122482, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 51.003376960754395}
+{"evals": 716336, "o": 8, "i": 56781, "ii": 53388, "iii": 247999, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 118.27911472320557}
+{"evals": 1297780, "o": 5, "i": 138705, "ii": 61437, "iii": 448751, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 221.2483057975769}
+{"evals": 763726, "o": 3, "i": 76885, "ii": 46741, "iii": 258242, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 120.75726199150085}
+{"evals": 408338, "o": 4, "i": 41356, "ii": 27605, "iii": 135212, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 68.43561267852783}
+{"evals": 676406, "o": 4, "i": 69997, "ii": 39456, "iii": 228754, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 111.0352213382721}
+{"evals": 44392, "o": 5, "i": 4305, "ii": 3106, "iii": 14788, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 6.230717420578003}
+{"evals": 423716, "o": 6, "i": 44982, "ii": 29809, "iii": 137069, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 68.63313508033752}
+{"evals": 1563004, "o": 5, "i": 143200, "ii": 109120, "iii": 529185, "unresolved": 0, "maxdepth": 24, "initial": 16, "seconds": 254.73464822769165}
+{"evals": 258, "o": 5, "i": 126, "ii": 0, "iii": 6, "unresolved": 0, "maxdepth": 18, "initial": 16, "seconds": 1.1998753547668457}
+{"evals": 218384, "o": 3, "i": 23744, "ii": 10712, "iii": 74741, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 35.450687885284424}
+{"evals": 233320, "o": 5, "i": 17305, "ii": 21635, "iii": 77723, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 41.15881633758545}
+{"evals": 109798, "o": 4, "i": 10242, "ii": 7416, "iii": 37245, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 12.137360572814941}
+{"evals": 798610, "o": 5, "i": 71062, "ii": 46001, "iii": 282245, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 136.63632678985596}
+{"evals": 87134, "o": 10, "i": 7164, "ii": 7513, "iii": 28888, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 11.71489691734314}
+{"evals": 28598, "o": 8, "i": 2009, "ii": 2621, "iii": 9669, "unresolved": 0, "maxdepth": 18, "initial": 16, "seconds": 4.651889324188232}
+{"evals": 64204, "o": 8, "i": 4472, "ii": 7691, "iii": 19939, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 6.437943458557129}
+{"evals": 54966, "o": 7, "i": 8377, "ii": 2091, "iii": 17016, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 6.6241374015808105}
+{"evals": 460740, "o": 6, "i": 47369, "ii": 29856, "iii": 153147, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 71.66078042984009}
+{"evals": 191848, "o": 3, "i": 27351, "ii": 3706, "iii": 64872, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 24.71418070793152}
+{"evals": 362522, "o": 9, "i": 32948, "ii": 26753, "iii": 121559, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 49.55866503715515}
+{"evals": 96186, "o": 7, "i": 9385, "ii": 7796, "iii": 30913, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 11.937244415283203}
+{"evals": 68440, "o": 6, "i": 4186, "ii": 7536, "iii": 22500, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 7.434391975402832}
+{"evals": 202486, "o": 5, "i": 26965, "ii": 6892, "iii": 67389, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 28.15405035018921}
+{"evals": 126326, "o": 6, "i": 11097, "ii": 9428, "iii": 42640, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 15.123078107833862}
+{"evals": 17642, "o": 4, "i": 1378, "ii": 1570, "iii": 5877, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 3.1494946479797363}
+{"evals": 92832, "o": 3, "i": 8522, "ii": 6656, "iii": 31243, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 10.884326219558716}
+{"evals": 865108, "o": 4, "i": 87535, "ii": 56120, "iii": 288903, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 151.3792324066162}
+{"evals": 406978, "o": 2, "i": 46340, "ii": 22626, "iii": 134529, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 52.788389682769775}
+{"evals": 83828, "o": 5, "i": 10405, "ii": 4694, "iii": 26818, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 8.3346688747406}
+{"evals": 907270, "o": 6, "i": 81923, "ii": 77760, "iii": 293954, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 151.48746466636658}
+{"evals": 8726, "o": 7, "i": 1532, "ii": 274, "iii": 2558, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 1.9389550685882568}
+{"evals": 136788, "o": 9, "i": 17624, "ii": 6346, "iii": 44423, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 17.757481813430786}
+{"evals": 143400, "o": 4, "i": 13961, "ii": 8971, "iii": 48772, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 18.214404344558716}
+{"evals": 109940, "o": 7, "i": 16043, "ii": 4514, "iii": 34414, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 15.220487594604492}
+{"evals": 60438, "o": 4, "i": 7023, "ii": 2478, "iii": 20722, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 10.150331020355225}
+{"evals": 194782, "o": 7, "i": 14308, "ii": 21210, "iii": 61874, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 21.763583421707153}
+{"evals": 397880, "o": 6, "i": 39338, "ii": 24970, "iii": 134634, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 49.37132430076599}
+{"evals": 415444, "o": 4, "i": 40094, "ii": 22375, "iii": 145257, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 55.357457876205444}
+{"evals": 97968, "o": 8, "i": 10410, "ii": 5827, "iii": 32747, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 8.670636892318726}
+{"evals": 417566, "o": 4, "i": 42389, "ii": 28267, "iii": 138131, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 61.264440298080444}
+{"evals": 596150, "o": 3, "i": 55295, "ii": 42058, "iii": 200727, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 87.30360889434814}
+{"evals": 178018, "o": 6, "i": 17693, "ii": 10624, "iii": 60694, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 21.13347887992859}
+{"evals": 913330, "o": 5, "i": 91224, "ii": 60364, "iii": 305080, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 140.89948964118958}
+{"evals": 44494, "o": 4, "i": 3943, "ii": 4997, "iii": 13311, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 4.600230932235718}
+{"evals": 170710, "o": 7, "i": 18241, "ii": 9399, "iii": 57716, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 31.676526069641113}
+{"evals": 288520, "o": 7, "i": 27267, "ii": 19227, "iii": 97767, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 50.100507497787476}
+{"evals": 296050, "o": 5, "i": 26588, "ii": 20404, "iii": 101036, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 56.076295375823975}
+{"evals": 265554, "o": 5, "i": 32805, "ii": 13341, "iii": 86634, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 40.16410446166992}
+{"evals": 399446, "o": 8, "i": 42681, "ii": 31173, "iii": 125869, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 64.1969587802887}
+{"evals": 216420, "o": 3, "i": 22300, "ii": 15398, "iii": 70517, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 29.594324350357056}
+{"evals": 672262, "o": 6, "i": 63065, "ii": 50875, "iii": 222193, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 96.47108864784241}
+{"evals": 436054, "o": 9, "i": 40969, "ii": 30607, "iii": 146450, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 68.16877126693726}
+{"evals": 424308, "o": 10, "i": 34550, "ii": 33852, "iii": 143750, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 59.45915651321411}
+{"evals": 1098266, "o": 3, "i": 98945, "ii": 94287, "iii": 355906, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 195.7249035835266}
+{"evals": 87534, "o": 3, "i": 9150, "ii": 5451, "iii": 29171, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 8.936421632766724}
+{"evals": 573830, "o": 10, "i": 66908, "ii": 37364, "iii": 182641, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 82.97754883766174}
+{"evals": 396792, "o": 5, "i": 41616, "ii": 26593, "iii": 130190, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 58.6295166015625}
+{"evals": 124056, "o": 5, "i": 12509, "ii": 6834, "iii": 42688, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 12.356879472732544}
+{"evals": 267368, "o": 7, "i": 29141, "ii": 20710, "iii": 83834, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 37.77951622009277}
+{"evals": 189158, "o": 7, "i": 18408, "ii": 13175, "iii": 62997, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 25.204127550125122}
+{"evals": 272164, "o": 6, "i": 26868, "ii": 18436, "iii": 90780, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 38.3512020111084}
+{"evals": 882, "o": 5, "i": 354, "ii": 0, "iii": 90, "unresolved": 0, "maxdepth": 19, "initial": 16, "seconds": 1.479386568069458}
+{"evals": 125604, "o": 5, "i": 17290, "ii": 4869, "iii": 40646, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 18.735600471496582}
+{"evals": 263476, "o": 2, "i": 24283, "ii": 19718, "iii": 87743, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 34.80992794036865}
+{"evals": 392506, "o": 3, "i": 30770, "ii": 31259, "iii": 134229, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 64.2900779247284}
+{"evals": 326514, "o": 4, "i": 33099, "ii": 20199, "iii": 109963, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 43.78402876853943}
+{"evals": 571784, "o": 4, "i": 52340, "ii": 38121, "iii": 195435, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 89.42981624603271}
+{"evals": 74598, "o": 5, "i": 6822, "ii": 5672, "iii": 24808, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 7.315723180770874}
+{"evals": 979566, "o": 4, "i": 92627, "ii": 64703, "iii": 332457, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 162.68388152122498}
+{"evals": 66760, "o": 7, "i": 7421, "ii": 3803, "iii": 22157, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 6.2844274044036865}
+{"evals": 124318, "o": 5, "i": 10065, "ii": 10417, "iii": 41680, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 12.533321619033813}
+{"evals": 290122, "o": 5, "i": 26193, "ii": 21716, "iii": 97155, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 34.153289556503296}
+{"evals": 296434, "o": 5, "i": 30442, "ii": 19124, "iii": 98654, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 36.68101763725281}
+{"evals": 387236, "o": 5, "i": 34136, "ii": 30434, "iii": 129051, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 50.09780287742615}
+{"evals": 432336, "o": 4, "i": 44785, "ii": 26145, "iii": 145242, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 51.58708620071411}
+{"evals": 365812, "o": 8, "i": 33522, "ii": 25676, "iii": 123708, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 48.23153233528137}
+{"evals": 251198, "o": 4, "i": 20072, "ii": 19837, "iii": 85694, "unresolved": 0, "maxdepth": 20, "initial": 16, "seconds": 25.35512685775757}
+{"evals": 947038, "o": 1, "i": 105658, "ii": 60160, "iii": 307708, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 133.02431559562683}
+{"evals": 682320, "o": 8, "i": 68638, "ii": 46689, "iii": 225833, "unresolved": 0, "maxdepth": 24, "initial": 16, "seconds": 43.80317211151123}
+{"evals": 2038304, "o": 4, "i": 194709, "ii": 130613, "iii": 693834, "unresolved": 0, "maxdepth": 23, "initial": 16, "seconds": 245.2119801044464}
+{"evals": 836944, "o": 4, "i": 77381, "ii": 64068, "iii": 277027, "unresolved": 0, "maxdepth": 21, "initial": 16, "seconds": 50.422619342803955}
+{"evals": 865190, "o": 4, "i": 92701, "ii": 51137, "iii": 288761, "unresolved": 0, "maxdepth": 22, "initial": 16, "seconds": 44.687458515167236}
+{
+ "schema_version": 1,
+ "description": "independent certification of (J), (I), (T), (W) on the chart domain, s = 1",
+ "s": 1.0,
+ "initial_boxes": 4096,
+ "boxes": 84329540,
+ "unresolved": 0,
+ "closed": {
+  "outside_domain": 1344,
+  "outside_minimum_region": 8285039,
+  "interior": 5686689,
+  "boundary": 28193746
+ },
+ "max_depth": 24,
+ "binary_tree_identity": true,
+ "theta3_range": [
+  2.0943951023931944,
+  3.1415926535897936
+ ],
+ "seconds": 811.6812579631805,
+ "parameters": {
+  "workers": 16,
+  "grid": 8,
+  "split_weights": [
+   1.0,
+   0.8,
+   1.6,
+   1.6
+  ],
+  "min_width": 1e-13,
+  "max_depth": 160
+ },
+ "runtime": {
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "numpy": "2.4.6",
+  "platform": "Windows-10-10.0.26300-SP0"
+ },
+ "source_sha256": {
+  "independent/certify_domain.py": "70e4e3ef5ffcdb52bd262dbeed35414ce942bcd7829be02126fbbfebdd3ed5fb",
+  "independent/evaluator.py": "cc7b8d7ee110ca0ea3813a8afbcadab5d10b3de9b5d9107eeab4331f4e289bc5"
+ }
+}

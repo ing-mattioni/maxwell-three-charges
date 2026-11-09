@@ -6,7 +6,7 @@
  ],
  "boxes": 2356,
  "unresolved": 0,
- "seconds": 0.0049250125885009766,
+ "seconds": 0.0,
  "initial_boxes": 2080,
  "schema_version": 2,
  "parameters": {
@@ -15,14 +15,14 @@
  },
  "coverage": "outward-rounded exact rational simplex cells",
  "runtime": {
-  "python": "3.11.4 (remotes/origin/main-dirty:bb6b562da, Mar 12 2024, 22:40:56) [MSC v.1937 64 bit (AMD64)]",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
   "numpy": "2.4.6",
-  "platform": "Windows-10-10.0.26300"
+  "platform": "Windows-10-10.0.26300-SP0"
  },
  "source_sha256": {
   "base_triangle.py": "44acee044769a6d0e3b1bb949995e2156a64058e8d6164576858d048f13719aa",
   "domains.py": "7351f66697a31baf2add1e705d9e68dc4cfb694c66bbc50c107514fff3f57338",
-  "interval.py": "8c3e4fdf7051477fc621b2a8cdae487b3844b7bfbf4d0f35baf4fbc9d2d9d317",
+  "interval.py": "043ae9c12cbae113aa5da926d28ca7046e3512dcda8a03abd85977eeadc7cbe3",
   "provenance.py": "8b20470f4d13a7dd52bc82765b1a5b54efe067908520e71e7595db0b4d428434"
  }
 }

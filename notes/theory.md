@@ -2,7 +2,7 @@
 
 These notes summarize [the paper](../paper/paper.html), which gives the complete
 proofs, including boundary blow-up, Sturm comparison and degenerate parameters.
-Updated with the reviewed certificates of 30 October 2026.
+Updated with the certificates of 10 November 2026, recorded after the second review.
 
 Notation. Charges q₁,q₂,q₃ > 0 at the vertices p₁,p₂,p₃ of a non-degenerate triangle Δ ⊂ ℝ² ⊂ ℝ³.
 Potential V(x) = Σ qᵢ |x − pᵢ|^{−s}, with s = 1 the Coulomb case
@@ -197,7 +197,10 @@ one-ulp outward rounding per operation. Endpoint values of sin and cos are enclo
 series, after range reduction by an interval enclosure of π/2, with an explicit Lagrange
 remainder, whose powers are also evaluated by interval products; interior extrema
 are handled explicitly. Signed multiples of π preserve interval endpoint order.
-No libm accuracy is assumed.
+Only the extrema at 0, π/2, π, 3π/2, 2π are added, so the interval extensions are valid
+on (−π/2, 5π/2): arguments outside [−1.5, 7.8] are rejected, and the naive prefilter of
+ζ², which works with doubled angles reduced modulo 2π, falls back to [−1, 1] when a
+reduced interval is still too wide. No libm accuracy is assumed.
 
 A box is closed only when one of the following holds, each a positively established
 strict inequality (so NaN can never certify):
@@ -207,12 +210,21 @@ strict inequality (so NaN can never certify):
   "no cusp is possible in the box": Im(conj(t)²ζ) ≠ 0 or Re(conj(t)²ζ) > 0.
 
 **Results for s = 1, 16 processes.** The n0=12 run processed 9,965,924 boxes
-in 474.47 s; n0=10 processed 9,966,320 in 496.81 s. Both left 0 unresolved boxes.
+in 464.84 s; n0=10 processed 9,966,320 in 502.91 s. Both left 0 unresolved boxes.
 Base-triangle runs processed 2,356 boxes (n0=64) and 1,618 (n0=48), also with 0
 unresolved. JSON files record parameters, source hashes and runtime versions.
 These are two subdivisions of the same implementation, not independent arithmetic
 proofs; the summaries are not certificates for a separate leaf-by-leaf checker.
 Run `python reproduce.py --workers 16` to retain logs and validate the outputs.
+
+**Second implementation.** `independent/` holds a program written from the paper alone,
+sharing no code with the one above: its own interval type and sin/cos enclosures, plain
+interval evaluation with no AD and no mean-value forms, ζ² compared with an enclosure of
+1/9, its own grid (8⁴ boxes on [a₀, b₀] × [−1, 1] × [0, 1]², a₀ < 2π/3, b₀ > π) and its own
+bisection rule. It processed 84,329,540 boxes with 0 unresolved, and 1,279 boxes for the
+base triangle. Both programs use binary64 arithmetic in NumPy and the formulas of §6;
+those formulas were compared with the definitions at sample points in 50-digit arithmetic
+(`independent/first_principles.py`).
 
 Validation:
 - the closed forms were checked against an independent linear-solve implementation, to

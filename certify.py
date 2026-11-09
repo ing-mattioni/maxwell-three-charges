@@ -18,7 +18,7 @@ KEYS = ('zeta2', 'jac', 'Ih', 'turn', 'czre', 'czim', 'Wq')
 
 
 def zeta2_naive(blo, bhi):
-    from interval import sin_i, cos_i, C
+    from interval import sin_i, cos_i, C, TRIG_ARG_LO, TRIG_ARG_HI
     y1, y2, l1, l2 = (I(blo[:, j], bhi[:, j]) for j in range(4))
     th1, th2, th3 = thetas_from_y(y1, y2)
     l3 = 1.0 - l1 - l2
@@ -28,7 +28,14 @@ def zeta2_naive(blo, bhi):
         # cos/sin for intervals possibly outside [0, 2pi]: reduce by multiples of 2pi (exact enough via interval)
         k = np.floor(x.lo / (2 * 3.141592653589793))
         xr = x - I(3.141592653589793, PI_HI) * (2.0 * k)
-        return cos_i(xr), sin_i(xr)
+        # The reduction puts the lower endpoint in [0, 2pi), but a box that is wide in the
+        # angles can still reach beyond the range where sin_i/cos_i are valid.  Use the
+        # trivial enclosure [-1, 1] there.  The comparison is False for NaN, so NaN stays NaN.
+        wide = (xr.lo < TRIG_ARG_LO) | (xr.hi > TRIG_ARG_HI)
+        xs = I(np.where(wide, 0.0, xr.lo), np.where(wide, 0.0, xr.hi))
+        c, s = cos_i(xs), sin_i(xs)
+        return (I(np.where(wide, -1.0, c.lo), np.where(wide, 1.0, c.hi)),
+                I(np.where(wide, -1.0, s.lo), np.where(wide, 1.0, s.hi)))
     c2, s2 = cs(a2); c3, s3 = cs(a3)
     re = l1 + l2 * c2 + l3 * c3
     im = l2 * s2 - l3 * s3

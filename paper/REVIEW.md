@@ -123,3 +123,13 @@ Sono state inoltre precisate la citazione di Martinez-Maure e la dichiarazione s
 dell'IA. L'esecuzione n0=12 e stata ripetuta in una sessione separata con conteggi identici;
 log e JSON sono in `../certificates/rerun-2026-10-31/`. Il modello usato per questa revisione
 in OpenAI Codex era GPT-6-Astra, secondo quanto riferito dall'autore.
+
+*Nota successiva (10 novembre 2026).* Una seconda verifica, indipendente da questa, e stata
+eseguita il 9 novembre 2026 da Claude Fable 5.2: il rapporto e in
+[REVIEW-2026-11-09.md](REVIEW-2026-11-09.md). Ha portato a due correzioni del codice
+(controllo del dominio di seno e coseno; rimozione di un vecchio percorso non rigoroso) e a
+una seconda implementazione, ora in `../independent/`. Le certificazioni sono state
+rieseguite con i sorgenti corretti: i conteggi delle box sono identici a quelli della
+tabella qui sopra, i tempi sono diversi. Le esecuzioni correnti sono in
+`../certificates/review-2026-11-10/`; quelle descritte in questo rapporto restano in
+`../certificates/review-2026-10-30/` e si riferiscono ai sorgenti del commit `1d7c1f8`.
