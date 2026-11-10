@@ -34,7 +34,11 @@ It has **not** been peer-reviewed. Two AI-assisted reviews are documented, both 
 - [`paper/REVIEW-2026-11-09.md`](paper/REVIEW-2026-11-09.md) (9–10 November 2026, Claude
   Fable 5.2) checked the mathematics and the closed forms, wrote the second implementation,
   and found a latent defect in the range handling of sin and cos and an unused non-rigorous
-  code path. Both are fixed; its other remarks are still open.
+  code path. Both are fixed, and its remarks on exposition, references and the diagnostic
+  figures were taken into account in the paper of 10 November 2026. Still open: the
+  exact statement of Martinez-Maure's Theorem 2 has not been checked by an AI reviewer
+  against the full text, and two optional suggestions (a self-test of the arithmetic
+  environment, and a proof of the total turning that does not use (W)).
 
 None of this changed the outcome, and neither review replaces an independent human expert.
 Please read the caveats below.
@@ -48,7 +52,7 @@ Please read the caveats below.
 - For general n this is false: Arathoon, Ball and Kvalheim (2026) found 5 charges with ≥ 24.
 - For n = 3:
   - Gabrielov, Novikov and Shapiro (2007) proved ≤ 12 for positive charges;
-  - the 2026 preprint above proved ≤ 6;
+  - the 2026 preprint above proved ≤ 6 nondegenerate equilibria;
   - Tsai (2015) proved ≤ 4 for charges of equal magnitude.
 
 ## The argument in brief
@@ -68,15 +72,18 @@ Please read the caveats below.
    and exactly 3 ordinary cusps. Then it is simple, and its winding numbers are 0 or ±1.
    A Sturm comparison for g + g″ = −ρ bounds the number of tangent lines through any point
    by 3. This follows from Martinez-Maure's Theorem 2 (2008, p. 987), including for points
-   on the front. The paper gives a self-contained proof and the double-zero refinement
-   that makes the front simple. [Source](https://doi.org/10.1215/ijm/1254403726)
+   on the front; for points off the front, even the general form in the abstract of that
+   paper, with an extra 2, suffices. The paper gives a self-contained proof, which is the
+   one the argument uses, and the double-zero refinement that makes the front simple.
+   [Source](https://doi.org/10.1215/ijm/1254403726)
 5. These hypotheses reduce to four strict inequalities in a local chart (θᵢ, λᵢ) of
    (triangle, point), where everything is in closed form:
    - (J) Z is orientation-reversing on the closure of M;
    - (I) no inflections of C;
    - (T) the cusps are simple;
-   - (W) the total turning of C is π. Since the turning is constant over all triangles,
-     (W) is used at one base triangle, where `base_triangle.py` fixes the vertex labels.
+   - (W) the direction to one vertex turns more slowly than the kernel direction. The total
+     turning of C is the same for all triangles, so (W) is used at one base triangle, where
+     `base_triangle.py` fixes the vertex labels; there it gives a total turning of π.
 
    They are certified by branch and bound with outward-rounded interval arithmetic and
    mean-value forms (interval forward-mode AD).

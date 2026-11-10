@@ -105,7 +105,10 @@ multihedgehogs*, Illinois J. Math. 52 (2008), 981–993,
 https://doi.org/10.1215/ijm/1254403726: for h ∈ C²(ℝ) with h(θ + π) = −h(θ),
 #zeros(g_q) ≤ #zeros(ρ) on [0, 2π) for every q, where ρ = h + h″. Here ρ has six zeros
 in [0, 2π), so g_q has at most six, and by antiperiodicity at most three in [0, π),
-including for q on the front. The paper includes a self-contained elementary proof:
+including for q on the front. The abstract of that paper states the general form for
+2π-periodic functions, with an extra 2; applied to g_q it gives at most four zeros in
+[0, π), hence at most three for q off the front, where their number is odd. The
+argument uses only the paper's own self-contained elementary proof:
 choose a zero c of ρ and write Ψ = g′ sin(θ−c) − g cos(θ−c).
 Then Ψ′ = −ρ sin(θ−c), so Ψ has three alternating monotonicity intervals on
 [c,c+π], with equal endpoint values. It has at most two interior zeros, and
