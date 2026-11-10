@@ -39,8 +39,8 @@ It has **not** been peer-reviewed. Two AI-assisted reviews are documented, both 
   figures were taken into account in the paper of 10 November 2026, and the check of the
   arithmetic environment it suggested was added. The statement of Martinez-Maure's
   Theorem 2, which it could not read, was later checked against the full text by
-  GPT-6-Astra and matches the citation. Still open: an optional proof of the total turning
-  that does not use (W).
+  GPT-6-Astra and matches the citation. Its last suggestion, a proof of the total turning
+  that does not use (W), is now the proof of Proposition 5.3.
 
 None of this changed the outcome, and neither review replaces an independent human expert.
 Please read the caveats below.
@@ -55,7 +55,11 @@ Please read the caveats below.
 - For n = 3:
   - Gabrielov, Novikov and Shapiro (2007) proved ≤ 12 for positive charges;
   - the 2026 preprint above proved ≤ 6 nondegenerate equilibria;
-  - Tsai (2015) proved ≤ 4 for charges of equal magnitude.
+  - Tsai (2015) proved ≤ 4 for charges of equal magnitude;
+  - Killian (2009) gave an algebraic bound for charges in a plane and showed that equal
+    charges at the vertices of an equilateral triangle have exactly 4;
+  - Peretz (2013) showed with the argument principle that three positive charges have an
+    even number of equilibria, at least 2.
 
 ## The argument in brief
 
@@ -83,9 +87,11 @@ Please read the caveats below.
    - (J) Z is orientation-reversing on the closure of M;
    - (I) no inflections of C;
    - (T) the cusps are simple;
-   - (W) the direction to one vertex turns more slowly than the kernel direction. The total
-     turning of C is the same for all triangles, so (W) is used at one base triangle, where
-     `base_triangle.py` fixes the vertex labels; there it gives a total turning of π.
+   - (W) the direction to one vertex turns more slowly than the kernel direction.
+
+   The total turning π of C follows from (J) alone, by a homotopy of ∂M to a point inside the
+   triangle (Proposition 5.3 of the paper). (W), together with the check on one base triangle
+   in `base_triangle.py`, is still verified and gives a second, independent proof of it.
 
    They are certified by branch and bound with outward-rounded interval arithmetic and
    mean-value forms (interval forward-mode AD).

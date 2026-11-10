@@ -168,9 +168,15 @@ Then:
   by −3π over one turn, since ∂M is a Jordan curve traversed clockwise. So there are
   exactly 3 cusps, all ordinary.
 - (I) ⇒ there are no inflections.
-- Total turning Θ = π. Θ is an odd multiple of π and depends continuously on the triangle
-  (by (J), ∂M and the dual vector m move smoothly with it), so it is the same for every
-  triangle. (W) is certified for the vertex labelled 1 in the max-angle frame, and that label
+- Total turning |Θ| = π, from (J) alone. The normal of the tangent line L(ω) in A is
+  m̊(ω) = A(x₀(ω)) k(ω), where A(x) is the projection onto 𝟏^⊥ of the matrix with rows
+  ∇φᵢ(x). Its transpose is B_x restricted to TA, invertible on all of Δ°. Contract ∂M
+  linearly to a point x* of the convex set Δ°: A(x_τ(ω)) k(ω) never vanishes and changes
+  sign after one turn, so its total turning is an odd multiple of π that cannot jump. At
+  τ = 1 it is the image of a half circle under a fixed invertible linear map: ±π.
+- Second proof, used in earlier versions. Θ is an odd multiple of π and depends continuously
+  on the triangle (by (J), ∂M and the dual vector m move smoothly with it), so it is the same
+  for every triangle. (W) is certified for the vertex labelled 1 in the max-angle frame, and that label
   can change along ∂M of a fat triangle. So (W) is used at one base triangle
   Δ₀ = (0, 1, ½ + i/8), where `base_triangle.py` proves rigorously that θ₃ is the strictly
   largest angle on all of M̄ (`cert_base_triangle.json`: 2,356 boxes, 0 unresolved). There
@@ -283,7 +289,7 @@ What a certificate still needs:
    - the far-field regime Σq ≈ 0, where the minimum can sit at L = 1 − 2λ₃ ~ 10³.
 
    The inflection margin degenerates linearly in the flatness, as in the positive case.
-2. **Total turning π.** The shortcut (W) fails here: |d arg u_j/dω| reaches ½ in flat limits
-   and exceeds it in the far-field regime. Θ = π must instead come from continuity over the
-   connected space of mixed configurations, since Θ is an integer that cannot jump without an
-   inflection, together with an evaluation at one base configuration.
+2. **Total turning π.** The homotopy argument needs A(x) invertible, which holds exactly
+   where Σᵢ Fᵢ(x) ≠ 0; this sum vanishes in the far-field regime, so the argument has to be
+   adapted there. The second proof does not transfer either: |d arg u_j/dω| reaches ½ in
+   flat limits and exceeds it in the far-field regime.
