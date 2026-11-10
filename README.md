@@ -17,10 +17,11 @@ strict inequalities on a compact 4-parameter domain:
 - `cert_base_triangle.json`: 2,356 boxes on the fixed base triangle, **0 unresolved**.
 
 The two main runs use the same interval implementation. Logs, parameters, runtime
-versions and source hashes are in [`certificates/review-2026-11-10/`](certificates/review-2026-11-10/).
+versions and source hashes are in [`certificates/rerun-2026-11-10/`](certificates/rerun-2026-11-10/).
 A second base-triangle run (1,618 boxes) also passed. The runs recorded with the earlier
-sources have the same box counts; they are kept in `certificates/review-2026-10-30/` and
-`certificates/rerun-2026-10-31/` (see [`certificates/README.md`](certificates/README.md)).
+sources have the same box counts; they are kept in `certificates/review-2026-10-30/`,
+`certificates/rerun-2026-10-31/` and `certificates/review-2026-11-10/` (see
+[`certificates/README.md`](certificates/README.md)).
 These JSON files summarize verified executions; they are not leaf-by-leaf certificates
 for a separate checker.
 
@@ -34,11 +35,11 @@ It has **not** been peer-reviewed. Two AI-assisted reviews are documented, both 
 - [`paper/REVIEW-2026-11-09.md`](paper/REVIEW-2026-11-09.md) (9–10 November 2026, Claude
   Fable 5.2) checked the mathematics and the closed forms, wrote the second implementation,
   and found a latent defect in the range handling of sin and cos and an unused non-rigorous
-  code path. Both are fixed, and its remarks on exposition, references and the diagnostic
-  figures were taken into account in the paper of 10 November 2026. Still open: the
-  exact statement of Martinez-Maure's Theorem 2 has not been checked by an AI reviewer
-  against the full text, and two optional suggestions (a self-test of the arithmetic
-  environment, and a proof of the total turning that does not use (W)).
+  code path. Both are fixed. Its remarks on exposition, references and the diagnostic
+  figures were taken into account in the paper of 10 November 2026, and the check of the
+  arithmetic environment it suggested was added. Still open: the exact statement of
+  Martinez-Maure's Theorem 2 has not been checked by an AI reviewer against the full text,
+  and an optional proof of the total turning that does not use (W).
 
 None of this changed the outcome, and neither review replaces an independent human expert.
 Please read the caveats below.
@@ -100,7 +101,10 @@ Along the way:
   rounding per operation. sin and cos are enclosed rigorously by Taylor series with explicit
   remainder bounds, so the certificate relies only on correctly rounded +, −, ×, ÷ and √.
   It does not depend on the accuracy of the platform libm. Arguments outside the range
-  where the sin/cos extensions are valid are rejected. The second implementation in
+  where the sin/cos extensions are valid are rejected. The arithmetic assumptions themselves
+  (round to nearest with ties to even, no flush-to-zero or denormals-are-zero) are checked
+  when `interval.py` is imported, on operations with exactly known results; a different
+  rounding mode or flush-to-zero setting makes the import fail. The second implementation in
   `independent/` uses the same binary64 arithmetic, so a port to MPFR or Arb would still
   be a welcome independent check.
 - **Closed forms.** They were derived by hand and validated in three ways:

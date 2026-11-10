@@ -1,7 +1,7 @@
 # Repeat of run A (n0 = 12), 31 October 2026
 
 > **Historical record.** This run was made with the sources of commit `1d7c1f8`. The
-> current sources and runs are in [`../review-2026-11-10/`](../review-2026-11-10/).
+> current sources and runs are in [`../rerun-2026-11-10/`](../rerun-2026-11-10/).
 
 A repeat of the main certificate run, made by Claude in a session separate from the
 review, to check that the recorded result reproduces.

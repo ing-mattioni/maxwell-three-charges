@@ -1,0 +1,26 @@
+{
+ "schema_version": 1,
+ "description": "independent check that theta3 is strictly the largest angle on the closed minimum region of the base triangle",
+ "triangle": [
+  "0",
+  "1",
+  "1/2 + i/8"
+ ],
+ "initial_boxes": 1,
+ "boxes": 1279,
+ "unresolved": 0,
+ "seconds": 0.016103029251098633,
+ "parameters": {
+  "min_width": 1e-12
+ },
+ "runtime": {
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "numpy": "2.4.6",
+  "platform": "Windows-10-10.0.26300-SP0"
+ },
+ "source_sha256": {
+  "independent/certify_base.py": "e48301a646295335211ed4ef6242e23e3df795b0ccfd8222de560712ffd8def6",
+  "independent/certify_domain.py": "50d1740f1c9daa2e6ef3a596d5722669b80a04d4e4ec6f78df8f9f28f2b20240",
+  "independent/evaluator.py": "a3f001354486da997fdaf22571ff876d70239f923a61a04e636f6d075cc60a19"
+ }
+}

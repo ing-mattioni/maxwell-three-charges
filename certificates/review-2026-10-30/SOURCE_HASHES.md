@@ -2,7 +2,7 @@
 
 > **Historical record.** These runs were made with the sources of commit `1d7c1f8`. Five of
 > the files below were changed on 10 November 2026; the current sources and runs are
-> documented in [`../review-2026-11-10/SOURCE_HASHES.md`](../review-2026-11-10/SOURCE_HASHES.md).
+> documented in [`../rerun-2026-11-10/SOURCE_HASHES.md`](../rerun-2026-11-10/SOURCE_HASHES.md).
 > "Committed file" below means the file at commit `1d7c1f8`.
 
 `reproduction.json` and the certificate JSON files record SHA-256 hashes of the source files

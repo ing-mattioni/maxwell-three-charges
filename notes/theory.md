@@ -203,7 +203,11 @@ are handled explicitly. Signed multiples of π preserve interval endpoint order.
 Only the extrema at 0, π/2, π, 3π/2, 2π are added, so the interval extensions are valid
 on (−π/2, 5π/2): arguments outside [−1.5, 7.8] are rejected, and the naive prefilter of
 ζ², which works with doubled angles reduced modulo 2π, falls back to [−1, 1] when a
-reduced interval is still too wide. No libm accuracy is assumed.
+reduced interval is still too wide. No libm accuracy is assumed. What is assumed (binary64,
+round to nearest with ties to even, no flush-to-zero or denormals-are-zero, nextafter by one
+ulp) is checked when `interval.py` is imported: 18 operations with exactly known results,
+compared bit for bit on scalars and on arrays; the import fails otherwise. The second
+implementation has its own check of the same kind.
 
 A box is closed only when one of the following holds, each a positively established
 strict inequality (so NaN can never certify):
@@ -213,7 +217,7 @@ strict inequality (so NaN can never certify):
   "no cusp is possible in the box": Im(conj(t)²ζ) ≠ 0 or Re(conj(t)²ζ) > 0.
 
 **Results for s = 1, 16 processes.** The n0=12 run processed 9,965,924 boxes
-in 464.84 s; n0=10 processed 9,966,320 in 502.91 s. Both left 0 unresolved boxes.
+in 510.33 s; n0=10 processed 9,966,320 in 490.73 s. Both left 0 unresolved boxes.
 Base-triangle runs processed 2,356 boxes (n0=64) and 1,618 (n0=48), also with 0
 unresolved. JSON files record parameters, source hashes and runtime versions.
 These are two subdivisions of the same implementation, not independent arithmetic

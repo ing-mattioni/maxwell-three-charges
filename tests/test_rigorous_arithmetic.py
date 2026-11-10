@@ -3,14 +3,18 @@
 Run directly with Python; requires NumPy and mpmath, not pytest/unittest.
 The grid reference uses exact rational arithmetic, independent of interval.py.
 """
+import struct
+import subprocess
 import sys
 from fractions import Fraction
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 import numpy as np
 import mpmath as mp
 from domains import simplex_boxes
 from interval import I, PI_LO, PI_HI, TRIG_ARG_LO, TRIG_ARG_HI, sin_i, cos_i, sincos_point
+from interval import arithmetic_cases, check_arithmetic
 from certify import initial_boxes, zeta2_naive
 
 
@@ -131,6 +135,39 @@ def test_wide_angle_boxes():
         assert mp.mpf(float(z2.lo[0])) <= exact(point) <= mp.mpf(float(z2.hi[0]))
 
 
+def test_environment_check():
+    # The check passes here, and every expected result in it is the correctly rounded value,
+    # computed from exact rationals (CPython's int/int division rounds correctly, ties to even).
+    assert check_arithmetic() is True
+    word = lambda x: struct.unpack('<Q', struct.pack('<d', x))[0]
+    exact = {np.add: lambda a, b: Fraction(a)+Fraction(b), np.subtract: lambda a, b: Fraction(a)-Fraction(b),
+             np.multiply: lambda a, b: Fraction(a)*Fraction(b), np.divide: lambda a, b: Fraction(a)/Fraction(b)}
+    for name, op, args, expected in arithmetic_cases():
+        if op in exact:
+            q = exact[op](*args)
+            assert word(float(q) if q >= 0 else -float(-q)) == word(expected), name
+        elif op is np.sqrt:
+            x = Fraction(args[0])
+            assert all(abs(Fraction(expected)**2-x) < abs(Fraction(c)**2-x)
+                       for c in (np.nextafter(expected, 0), np.nextafter(expected, 10))), name
+        else:
+            a, b = args
+            step = 1 if (b > a) == (a >= 0) else -1
+            assert word(expected) == (word(a)+step if a != 0 else (1 if b > 0 else 2**63+1)), name
+    # It must refuse to load in a wrong environment. The rounding mode and the FTZ/DAZ bits
+    # can be set portably only through the C runtime, so this part runs on Windows only.
+    if sys.platform != 'win32':
+        return
+    for value, mask in ((0x100, 0x300), (0x200, 0x300), (0x300, 0x300),
+                        (0x01000000, 0x03000000), (0x02000000, 0x03000000), (0x03000000, 0x03000000)):
+        code = ('import ctypes, sys\n'
+                f'ctypes.cdll.ucrtbase._controlfp(ctypes.c_uint({value}), ctypes.c_uint({mask}))\n'
+                f'sys.path.insert(0, {str(ROOT)!r})\n'
+                'try:\n    import interval\nexcept ArithmeticError:\n    sys.exit(3)\nsys.exit(0)\n')
+        result = subprocess.run([sys.executable, '-c', code], capture_output=True)
+        assert result.returncode == 3, f'wrong environment {value:#x}/{mask:#x} accepted'
+
+
 if __name__ == '__main__':
     test_simplex_cover()
     test_angular_cover()
@@ -138,4 +175,5 @@ if __name__ == '__main__':
     test_negative_range_reduction()
     test_trig_domain_guard()
     test_wide_angle_boxes()
+    test_environment_check()
     print('all exact-coverage and high-precision arithmetic tests passed')

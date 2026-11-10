@@ -1,5 +1,10 @@
 # Runs recorded on 10 November 2026
 
+> **Historical record.** These runs were made with the sources of commit `3c9a49c`. Later the
+> same day a check of the arithmetic environment was added to `interval.py` and
+> `independent/evaluator.py`, and every run was repeated with identical counts; the current
+> runs are in [`../rerun-2026-11-10/`](../rerun-2026-11-10/).
+
 These runs were made after the second review ([`paper/REVIEW-2026-11-09.md`](../../paper/REVIEW-2026-11-09.md),
 in Italian), with the sources as corrected on 10 November 2026: `sin_i` and `cos_i` reject
 arguments outside the range on which they are enclosures, the prefilter `zeta2_naive` falls

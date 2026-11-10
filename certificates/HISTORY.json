@@ -6,7 +6,10 @@
     },
     "rerun-2026-10-31": {
       "source_commit": "1d7c1f83455d7a0542e605a4d7e89efc2edc2778"
+    },
+    "review-2026-11-10": {
+      "source_commit": "3c9a49c84d8303a536baf633975a9085ab28db1b"
     }
   },
-  "current": "review-2026-11-10"
+  "current": "rerun-2026-11-10"
 }

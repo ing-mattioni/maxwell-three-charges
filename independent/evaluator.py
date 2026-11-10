@@ -12,7 +12,10 @@ interval.py, ad.py, verify.py or certify.py.  Differences from that implementati
   * |Z|^2 is compared with an interval enclosure of 1/9, without the 1e-12 margins.
 Shared with the main verifier: IEEE 754 binary64 round-to-nearest for + - * / sqrt in NumPy
 (every result is widened by one ulp on each side), and the formulas of the manuscript.
+That assumption is tested by environment_check() below, independently of interval.py, when
+this module is imported; the import fails if it does not hold.
 """
+import struct
 import numpy as np
 
 INF = np.inf
@@ -24,6 +27,55 @@ def dn(x):
 
 def up(x):
     return np.nextafter(x, INF)
+
+
+# ------------------------------------------------------------------ the arithmetic environment
+def _word(x):
+    return struct.unpack('<Q', struct.pack('<d', float(x)))[0]
+
+
+# operation, operands, correctly rounded result, all as hexadecimal literals; checked from
+# exact rationals when this file was written.  Rounding up, down or toward zero, flushing
+# subnormal results (FTZ) or reading subnormal operands as zero (DAZ) each break some row.
+ENVIRONMENT_CASES = [
+    ('mul', '0x1.0000002p+0', '0x1.0000002p+0', '0x1.0000004p+0'),                # 1+2^-26+2^-54
+    ('add', '0x1p+53', '0x1p+0', '0x1p+53'),                                      # tie, to even
+    ('add', '0x1p+53', '0x1.8p+1', '0x1.0000000000002p+53'),                      # tie, to even
+    ('sub', '0x1p+0', '0x1p-54', '0x1p+0'),                                       # tie below 1
+    ('sub', '-0x1p+0', '0x1p-54', '-0x1p+0'),                                     # same, negative
+    ('div', '0x1p+0', '0x1.4p+3', '0x1.999999999999ap-4'),                       # 1/10, rounds up
+    ('div', '0x1.cp+2', '0x1.8p+1', '0x1.2aaaaaaaaaaabp+1'),                     # 7/3, rounds up
+    ('div', '-0x1.cp+2', '0x1.8p+1', '-0x1.2aaaaaaaaaaabp+1'),                   # -7/3
+    ('sqrt', '0x1.8p+1', None, '0x1.bb67ae8584caap+0'),                          # sqrt(3)
+    ('sqrt', '0x1p-1', None, '0x1.6a09e667f3bcdp-1'),                            # sqrt(1/2)
+    ('mul', '0x0.0000000000001p-1022', '0x1p+1', '0x0.0000000000002p-1022'),     # DAZ
+    ('div', '0x1p-1022', '0x1p+1', '0x0.8p-1022'),                               # FTZ
+    ('sub', '0x1.0000000000001p-1022', '0x1p-1022', '0x0.0000000000001p-1022'),  # FTZ
+    ('up', '0x0p+0', None, '0x0.0000000000001p-1022'),
+    ('dn', '0x1p+0', None, '0x1.fffffffffffffp-1'),
+]
+_OPS = {'add': np.add, 'sub': np.subtract, 'mul': np.multiply, 'div': np.divide,
+        'sqrt': np.sqrt, 'up': up, 'dn': dn}
+
+
+def environment_check(length=997):
+    """Raise ArithmeticError unless every row of ENVIRONMENT_CASES holds bit for bit, on
+    scalars and on arrays (whose NumPy loops may differ from the scalar ones)."""
+    bad = []
+    for op, a, b, want in ENVIRONMENT_CASES:
+        args = [float.fromhex(a)] + ([] if b is None else [float.fromhex(b)])
+        w = _word(float.fromhex(want))
+        scalar = _OPS[op](*[np.float64(x) for x in args])
+        array = _OPS[op](*[np.full(length, x) for x in args])
+        if _word(scalar) != w or any(_word(v) != w for v in array):
+            bad.append(f'{op}({", ".join(x for x in (a, b) if x)})')
+    if bad:
+        raise ArithmeticError('evaluator.py: the arithmetic is not IEEE binary64 with round to nearest '
+                              'and gradual underflow; failing cases: ' + ', '.join(bad))
+    return True
+
+
+environment_check()
 
 
 class Iv:

@@ -1,0 +1,237 @@
+{
+  "source_sha256": {
+    "certify.py": "e8556f7b031f5bb50fe307fa0ddddf5a35f8baeeeccf4886a932c52efa880686",
+    "base_triangle.py": "44acee044769a6d0e3b1bb949995e2156a64058e8d6164576858d048f13719aa",
+    "verify.py": "1f88503ae63c8f0fc2a407cd970cf6a6f58d033ef9ffdfcf0c2cda8d8fa2653d",
+    "interval.py": "6f429cc05393808a2d4f577b55d5fa652971cb455222f68ef0608e89bf72d4b7",
+    "ad.py": "a84c45b4f5da5d2de51786afa21e4d709c94913bcb3f50793ca096d0f65c879c",
+    "domains.py": "7351f66697a31baf2add1e705d9e68dc4cfb694c66bbc50c107514fff3f57338",
+    "provenance.py": "8b20470f4d13a7dd52bc82765b1a5b54efe067908520e71e7595db0b4d428434",
+    "closedform.py": "dbd35c3b221587e36148a905820c2351b062d0527173ac41e275ceecb36b9ac3",
+    "reproduce.py": "beaf09ec2d4f41baf6435de448c5d3a57b4ad61940aa3b7059d445f637d70c7f",
+    "tests/test_enclosures.py": "d50d6d791168ef6297176547338c30ba19449f46623a952400fefd47e97d2c49",
+    "tests/test_rigorous_arithmetic.py": "8e51a69aca2a2d546addc32d576bc054988deb36d31d60e3ef9f7492df0e621f"
+  },
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "numpy": "2.4.6",
+  "runs": [
+    {
+      "label": "arithmetic",
+      "command": [
+        "C:\\Users\\Claudio\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-u",
+        "C:\\Projects\\Claude3\\maxwell3\\tests\\test_rigorous_arithmetic.py"
+      ],
+      "returncode": 0,
+      "seconds": 2.019564500078559,
+      "validated": true
+    },
+    {
+      "label": "enclosures",
+      "command": [
+        "C:\\Users\\Claudio\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-u",
+        "C:\\Projects\\Claude3\\maxwell3\\tests\\test_enclosures.py"
+      ],
+      "returncode": 0,
+      "seconds": 6.00370809994638,
+      "validated": true
+    },
+    {
+      "label": "n12",
+      "command": [
+        "C:\\Users\\Claudio\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-u",
+        "C:\\Projects\\Claude3\\maxwell3\\certify.py",
+        "1.0",
+        "16",
+        "60"
+      ],
+      "returncode": 0,
+      "seconds": 510.68755229981616,
+      "certificate": {
+        "s": 1.0,
+        "n0": 12,
+        "initial_boxes": 11232,
+        "stats": {
+          "boxes": 9965924,
+          "disc_struct": 0,
+          "disc_outside": 1023498,
+          "ver_int": 837622,
+          "ver_bdry": 3127458,
+          "ver_bdry_nocusp": 2430074
+        },
+        "worst_certified": {
+          "jac": -0.00020852467301311903,
+          "Ih": 3.2157117599296287e-07,
+          "turn": 0.4999987067852449,
+          "W": 0.37718985119804876
+        },
+        "unresolved": 0,
+        "seconds": 510.33186864852905,
+        "schema_version": 2,
+        "parameters": {
+          "s": 1.0,
+          "n0": 12,
+          "workers": 16,
+          "maxit": 60,
+          "min_width": 1e-09
+        },
+        "coverage": "outward-rounded exact rational simplex cells",
+        "runtime": {
+          "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+          "numpy": "2.4.6",
+          "platform": "Windows-10-10.0.26300-SP0"
+        },
+        "source_sha256": {
+          "ad.py": "a84c45b4f5da5d2de51786afa21e4d709c94913bcb3f50793ca096d0f65c879c",
+          "certify.py": "e8556f7b031f5bb50fe307fa0ddddf5a35f8baeeeccf4886a932c52efa880686",
+          "domains.py": "7351f66697a31baf2add1e705d9e68dc4cfb694c66bbc50c107514fff3f57338",
+          "interval.py": "6f429cc05393808a2d4f577b55d5fa652971cb455222f68ef0608e89bf72d4b7",
+          "provenance.py": "8b20470f4d13a7dd52bc82765b1a5b54efe067908520e71e7595db0b4d428434",
+          "verify.py": "1f88503ae63c8f0fc2a407cd970cf6a6f58d033ef9ffdfcf0c2cda8d8fa2653d"
+        }
+      },
+      "validated": true
+    },
+    {
+      "label": "n10",
+      "command": [
+        "C:\\Users\\Claudio\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-u",
+        "C:\\Projects\\Claude3\\maxwell3\\certify.py",
+        "1.0",
+        "16",
+        "80",
+        "10"
+      ],
+      "returncode": 0,
+      "seconds": 491.0681194001809,
+      "certificate": {
+        "s": 1.0,
+        "n0": 10,
+        "initial_boxes": 5500,
+        "stats": {
+          "boxes": 9966320,
+          "disc_struct": 0,
+          "disc_outside": 1030113,
+          "ver_int": 839270,
+          "ver_bdry": 3116527,
+          "ver_bdry_nocusp": 2434734
+        },
+        "worst_certified": {
+          "jac": -0.00015688515959057234,
+          "Ih": 1.525624909043399e-07,
+          "turn": 0.49999937865660193,
+          "W": 0.38797317937964043
+        },
+        "unresolved": 0,
+        "seconds": 490.7277309894562,
+        "schema_version": 2,
+        "parameters": {
+          "s": 1.0,
+          "n0": 10,
+          "workers": 16,
+          "maxit": 80,
+          "min_width": 1e-09
+        },
+        "coverage": "outward-rounded exact rational simplex cells",
+        "runtime": {
+          "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+          "numpy": "2.4.6",
+          "platform": "Windows-10-10.0.26300-SP0"
+        },
+        "source_sha256": {
+          "ad.py": "a84c45b4f5da5d2de51786afa21e4d709c94913bcb3f50793ca096d0f65c879c",
+          "certify.py": "e8556f7b031f5bb50fe307fa0ddddf5a35f8baeeeccf4886a932c52efa880686",
+          "domains.py": "7351f66697a31baf2add1e705d9e68dc4cfb694c66bbc50c107514fff3f57338",
+          "interval.py": "6f429cc05393808a2d4f577b55d5fa652971cb455222f68ef0608e89bf72d4b7",
+          "provenance.py": "8b20470f4d13a7dd52bc82765b1a5b54efe067908520e71e7595db0b4d428434",
+          "verify.py": "1f88503ae63c8f0fc2a407cd970cf6a6f58d033ef9ffdfcf0c2cda8d8fa2653d"
+        }
+      },
+      "validated": true
+    },
+    {
+      "label": "base64",
+      "command": [
+        "C:\\Users\\Claudio\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-u",
+        "C:\\Projects\\Claude3\\maxwell3\\base_triangle.py",
+        "64"
+      ],
+      "returncode": 0,
+      "seconds": 0.3208919996395707,
+      "certificate": {
+        "triangle": [
+          "0j",
+          "(1+0j)",
+          "(0.5+0.125j)"
+        ],
+        "boxes": 2356,
+        "unresolved": 0,
+        "seconds": 0.0,
+        "initial_boxes": 2080,
+        "schema_version": 2,
+        "parameters": {
+          "n0": 64,
+          "maxit": 40
+        },
+        "coverage": "outward-rounded exact rational simplex cells",
+        "runtime": {
+          "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+          "numpy": "2.4.6",
+          "platform": "Windows-10-10.0.26300-SP0"
+        },
+        "source_sha256": {
+          "base_triangle.py": "44acee044769a6d0e3b1bb949995e2156a64058e8d6164576858d048f13719aa",
+          "domains.py": "7351f66697a31baf2add1e705d9e68dc4cfb694c66bbc50c107514fff3f57338",
+          "interval.py": "6f429cc05393808a2d4f577b55d5fa652971cb455222f68ef0608e89bf72d4b7",
+          "provenance.py": "8b20470f4d13a7dd52bc82765b1a5b54efe067908520e71e7595db0b4d428434"
+        }
+      },
+      "validated": true
+    },
+    {
+      "label": "base48",
+      "command": [
+        "C:\\Users\\Claudio\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-u",
+        "C:\\Projects\\Claude3\\maxwell3\\base_triangle.py",
+        "48"
+      ],
+      "returncode": 0,
+      "seconds": 0.3062380002811551,
+      "certificate": {
+        "triangle": [
+          "0j",
+          "(1+0j)",
+          "(0.5+0.125j)"
+        ],
+        "boxes": 1618,
+        "unresolved": 0,
+        "seconds": 0.0,
+        "initial_boxes": 1176,
+        "schema_version": 2,
+        "parameters": {
+          "n0": 48,
+          "maxit": 40
+        },
+        "coverage": "outward-rounded exact rational simplex cells",
+        "runtime": {
+          "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+          "numpy": "2.4.6",
+          "platform": "Windows-10-10.0.26300-SP0"
+        },
+        "source_sha256": {
+          "base_triangle.py": "44acee044769a6d0e3b1bb949995e2156a64058e8d6164576858d048f13719aa",
+          "domains.py": "7351f66697a31baf2add1e705d9e68dc4cfb694c66bbc50c107514fff3f57338",
+          "interval.py": "6f429cc05393808a2d4f577b55d5fa652971cb455222f68ef0608e89bf72d4b7",
+          "provenance.py": "8b20470f4d13a7dd52bc82765b1a5b54efe067908520e71e7595db0b4d428434"
+        }
+      },
+      "validated": true
+    }
+  ],
+  "source_unchanged": true
+}

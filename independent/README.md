@@ -23,7 +23,9 @@ rule, and the thresholds (|Z|² is compared with an enclosure of 1/9, without th
 margins).
 
 Shared: IEEE 754 binary64 arithmetic in NumPy with one-ulp outward rounding, and the
-formulas of the manuscript. `first_principles.py` checks those formulas at sample points; it
+formulas of the manuscript. Each program checks that arithmetic on its own when it is
+imported (`environment_check()` here, `check_arithmetic()` in `interval.py`, with different
+test operations) and refuses to run under another rounding mode or with flush-to-zero. `first_principles.py` checks those formulas at sample points; it
 does not prove them. Both programs were written by AI systems. This is a cross-check, not a
 formal proof and not a review by a human expert.
 
@@ -42,7 +44,7 @@ python independent/first_principles.py
 
 ## Recorded results
 
-The runs are in [`../certificates/review-2026-11-10/independent/`](../certificates/review-2026-11-10/independent/).
+The runs are in [`../certificates/rerun-2026-11-10/independent/`](../certificates/rerun-2026-11-10/independent/). The first runs, made before the check of the arithmetic environment was added, are in `../certificates/review-2026-11-10/independent/` and have the same counts.
 
 | run | boxes processed | unresolved |
 |---|---:|---:|

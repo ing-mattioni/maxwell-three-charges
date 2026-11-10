@@ -1,5 +1,10 @@
 # Source hashes and line endings
 
+> **Historical record.** The hashes below are those of commit `3c9a49c`. Three of these files
+> (`interval.py`, `tests/test_rigorous_arithmetic.py`, `independent/evaluator.py`) changed
+> later on 10 November 2026; the current hashes are in
+> [`../rerun-2026-11-10/SOURCE_HASHES.md`](../rerun-2026-11-10/SOURCE_HASHES.md).
+
 `reproduction.json`, the certificate JSON files in this directory and the JSON files in
 `independent/` record SHA-256 hashes of the source files as they were on disk when the runs
 were made, on Windows, on 10 November 2026. Git stores every file with LF endings, so a

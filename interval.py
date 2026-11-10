@@ -5,6 +5,8 @@ the exact result of the IEEE round-to-nearest operation.  sin/cos are evaluated 
 endpoints using interval Taylor polynomials with outward-rounded remainder bounds;
 interior extrema are included explicitly. No platform libm accuracy is assumed.
 Complex intervals are rectangles (pairs of real intervals).
+When the module is imported, check_arithmetic() tests the arithmetic environment these
+enclosures assume, and the import fails if it differs.
 """
 import numpy as np
 
@@ -271,3 +273,81 @@ def sincos_point(x):
     c_lo = np.select([km == 0, km == 1, km == 2, km == 3], [cy.lo, -sy.hi, -cy.hi, sy.lo])
     c_hi = np.select([km == 0, km == 1, km == 2, km == 3], [cy.hi, -sy.lo, -cy.lo, sy.hi])
     return I(s_lo, s_hi), I(c_lo, c_hi)
+
+
+# ---------------------------------------------------------------------------
+# Check of the arithmetic environment.
+#
+# The enclosures above are rigorous only if NumPy's binary64 operations +, -, *, / and sqrt
+# round to nearest with ties to even, subnormal numbers are neither flushed to zero (FTZ) nor
+# read as zero (DAZ), np.nextafter moves by one unit in the last place, and np.minimum and
+# np.maximum propagate NaN.  check_arithmetic() tests these properties on cases whose correctly
+# rounded results are known exactly, on scalars and on arrays long enough for NumPy's
+# vectorised loops.  It runs when the module is imported, in every process that uses it, and
+# the module refuses to load if any case fails.  Inputs and expected results are written as
+# hexadecimal literals and compared bit for bit, so that the check does not depend on the
+# arithmetic it is testing.
+
+_ARRAY_LENGTH = 1031   # not a multiple of any SIMD width, so the loop tails run too
+
+
+def _bits(x):
+    return np.asarray(x, dtype=np.float64).view(np.uint64)
+
+
+def arithmetic_cases():
+    """(name, operation, operands, correctly rounded result) for check_arithmetic()."""
+    h = float.fromhex
+    one = h('0x1p+0')
+    return [
+        # name, operation, operands, correctly rounded result
+        ('add, a quarter ulp rounds down', np.add, (one, h('0x1p-54')), one),
+        ('add, three quarters of an ulp round up', np.add, (one, h('0x3p-54')), h('0x1.0000000000001p+0')),
+        ('add, tie to even (down)', np.add, (one, h('0x1p-53')), one),
+        ('add, tie to even (up)', np.add, (h('0x1.0000000000001p+0'), h('0x1p-53')), h('0x1.0000000000002p+0')),
+        ('subtract, negative side', np.subtract, (-one, h('0x3p-54')), h('-0x1.0000000000001p+0')),
+        ('multiply, rounding of 1 + 2u + u^2', np.multiply, (h('0x1.0000000000001p+0'), h('0x1.0000000000001p+0')),
+         h('0x1.0000000000002p+0')),
+        ('multiply, 1 - 2^-60 rounds to 1', np.multiply, (h('0x1.00000004p+0'), h('0x1.fffffff8p-1')), one),
+        ('divide, 1/3', np.divide, (one, h('0x1.8p+1')), h('0x1.5555555555555p-2')),
+        ('divide, 2/3', np.divide, (h('0x1p+1'), h('0x1.8p+1')), h('0x1.5555555555555p-1')),
+        ('sqrt, sqrt(2)', np.sqrt, (h('0x1p+1'),), h('0x1.6a09e667f3bcdp+0')),
+        ('subtract, subnormal result (no FTZ)', np.subtract, (h('0x1.8p-1022'), h('0x1p-1022')), h('0x0.8p-1022')),
+        ('multiply, subnormal result (no FTZ)', np.multiply, (h('0x1p-1022'), h('0x1p-2')), h('0x0.4p-1022')),
+        ('multiply, subnormal operand (no DAZ)', np.multiply, (h('0x0.0000000000001p-1022'), one), h('0x0.0000000000001p-1022')),
+        ('add, subnormal operands (no DAZ)', np.add, (h('0x0.0000000000001p-1022'), h('0x0.0000000000001p-1022')),
+         h('0x0.0000000000002p-1022')),
+        ('nextafter, up from 1', np.nextafter, (one, np.inf), h('0x1.0000000000001p+0')),
+        ('nextafter, down from 1', np.nextafter, (one, -np.inf), h('0x1.fffffffffffffp-1')),
+        ('nextafter, up from 0', np.nextafter, (h('0x0p+0'), one), h('0x0.0000000000001p-1022')),
+        ('nextafter, down from 0', np.nextafter, (h('0x0p+0'), -one), h('-0x0.0000000000001p-1022')),
+    ]
+
+
+def check_arithmetic():
+    """Raise ArithmeticError unless the arithmetic environment is the one assumed above."""
+    one = float.fromhex('0x1p+0')
+    failures = []
+    info = np.finfo(np.float64)
+    if not (info.nmant == 52 and info.minexp == -1022 and info.maxexp == 1024
+            and _bits(info.eps) == _bits(float.fromhex('0x1p-52'))):
+        failures.append('numpy.float64 is not IEEE 754 binary64')
+    for name, op, args, expected in arithmetic_cases():
+        want = _bits(expected)
+        scalar = op(*(np.float64(a) for a in args))
+        vector = op(*(np.full(_ARRAY_LENGTH, a, dtype=np.float64) for a in args))
+        if _bits(scalar) != want or not np.all(_bits(vector) == want):
+            failures.append(name)
+    for name, op in (('minimum', np.minimum), ('maximum', np.maximum)):
+        values = (op(np.float64(np.nan), one), op(one, np.float64(np.nan)),
+                  op(np.full(_ARRAY_LENGTH, np.nan), np.full(_ARRAY_LENGTH, one)),
+                  op(np.full(_ARRAY_LENGTH, one), np.full(_ARRAY_LENGTH, np.nan)))
+        if not all(np.all(np.isnan(v)) for v in values):
+            failures.append(name + ' does not propagate NaN')
+    if failures:
+        raise ArithmeticError('interval.py: the arithmetic environment is not the one the enclosures '
+                              'assume (IEEE binary64, round to nearest, no FTZ/DAZ): ' + '; '.join(failures))
+    return True
+
+
+check_arithmetic()
