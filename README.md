@@ -37,9 +37,10 @@ It has **not** been peer-reviewed. Two AI-assisted reviews are documented, both 
   and found a latent defect in the range handling of sin and cos and an unused non-rigorous
   code path. Both are fixed. Its remarks on exposition, references and the diagnostic
   figures were taken into account in the paper of 10 November 2026, and the check of the
-  arithmetic environment it suggested was added. Still open: the exact statement of
-  Martinez-Maure's Theorem 2 has not been checked by an AI reviewer against the full text,
-  and an optional proof of the total turning that does not use (W).
+  arithmetic environment it suggested was added. The statement of Martinez-Maure's
+  Theorem 2, which it could not read, was later checked against the full text by
+  GPT-6-Astra and matches the citation. Still open: an optional proof of the total turning
+  that does not use (W).
 
 None of this changed the outcome, and neither review replaces an independent human expert.
 Please read the caveats below.
