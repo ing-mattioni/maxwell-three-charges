@@ -22,6 +22,6 @@ The three JSON files in the repository root (`cert_s1.0.json`, `cert_s1.0_n10.js
 `rerun-2026-11-10/`.
 
 [`HISTORY.json`](HISTORY.json) names the directories recorded with earlier sources and the
-commit whose files their hashes refer to. The release check in
-`publication/prepare_bundle.py` uses it to compare those records with the files of that
-commit instead of the current ones.
+commit whose files their hashes refer to. The author's release check, kept with the
+editorial materials outside this repository, uses it to compare those records with the
+files of that commit instead of the current ones.
