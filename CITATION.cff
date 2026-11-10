@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software or its computational records, please cite the archived version by its DOI, together with the accompanying preprint."
+type: software
+title: "Maxwell's bound for three positive Coulomb charges: source code and computational records"
+authors:
+  - family-names: Mattioni
+    given-names: Claudio
+    email: claudio.mattioni@gmail.com
+doi: 10.5281/zenodo.24115827
+license:
+  - MIT
+  - CC-BY-4.0
+repository-code: "https://github.com/ing-mattioni/maxwell-three-charges"
+keywords:
+  - Maxwell's conjecture
+  - Coulomb potential
+  - interval arithmetic
+  - computer-assisted proof
+preferred-citation:
+  type: unpublished
+  title: "Three positive point charges have at most four equilibria"
+  authors:
+    - family-names: Mattioni
+      given-names: Claudio
+  year: 2026
+  notes: "Preprint, revised 10 November 2026; not peer reviewed."

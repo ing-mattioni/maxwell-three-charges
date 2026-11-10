@@ -210,6 +210,12 @@ review checked a smaller 128-configuration batch and the November review 224
 configurations of its own, not a complete rerun of that scan.
 Neither random tests nor Newton counts are used to prove the universal bound.
 
+## Citation
+
+The version of this repository that accompanies the manuscript is archived on Zenodo:
+<https://doi.org/10.5281/zenodo.24115827>. Citation metadata are in
+[`CITATION.cff`](CITATION.cff).
+
 ## License
 
 Copyright © 2026 Claudio Mattioni. Except where otherwise noted:

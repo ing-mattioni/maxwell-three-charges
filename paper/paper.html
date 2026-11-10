@@ -89,7 +89,7 @@
 <h1 class="title">Three positive point charges have at most four equilibria</h1>
 <div class="subtitle">A computer-assisted proof of Maxwell&rsquo;s bound for three positive charges</div>
 <div class="author">Claudio Mattioni</div>
-<div class="affil">github.com/ing-mattioni</div>
+<div class="affil">claudio.mattioni@gmail.com &middot; github.com/ing-mattioni</div>
 <div class="date">30 October 2026, revised 10 November 2026 &middot; preprint</div>
 
 <div class="abstract"><span class="hd">Abstract</span>
@@ -441,7 +441,7 @@ So $\Psi$ is strictly monotone on $[c,a]$, $[a,b]$ and $[b,c+\pi]$, with alterna
 <p>None of this is a substitute for review by an independent human expert; such a review has not yet been completed. We therefore present this work as a preprint inviting scrutiny, and the accompanying source is provided in full for that purpose.</p>
 
 <h2 class="nonum">Code availability</h2>
-<p>All code, certificate summaries and run logs are in the project repository <cite data-k="repo"></cite>. The recorded runs use CPython&nbsp;3.11 and NumPy&nbsp;2.4.6; the high-precision tests use mpmath&nbsp;1.3.0. Each certificate includes source SHA256 hashes, parameters and platform versions. A nonzero unresolved count causes a failing exit status. The runner retains logs in a fresh directory and checks hashes and results:</p>
+<p>All code, certificate summaries and run logs are in the project repository <cite data-k="repo"></cite>. The version that accompanies this manuscript is archived on Zenodo, DOI: 10.5281/zenodo.24115827. The recorded runs use CPython&nbsp;3.11 and NumPy&nbsp;2.4.6; the high-precision tests use mpmath&nbsp;1.3.0. Each certificate includes source SHA256 hashes, parameters and platform versions. A nonzero unresolved count causes a failing exit status. The runner retains logs in a fresh directory and checks hashes and results:</p>
 <pre>python -m pip install -r requirements-review.txt
 python reproduce.py --workers 16</pre>
 <p>The two main subdivisions share the same interval implementation. Their agreement is a reproducibility check, not an independent arithmetic proof. The second implementation of Section&nbsp;<a class="r" data-to="sec-second"></a> is in the directory <code>independent</code> and is run separately; it needs only NumPy:</p>
@@ -470,7 +470,7 @@ python independent/certify_base.py</pre>
 <li id="ref-maxwell">J.&nbsp;C. Maxwell, <i>A Treatise on Electricity and Magnetism</i>, Vol.&nbsp;1, Clarendon Press, Oxford, 1873.</li>
 <li id="ref-milnor">J.&nbsp;W. Milnor, <i>Topology from the Differentiable Viewpoint</i>, University Press of Virginia, Charlottesville, 1965.</li>
 <li id="ref-moore">R.&nbsp;E. Moore, R.&nbsp;B. Kearfott, M.&nbsp;J. Cloud, <i>Introduction to Interval Analysis</i>, SIAM, Philadelphia, 2009.</li>
-<li id="ref-repo">C. Mattioni, <i>maxwell-three-charges</i>: code, certificates and notes, https://github.com/ing-mattioni/maxwell-three-charges (2026).</li>
+<li id="ref-repo">C. Mattioni, <i>maxwell-three-charges</i>: code, certificates and notes, https://github.com/ing-mattioni/maxwell-three-charges (2026). Archived version: Zenodo, DOI: 10.5281/zenodo.24115827.</li>
 <li id="ref-peretz">R. Peretz, <i>Application of the argument principle to Maxwell&rsquo;s conjecture for three point charges</i>, Complex Var. Elliptic Equ. <b>58</b> (2013), no.&nbsp;5, 715&ndash;725. DOI: 10.1080/17476933.2011.611939.</li>
 <li id="ref-tsai">Y.-L. Tsai, <i>Maxwell&rsquo;s conjecture on three point charges with equal magnitudes</i>, Phys. D <b>309</b> (2015), 86&ndash;98.</li>
 <li id="ref-tucker">W. Tucker, <i>Validated Numerics: A Short Introduction to Rigorous Computations</i>, Princeton University Press, 2011.</li>
